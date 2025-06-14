@@ -40,7 +40,7 @@ const app = Vue.createApp({
 
       // cost breakdown
       const cost = {
-        shipping: '0.00',
+        shipping: '60.00',
         tax:      '0.00',
         total:    this.total.toFixed(2)
       };
