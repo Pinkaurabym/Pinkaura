@@ -38,7 +38,16 @@
       </div>
       <div class="checkout-payment-card">
         <h2>Order Summary</h2>
-        <p class="summary-total">Total: ₹{{ total.toFixed(2) }}</p>
+        <p class="summary-line">
+          Subtotal: ₹{{ subtotal.toFixed(2) }}
+        </p>
+        <p class="summary-line">
+          Shipping: ₹{{ shipping.toFixed(2) }}
+        </p>
+        <hr>
+        <p class="summary-total">
+          Total: ₹{{ total.toFixed(2) }}
+        </p>
         <div class="qr-code-container">
           <img src="images/paytm-qr.png" alt="Paytm UPI QR Code" class="static-qr"/>
           <p class="scan-text">Scan this QR code to pay via UPI</p>

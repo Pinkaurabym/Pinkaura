@@ -12,13 +12,20 @@ const app = Vue.createApp({
     };
   },
   computed: {
-    total() {
+    subtotal() {
       return this.cart.reduce((sum, item) => {
         const p = this.products.find(x => x.id === item.id) || {};
         return sum + ((p.price || 0) * item.quantity);
       }, 0);
+    },
+    shipping() {
+      return this.cart.length > 0 ? 60 : 0;
+    },
+    total() {
+      return this.subtotal + this.shipping;
     }
   },
+
   methods: {
     async submitOrder() {
       // basic validation
@@ -40,9 +47,9 @@ const app = Vue.createApp({
 
       // cost breakdown
       const cost = {
-        shipping: '60.00',
-        tax:      '0.00',
-        total:    this.total.toFixed(2)
+        shipping: this.shipping.toFixed(2),
+        tax: '0.00',
+        total: this.total.toFixed(2)
       };
 
       const order_id = 'ORD' + Date.now();
