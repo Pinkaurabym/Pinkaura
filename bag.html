@@ -54,8 +54,17 @@
       </div>
 
       <div class="bag-footer">
+        <p class="total-label">Subtotal:</p>
+        <p class="total-amount">₹{{ total - shipping }}</p>
+
+        <p class="total-label">Shipping:</p>
+        <p class="total-amount">₹{{ shipping }}</p>
+
+        <hr />
+
         <p class="total-label">Total:</p>
         <p class="total-amount">₹{{ total }}</p>
+
         <button class="btn checkout-btn" @click="goToCheckout">
           Proceed to Checkout
         </button>

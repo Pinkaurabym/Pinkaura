@@ -21,8 +21,13 @@ const bagApp = Vue.createApp({
     },
     // Sum up each line's price * quantity
     total() {
-      return this.cartItems.reduce((sum, i) => sum + (i.price || 0) * i.quantity, 0);
-    }
+      const subtotal = this.cartItems.reduce((sum, i) => (i.price || 0) * i.quantity + sum, 0);
+      return subtotal + this.shipping;
+    },    
+    shipping() {
+      return this.cartItems.length > 0 ? 60 : 0;
+    },
+
   },
   methods: {
     // Lookup the correct image for a given product id + color
