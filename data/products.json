@@ -616,5 +616,21 @@
         "images": ["images/40.JPG"]
       }
     ]
+  },
+  
+  {
+    "id": 42,
+    "name": "CD BASED 18k gold plated ring",
+    "price": 250,
+    "category": "Rings",
+    "description": "daily wear anti tarnish CD ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/42.JPG"]
+      }
+    ]
   }
 ]
