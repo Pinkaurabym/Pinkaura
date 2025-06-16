@@ -635,7 +635,7 @@
   },
   
   {
-    "id": 41,
+    "id": 44,
     "name": "princess swirl ring ",
     "price": 230,
     "category": "Rings",
@@ -645,7 +645,7 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/41.JPG"]
+        "images": ["images/44.JPG"]
       }
     ]
   },
