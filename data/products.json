@@ -17,6 +17,7 @@
   {
     "id": 2,
     "name": "Bow Ring",
+
     "price": 200,
     "category": "Rings",
     "description": "18k gold plated ring (adjustable size)",
@@ -647,6 +648,19 @@
         "images": ["images/44.JPG"]
       }
     ]
-  }
-]
-
+  },
+{
+    "id": 44,
+    "name": "princess swirl ring ",
+    "price": 230,
+    "category": "Rings",
+    "description": "daily wear anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/44.JPG"]
+      }
+    ]
+  },
