@@ -649,19 +649,4 @@
       }
     ]
   },
-{
-    "id": 44,
-    "name": "princess swirl ring ",
-    "price": 230,
-    "category": "Rings",
-    "description": "daily wear anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": ["images/44.JPG"]
-      }
-    ]
-  }
 ]
