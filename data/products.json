@@ -636,7 +636,7 @@
   },
   {
     "id": 44,
-    "name": "princess swirl ring ",
+    "name": "fairy leaves ring ",
     "price": 230,
     "category": "Rings",
     "description": "daily wear anti tarnish adjustable ring.",
@@ -645,7 +645,7 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/44.JPG"]
+        "images": ["images/45.JPG"]
       }
     ]
   },
