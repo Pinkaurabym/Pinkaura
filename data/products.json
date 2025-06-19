@@ -662,5 +662,22 @@
         "images": ["images/46.JPG"]
       }
     ]
+  
+ },
+  {
+    "id": 48,
+    "name": "diana ring  ",
+    "price": 230,
+    "category": "Rings",
+    "description": "crystal pieces anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/48.JPG"]
+      }
+    ]
   }
 ]
+
