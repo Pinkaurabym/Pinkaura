@@ -649,3 +649,21 @@
     ]
   }
 ]
+
+  },
+  {
+    "id": 46,
+    "name": "fairy leaves ring ",
+    "price": 230,
+    "category": "Rings",
+    "description": "crystal pieces anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/46.JPG"]
+      }
+    ]
+  }
+]
