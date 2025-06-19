@@ -678,6 +678,41 @@
         "images": ["images/48.JPG"]
       }
     ]
+    
+   },
+  {
+    "id": 47,
+    "name": "swiss ring  ",
+    "price": 190,
+    "category": "Rings",
+    "description": "anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/47.JPG"]
+      }
+    ]
+  
+ },
+  {
+    "id": 49,
+    "name": "tira ring  ",
+    "price": 230,
+    "category": "Rings",
+    "description": "  anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/49.JPG"]
+      }
+    ]
   }
 ]
+
+
+
 
