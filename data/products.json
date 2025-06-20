@@ -710,8 +710,28 @@
         "images": ["images/49.JPG"]
       }
     ]
+   },
+  {
+    "id": 50,
+    "name": "elegant swirl ring  ",
+    "price": 230,
+    "category": "Rings",
+    "description": "  anti tarnish adjustable ring.",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/50.JPG"]
+      }
+    ]
   }
 ]
+
+
+
+
+
 
 
 
