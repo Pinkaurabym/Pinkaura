@@ -662,9 +662,8 @@
         "images": ["images/46.JPG"]
       }
     ]
-  
  },
-  {
+ {
     "id": 48,
     "name": "diana ring  ",
     "price": 230,
@@ -679,7 +678,7 @@
       }
     ]
     
-   },
+  },
   {
     "id": 47,
     "name": "swiss ring  ",
@@ -694,9 +693,8 @@
         "images": ["images/47.JPG"]
       }
     ]
-  
  },
-  {
+ {
     "id": 49,
     "name": "tira ring  ",
     "price": 230,
@@ -710,7 +708,7 @@
         "images": ["images/49.JPG"]
       }
     ]
-   },
+  },
   {
     "id": 50,
     "name": "elegant swirl ring  ",
@@ -725,7 +723,7 @@
         "images": ["images/50.JPG"]
       }
     ]
-    },
+  },
   {
     "id": 51,
     "name": "studded infinity Necklace",
@@ -737,11 +735,11 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/3.JPG"]
+        "images": ["images/51.JPG"]
       }
     ]
-    }
-    ]
+  }
+]
 
 
 
