@@ -834,6 +834,96 @@
         "images": ["images/57.JPG"]
       }
     ]
+  },
+  {
+    "id": 58,
+    "name": "Golden van cleef bracelet",
+    "price": 220,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/58.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Amour bracelet",
+    "price": 230,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/59.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Solid van cleef bangle",
+    "price": 400,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/60.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "Bold white clover bangle",
+    "price": 350,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/61.JPG"]
+      }
+    ]
+  },
+    {
+    "id": 62,
+    "name": "Twistie bangle",
+    "price": 350,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/62.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Luxe wrist bangle",
+    "price": 350,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/63.JPG"]
+      }
+    ]
   }
 
 ]
