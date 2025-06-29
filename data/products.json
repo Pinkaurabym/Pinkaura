@@ -755,6 +755,21 @@
         "images": ["images/52.JPG"]
       }
     ]
+  },
+  {
+    "id": 53,
+    "name": "luxe twin bracelet",
+    "price": 250,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/53.JPG"]
+      }
+    ]
   }
 
   
