@@ -740,6 +740,21 @@
         "images": ["images/51.JPG"]
       }
     ]
+  },
+  {
+    "id": 52,
+    "name": "twin van vleef bracelet",
+    "price": 230,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/52.JPG"]
+      }
+    ]
   }
 
   
