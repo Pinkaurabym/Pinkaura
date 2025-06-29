@@ -819,7 +819,23 @@
         "images": ["images/56.JPG"]
       }
     ]
+  },
+  {
+    "id": 57,
+    "name": "Swirl bracelet",
+    "price": 220,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/57.JPG"]
+      }
+    ]
   }
+
 ]
 
 
