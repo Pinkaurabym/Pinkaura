@@ -770,6 +770,21 @@
         "images": ["images/53.JPG"]
       }
     ]
+  },
+  {
+    "id": 54,
+    "name": "Van cleef ( maroon )",
+    "price": 160,
+    "category": "Necklaces",
+    "description": "18k gold plated bracelet",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/54.JPG"]
+      }
+    ]
   }
 
   
