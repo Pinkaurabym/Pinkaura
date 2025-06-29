@@ -794,8 +794,8 @@
     "id": 55,
     "name": "Gold beaded layered bracelet",
     "price": 220,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
+    "category": "Bracelets",
+    "description": "18k gold plated bracelets",
     "trending": false,
     "bestSeller": true,
     "variants": [
@@ -809,8 +809,8 @@
     "id": 56,
     "name": "Green emerald beaded bracelet",
     "price": 220,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
+    "category": "Bracelets",
+    "description": "18k gold plated bracelets",
     "trending": false,
     "bestSeller": true,
     "variants": [
