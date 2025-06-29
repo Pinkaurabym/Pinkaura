@@ -776,7 +776,7 @@
     "name": "Van cleef ( maroon )",
     "price": 160,
     "category": "Necklaces",
-    "description": "18k gold plated bracelet",
+    "description": "18k gold plated necklace",
     "trending": true,
     "bestSeller": false,
     "variants": [
@@ -789,9 +789,37 @@
         "images": ["images/54b.JPG"]
       }
     ]
+  },
+  {
+    "id": 55,
+    "name": "Gold beaded layered bracelet",
+    "price": 220,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/55.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Green emerald beaded bracelet",
+    "price": 220,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/56.JPG"]
+      }
+    ]
   }
-
-  
 ]
 
 
