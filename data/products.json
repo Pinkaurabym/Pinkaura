@@ -895,7 +895,7 @@
       }
     ]
   },
-    {
+  {
     "id": 62,
     "name": "Twistie bangle",
     "price": 350,
@@ -922,6 +922,21 @@
       {
         "color": "Gold",
         "images": ["images/63.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Hexagonal bangle",
+    "price": 350,
+    "category": "Bracelets",
+    "description": "18k gold plated bracelet",
+    "trending": false,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/64.JPG"]
       }
     ]
   }
