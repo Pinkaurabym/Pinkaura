@@ -939,7 +939,189 @@
         "images": ["images/64.JPG"]
       }
     ]
-  }
+  },
+  {
+    "id": 65,
+    "name": "Bowly necklace set",
+    "price": 320,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/65.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Promise + love  necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/66.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "LV based necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/67.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Heartsy bow necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/68.JPG"]
+      }
+    ]
+  },
+    {
+    "id": 69,
+    "name": "Minimal bow necklace",
+    "price": 200,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/69.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Snake chain bow necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/70.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "name": "Mini heart necklace",
+    "price": 200,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/71.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Gorgeous Saturn necklace",
+    "price": 230,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/72.JPG"]
+      }
+    ]
+  },
+
+  {
+    "id": 73,
+    "name": "Snake + amour necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/73.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Heartsy 11:11 necklace",
+    "price": 200,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/74.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Infinity necklace",
+    "price": 200,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/75.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Stylish bow necklace",
+    "price": 230,
+    "category": "Necklaces",
+    "description": "18k gold plated necklace",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/76.JPG"]
+      }
+    ]
+  },
+  
 
 ]
 
