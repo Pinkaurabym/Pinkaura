@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="/Pinkaura/">
 
   <title>Mashreen’s Shop</title>
@@ -10,43 +11,34 @@
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  />
+    rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <div id="app">
     <!-- Site Header -->
     <header class="site-header">
       <div class="header-left">
         <a href="index.html" class="logo-link">
-          <img src="images/logo.png" alt="Mashreen’s Shop Logo" class="logo"/>
+          <img src="images/logo.png" alt="Mashreen’s Shop Logo" class="logo" />
         </a>
-        <div class="categories-dropdown"
-             @mouseenter="showCatMenu = true"
-             @mouseleave="showCatMenu = false">
+        <div class="categories-dropdown" @mouseenter="showCatMenu = true" @mouseleave="showCatMenu = false">
           <button class="btn btn-category">Categories</button>
-          <ul v-if="showCatMenu"
-              class="dropdown-menu"
-              @mouseenter="showCatMenu = true"
-              @mouseleave="showCatMenu = false">
+          <ul v-if="showCatMenu" class="dropdown-menu" @mouseenter="showCatMenu = true"
+            @mouseleave="showCatMenu = false">
             <li @click="goToCategoryPage('All')">All</li>
             <li v-for="cat in categories" :key="cat" @click="goToCategoryPage(cat)">
               {{ cat }}
             </li>
           </ul>
         </div>
-        <input
-          type="search"
-          v-model="searchTerm"
-          placeholder="Search products…"
-          class="header-search"
-        />
+        <input type="search" v-model="searchTerm" placeholder="Search products…" class="header-search" />
       </div>
       <div class="header-right">
         <a href="bag.html" class="btn-icon bag-icon">
-          <img src="images/bag-icon.png" alt="Bag"/>
+          <img src="images/bag-icon.png" alt="Bag" />
           <span class="badge">{{ cartCount }}</span>
         </a>
       </div>
@@ -54,58 +46,28 @@
 
     <!-- Sticky Filter Nav -->
     <div v-if="isFilterPage" class="filter-nav">
-      <button
-        :class="['filter-chip',{active:!trendingMode && !bestSellerMode}]"
-        @click="goToCategoryPage(selectedCategory)"
-      >All</button>
-      <button
-        :class="['filter-chip',{active:trendingMode}]"
-        @click="goToTrendingPage"
-      >Trending</button>
-      <button
-        :class="['filter-chip',{active:bestSellerMode}]"
-        @click="goToBestSellerPage"
-      >Best Sellers</button>
-      <button
-        :class="['filter-chip',{active:sortType==='priceAsc'}]"
-        @click="sortByPriceAsc"
-      >Price ↓</button>
-      <button
-        :class="['filter-chip',{active:sortType==='priceDesc'}]"
-        @click="sortByPriceDesc"
-      >Price ↑</button>
+      <button :class="['filter-chip',{active:!trendingMode && !bestSellerMode}]"
+        @click="goToCategoryPage(selectedCategory)">All</button>
+      <button :class="['filter-chip',{active:trendingMode}]" @click="goToTrendingPage">Trending</button>
+      <button :class="['filter-chip',{active:bestSellerMode}]" @click="goToBestSellerPage">Best Sellers</button>
+      <button :class="['filter-chip',{active:sortType==='priceAsc'}]" @click="sortByPriceAsc">Price ↓</button>
+      <button :class="['filter-chip',{active:sortType==='priceDesc'}]" @click="sortByPriceDesc">Price ↑</button>
     </div>
 
     <!-- Homepage Teasers -->
     <template v-if="!isFilterPage">
-      <section
-        v-for="(cat,i) in categories"
-        :key="cat"
-        class="teaser-section"
-        :class="i%2===0?'bg-light':'bg-pale'"
-      >
+      <section v-for="(cat,i) in categories" :key="cat" class="teaser-section" :class="i%2===0?'bg-light':'bg-pale'">
         <div class="teaser-header">
           <div class="title-with-icon">
-            <img
-              :src="`images/icons/${cat.toLowerCase()}.svg`"
-              :alt="cat + ' icon'"
-              class="category-icon"
-            />
+            <img :src="`images/icons/${cat.toLowerCase()}.svg`" :alt="cat + ' icon'" class="category-icon" />
             <h2 class="teaser-title">{{ cat }}</h2>
           </div>
         </div>
         <div class="teaser-row">
-          <div
-            v-for="p in products.filter(p=>p.category===cat)"
-            :key="p.id"
-            class="teaser-card skeleton"
-            @click="goToCategoryPage(cat)"
-          >
-            <img
-              :src="p.variants[0].images[0]"
-              :alt="p.name"
-              @load="$event.target.parentNode.classList.remove('skeleton')"
-            />
+          <div v-for="p in products.filter(p=>p.category===cat)" :key="p.id" class="teaser-card skeleton"
+            @click="goToCategoryPage(cat)">
+            <img :src="p.variants[0].images[0]" :alt="p.name"
+              @load="$event.target.parentNode.classList.remove('skeleton')" />
           </div>
         </div>
       </section>
@@ -117,17 +79,9 @@
           </div>
         </div>
         <div class="teaser-row">
-          <div
-            v-for="p in trendingProducts"
-            :key="p.id"
-            class="teaser-card skeleton"
-            @click="goToProduct(p.id)"
-          >
-            <img
-              :src="p.variants[0].images[0]"
-              :alt="p.name"
-              @load="$event.target.parentNode.classList.remove('skeleton')"
-            />
+          <div v-for="p in trendingProducts" :key="p.id" class="teaser-card skeleton" @click="goToProduct(p.id)">
+            <img :src="p.variants[0].images[0]" :alt="p.name"
+              @load="$event.target.parentNode.classList.remove('skeleton')" />
           </div>
         </div>
       </section>
@@ -139,17 +93,9 @@
           </div>
         </div>
         <div class="teaser-row">
-          <div
-            v-for="p in bestSellerProducts"
-            :key="p.id"
-            class="teaser-card skeleton"
-            @click="goToProduct(p.id)"
-          >
-            <img
-              :src="p.variants[0].images[0]"
-              :alt="p.name"
-              @load="$event.target.parentNode.classList.remove('skeleton')"
-            />
+          <div v-for="p in bestSellerProducts" :key="p.id" class="teaser-card skeleton" @click="goToProduct(p.id)">
+            <img :src="p.variants[0].images[0]" :alt="p.name"
+              @load="$event.target.parentNode.classList.remove('skeleton')" />
           </div>
         </div>
       </section>
@@ -157,28 +103,37 @@
 
     <!-- Filtered Grid -->
     <div class="product-grid" v-if="isFilterPage">
-      <div
-        class="product-card skeleton"
-        v-for="p in filteredProducts"
-        :key="p.id"
-        @click="goToProduct(p.id)"
-      >
-        <img
-          :src="p.variants[0].images[0]"
-          :alt="p.name"
-          class="product-image"
-          @load="$event.target.parentNode.classList.remove('skeleton')"
-        />
+      <div class="product-card skeleton" v-for="p in filteredProducts" :key="p.id" @click="goToProduct(p.id)">
+        <img :src="p.variants[0].images[0]" :alt="p.name" class="product-image"
+          @load="$event.target.parentNode.classList.remove('skeleton')" />
         <h3>{{ p.name }}</h3>
         <p class="price">₹{{ p.price }}</p>
-        <button @click.stop="addToCart(p)" class="btn">Add to Bag</button>
+        <p class="stock-pill">
+          {{ stockLabel(p) }}
+        </p>
+
+        <button @click.stop="addToBag(p)" class="btn" :disabled="firstVariantStock(p) === 0">
+          {{ firstVariantStock(p) === 0 ? 'Out of Stock' : 'Add to Bag' }}
+        </button>
       </div>
     </div>
+    <!-- Stock Modal -->
+    <div v-if="showModal" class="modal-backdrop" @click.self="showModal=false">
+      <div class="modal-card">
+        <h3>{{ modalTitle }}</h3>
+        <p>{{ modalMessage }}</p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" @click="showModal=false">Close</button>
+          <button v-if="modalType==='limit'" class="modal-btn primary" @click="goToBag">View Bag</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- Floating Contact -->
   <a href="#contact" class="btn-icon contact-icon-floating">
-    <img src="images/contact.png" alt="Contact"/>
+    <img src="images/contact.png" alt="Contact" />
   </a>
 
   <footer class="site-footer">
@@ -191,4 +146,5 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="js/index.js"></script>
 </body>
+
 </html>

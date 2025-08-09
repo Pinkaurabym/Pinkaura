@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <base href="/Pinkaura/">
 
   <title>Product Details – Mashreen’s Shop</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="css/style.css"/>
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <div id="app">
     <header class="site-header product-header">
       <a href="index.html" class="logo-link">
-        <img src="images/logo.png" alt="Logo" class="logo"/>
+        <img src="images/logo.png" alt="Logo" class="logo" />
       </a>
       <a href="bag.html" class="btn-icon bag-icon">
-        <img src="images/bag-icon.png" alt="Bag"/>
+        <img src="images/bag-icon.png" alt="Bag" />
         <span class="badge">{{ cartCount }}</span>
       </a>
     </header>
@@ -28,20 +29,15 @@
     <div v-else class="product-detail detail--flex">
       <div class="left-panel">
         <div class="main-image skeleton">
-          <img :src="selectedVariant.images[0]" :alt="product.name" @load="$event.target.parentNode.classList.remove('skeleton')"/>
+          <img :src="selectedVariant.images[0]" :alt="product.name"
+            @load="$event.target.parentNode.classList.remove('skeleton')" />
         </div>
         <div class="variants">
-          <button
-            v-for="v in product.variants"
-            :key="v.color"
-            class="variant-pill"
-            :class="{ active: selectedVariant===v }"
-            :style="{
+          <button v-for="v in product.variants" :key="v.color" class="variant-pill"
+            :class="{ active: selectedVariant===v }" :style="{
               backgroundColor: v.color.toLowerCase(),
               color: v.color.toLowerCase()==='gold'?'#000':'#fff'
-            }"
-            @click="selectVariant(v)"
-          >{{ v.color }}</button>
+            }" @click="selectVariant(v)">{{ v.color }}</button>
         </div>
       </div>
 
@@ -49,9 +45,29 @@
         <h1 class="detail-title">{{ product.name }}</h1>
         <p class="price">₹{{ product.price }}</p>
         <p class="description">{{ product.description }}</p>
-        <button class="btn add-btn" @click="addToBag()">Add to Bag</button>
+
+        <p class="stock-pill">
+          {{ selectedStock === 0 ? 'Out of stock' : (selectedStock + ' left') }}
+        </p>
+
+        <button class="btn add-btn" @click="addToBag()" :disabled="selectedStock === 0">
+          {{ selectedStock === 0 ? 'Out of Stock' : 'Add to Bag' }}
+        </button>
       </div>
     </div>
+
+    <!-- Stock Modal -->
+    <div v-if="showModal" class="modal-backdrop" @click.self="showModal=false">
+      <div class="modal-card">
+        <h3>Can’t add more</h3>
+        <p>{{ modalMessage }}</p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" @click="showModal=false">Close</button>
+          <button class="modal-btn primary" @click="goToBag">View Bag</button>
+        </div>
+      </div>
+    </div>
+
 
     <footer class="site-footer">
       Developed by
@@ -64,4 +80,5 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="js/product.js"></script>
 </body>
+
 </html>

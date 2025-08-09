@@ -1,21 +1,23 @@
 const productApp = Vue.createApp({
   data() {
     return {
-      product: null,
-      selectedVariant: null,
-      cart: []
+      product: null, selectedVariant: null, cart: [],
+      showModal: false,
+      modalTitle: "",
+      modalMessage: "",
+      modalType: "" // "limit" for out-of-stock, "success" for added
     };
   },
+
   computed: {
-    // For the image gallery (even though we only show the first one here)
-    images() {
-      return this.selectedVariant ? this.selectedVariant.images : [];
-    },
-    // Total number of items in the bag (for the badge)
-    cartCount() {
-      return this.cart.reduce((sum, i) => sum + i.quantity, 0);
+    images() { return this.selectedVariant ? this.selectedVariant.images : []; },
+    cartCount() { return this.cart.reduce((s, i) => s + i.quantity, 0); },
+    selectedStock() {
+      const s = Number(this.selectedVariant?.stock);
+      return Number.isFinite(s) ? s : 0;
     }
   },
+
   methods: {
     // Goes back in history (if you were using a Back button)
     goBack() {
@@ -32,30 +34,38 @@ const productApp = Vue.createApp({
       localStorage.setItem("cart", JSON.stringify(this.cart));
     },
 
+    goToBag() { this.showModal = false; window.location.href = "bag.html"; },
+
     // Add current product + variant (color) to the bag
     addToBag() {
-      // Look for an existing line with same product ID AND color
-      const existing = this.cart.find(
-        i => i.id === this.product.id && i.color === this.selectedVariant.color
-      );
+      const stock = this.selectedStock;
+      const color = this.selectedVariant.color;
 
-      if (existing) {
-        // Simply bump its quantity
-        existing.quantity++;
-      } else {
-        // New line item: include id, chosen color, and start at 1
-        this.cart.push({
-          id: this.product.id,
-          color: this.selectedVariant.color,
-          quantity: 1
-        });
+      const existing = this.cart.find(i => i.id === this.product.id && i.color === color);
+      const existingQty = existing ? existing.quantity : 0;
+
+      if (existingQty >= stock) {
+        this.modalTitle = "Can’t add more";
+        this.modalMessage = `${existingQty} items already in bag (only ${stock} left)`;
+        this.modalType = "limit";
+        this.showModal = true;
+        return;
       }
 
-      // Save and notify
+      if (existing) existing.quantity++;
+      else this.cart.push({ id: this.product.id, color, quantity: 1 });
       this.saveCart();
-      alert("Added to your bag!");
-    },
 
+      // Show success modal
+      this.modalTitle = "Added to Bag";
+      this.modalMessage = `${this.product.name} (${color}) has been added to your bag.`;
+      this.modalType = "success";
+      this.showModal = true;
+      if (this.modalType === "success") {
+        setTimeout(() => { this.showModal = false; }, 1800);
+      }
+
+    },
     // Switch the displayed variant (and thus the image)
     selectVariant(v) {
       this.selectedVariant = v;

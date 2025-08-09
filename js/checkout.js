@@ -7,8 +7,8 @@ const app = Vue.createApp({
   data() {
     return {
       products: [],
-      cart: JSON.parse(localStorage.getItem('cart')||'[]'),
-      customer: { name:'', email:'', address:'', phone:'' }
+      cart: JSON.parse(localStorage.getItem('cart') || '[]'),
+      customer: { name: '', email: '', address: '', phone: '' }
     };
   },
   computed: {
@@ -40,7 +40,7 @@ const app = Vue.createApp({
         return {
           name: p.name,
           units: item.quantity,
-          price: ((p.price||0)*item.quantity).toFixed(2),
+          price: ((p.price || 0) * item.quantity).toFixed(2),
           image_url: img
         };
       });
@@ -57,10 +57,10 @@ const app = Vue.createApp({
       // parameters for EmailJS
       const tplParams = {
         order_id,
-        user_email:       this.customer.email,
-        customer_name:    this.customer.name,
+        user_email: this.customer.email,
+        customer_name: this.customer.name,
         customer_address: this.customer.address,
-        customer_phone:   this.customer.phone,
+        customer_phone: this.customer.phone,
         orders,
         cost
       };
@@ -71,6 +71,14 @@ const app = Vue.createApp({
           'template_sv1pb1d',  // ← your Template ID
           tplParams
         );
+        this.cart.forEach(item => {
+          const p = this.products.find(prod => prod.id === item.id);
+          if (!p) return;
+          const v = p.variants.find(vr => vr.color === item.color);
+          if (v) v.stock = Math.max(0, (v.stock || 0) - item.quantity);
+        });
+        localStorage.setItem("products", JSON.stringify(this.products));
+
         alert('Order confirmed & email sent! Thanks for shopping.');
         localStorage.removeItem('cart');
         window.location.href = 'index.html';

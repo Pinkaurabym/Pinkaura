@@ -1,16 +1,15 @@
 const app = Vue.createApp({
   data() {
     return {
-      products: [],
-      categories: [],
-      cart: [],
-      searchTerm: "",
-      selectedCategory: "All",
-      trendingMode: false,
-      bestSellerMode: false,
-      isFilterPage: false,
-      showCatMenu: false,
-      sortType: null
+      products: [], categories: [], cart: [],
+      searchTerm: "", selectedCategory: "All",
+      trendingMode: false, bestSellerMode: false,
+      isFilterPage: false, showCatMenu: false, sortType: null,
+      // modal
+      showModal: false,
+      modalTitle: "",
+      modalMessage: "",
+      modalType: "" // "limit" for out-of-stock, "success" for added
     };
   },
   computed: {
@@ -48,12 +47,52 @@ const app = Vue.createApp({
     }
   },
   methods: {
-    addToCart(p) {
-      const ex = this.cart.find(x => x.id === p.id);
-      if (ex) ex.quantity++;
-      else this.cart.push({ id: p.id, quantity: 1 });
-      localStorage.setItem("cart", JSON.stringify(this.cart));
+    goToBag() { this.showModal = false; window.location.href = "bag.html"; },
+    firstVariant(p) { return (p.variants && p.variants[0]) ? p.variants[0] : null; },
+    firstVariantStock(p) {
+      const v = this.firstVariant(p); const s = Number(v?.stock);
+      return Number.isFinite(s) ? s : 0;
     },
+
+    addToBag(p) {
+      const v = this.firstVariant(p);
+      if (!v) {
+        this.modalTitle = "Error";
+        this.modalMessage = "No variants available.";
+        this.modalType = "limit";
+        this.showModal = true;
+        return;
+      }
+      const color = v.color;
+      const stock = this.firstVariantStock(p);
+
+      const line = this.cart.find(x => x.id === p.id && x.color === color);
+      const currentQty = line ? line.quantity : 0;
+
+      if (currentQty >= stock) {
+        this.modalTitle = "Can’t add more";
+        this.modalMessage = `${currentQty} items already in bag (only ${stock} left)`;
+        this.modalType = "limit";
+        this.showModal = true;
+        return;
+      }
+
+      if (line) line.quantity += 1;
+      else this.cart.push({ id: p.id, color, quantity: 1 });
+      localStorage.setItem("cart", JSON.stringify(this.cart));
+
+      // Show success modal
+      this.modalTitle = "Added to Bag";
+      this.modalMessage = `${p.name} (${color}) has been added to your bag.`;
+      this.modalType = "success";
+      this.showModal = true;
+      if (this.modalType === "success") {
+        setTimeout(() => { this.showModal = false; }, 1800);
+      }
+
+    },
+
+
     goToCategoryPage(cat) {
       const params = new URLSearchParams();
       if (cat && cat !== "All") params.set("category", cat);
@@ -79,36 +118,51 @@ const app = Vue.createApp({
     },
     sortByPriceDesc() {
       this.sortType = "priceDesc";
+    },
+    stockLabel(p) {
+      const n = this.firstVariantStock(p);
+      return n === 0 ? 'Out of stock' : `${n} left`;
     }
   },
   mounted() {
+    // restore cart
     const c = localStorage.getItem("cart");
     if (c) this.cart = JSON.parse(c);
 
-    fetch("data/products.json")
-      .then(r => r.json())
-      .then(data => {
-        this.products = data;
-        this.categories = Array.from(new Set(data.map(p => p.category))).sort();
+    // prefer locally-updated products (after checkout we save here)
+    const savedProducts = localStorage.getItem("products");
+    if (savedProducts) {
+      const data = JSON.parse(savedProducts);
+      this.products = data;
+      this.categories = Array.from(new Set(data.map(p => p.category))).sort();
+    } else {
+      fetch("data/products.json")
+        .then(r => r.json())
+        .then(data => {
+          this.products = data;
+          this.categories = Array.from(new Set(data.map(p => p.category))).sort();
+          localStorage.setItem("products", JSON.stringify(data));
+        });
+    }
 
-        const p = new URLSearchParams(location.search);
-        const cat = p.get("category");
-        const trending = p.get("trending");
-        const filter = p.get("filter");
+    // parse filters from URL
+    const p = new URLSearchParams(location.search);
+    const cat = p.get("category");
+    const trending = p.get("trending");
+    const filter = p.get("filter");
 
-        if (cat) {
-          this.selectedCategory = cat;
-          this.isFilterPage = true;
-        }
-        if (trending === "true") {
-          this.trendingMode = true;
-          this.isFilterPage = true;
-        }
-        if (filter === "bestSeller") {
-          this.bestSellerMode = true;
-          this.isFilterPage = true;
-        }
-      });
+    if (cat) {
+      this.selectedCategory = cat;
+      this.isFilterPage = true;
+    }
+    if (trending === "true") {
+      this.trendingMode = true;
+      this.isFilterPage = true;
+    }
+    if (filter === "bestSeller") {
+      this.bestSellerMode = true;
+      this.isFilterPage = true;
+    }
   }
 });
 

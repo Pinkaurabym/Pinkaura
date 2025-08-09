@@ -2,7 +2,10 @@ const bagApp = Vue.createApp({
   data() {
     return {
       products: [],
-      cart: []
+      cart: [],
+      // modal
+      showModal: false,
+      modalMessage: ""
     };
   },
   computed: {
@@ -11,10 +14,10 @@ const bagApp = Vue.createApp({
       return this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
         return {
-          id:       item.id,
-          color:    item.color,
-          name:     p.name,
-          price:    p.price,
+          id: item.id,
+          color: item.color,
+          name: p.name,
+          price: p.price,
           quantity: item.quantity
         };
       });
@@ -23,7 +26,7 @@ const bagApp = Vue.createApp({
     total() {
       const subtotal = this.cartItems.reduce((sum, i) => (i.price || 0) * i.quantity + sum, 0);
       return subtotal + this.shipping;
-    },    
+    },
     shipping() {
       return this.cartItems.length > 0 ? 60 : 0;
     },
@@ -48,12 +51,23 @@ const bagApp = Vue.createApp({
     },
 
     increment(id, color) {
+      const prod = this.products.find(p => p.id === id);
+      const variant = prod?.variants.find(v => v.color === color);
+      const stock = Number(variant?.stock) || 0;
+
       const it = this.cart.find(i => i.id === id && i.color === color);
-      if (it) {
+      if (!it) return;
+
+      if (it.quantity < stock) {
         it.quantity++;
         this.saveCart();
+      } else {
+        // show popup instead of alert
+        this.modalMessage = `${it.quantity} items already in bag (only ${stock} left)`;
+        this.showModal = true;
       }
     },
+
     decrement(id, color) {
       const it = this.cart.find(i => i.id === id && i.color === color);
       if (!it) return;

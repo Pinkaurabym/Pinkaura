@@ -10,14 +10,16 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/1.JPG"]
+        "images": [
+          "images/1.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
   {
     "id": 2,
     "name": "Bow Ring",
-
     "price": 200,
     "category": "Rings",
     "description": "18k gold plated ring (adjustable size)",
@@ -26,7 +28,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/2.JPG"]
+        "images": [
+          "images/2.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -41,7 +46,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/3.JPG"]
+        "images": [
+          "images/3.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -56,7 +64,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/4.JPG"]
+        "images": [
+          "images/4.JPG"
+        ],
+        "stock": 12
       }
     ]
   },
@@ -71,7 +82,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/5.JPG"]
+        "images": [
+          "images/5.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -86,7 +100,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/6.JPG"]
+        "images": [
+          "images/6.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -101,7 +118,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/7.JPG"]
+        "images": [
+          "images/7.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -116,7 +136,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/8.JPG"]
+        "images": [
+          "images/8.JPG"
+        ],
+        "stock": 3
       }
     ]
   },
@@ -131,11 +154,17 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/9a.JPG"]
+        "images": [
+          "images/9a.JPG"
+        ],
+        "stock": 10
       },
       {
         "color": "Silver",
-        "images": ["images/9b.JPG"]
+        "images": [
+          "images/9b.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -150,7 +179,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/10.JPG"]
+        "images": [
+          "images/10.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -165,7 +197,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/11.JPG"]
+        "images": [
+          "images/11.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -180,7 +215,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/12.JPG"]
+        "images": [
+          "images/12.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -195,7 +233,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/13.JPG"]
+        "images": [
+          "images/13.JPG"
+        ],
+        "stock": 9
       }
     ]
   },
@@ -210,7 +251,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/14.JPG"]
+        "images": [
+          "images/14.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -225,7 +269,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/15.JPG"]
+        "images": [
+          "images/15.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -240,7 +287,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/16.JPG"]
+        "images": [
+          "images/16.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -255,7 +305,10 @@
     "variants": [
       {
         "color": "Silver",
-        "images": ["images/17.JPG"]
+        "images": [
+          "images/17.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -270,7 +323,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/18.JPG"]
+        "images": [
+          "images/18.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -285,11 +341,13 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/19.JPG"]
+        "images": [
+          "images/19.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
-
   {
     "id": 20,
     "name": "Pearl Hoops",
@@ -301,7 +359,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/20.JPG"]
+        "images": [
+          "images/20.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -316,11 +377,17 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/21a.JPG"]
+        "images": [
+          "images/21a.JPG"
+        ],
+        "stock": 10
       },
       {
         "color": "Silver",
-        "images": ["images/21b.JPG"]
+        "images": [
+          "images/21b.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -335,7 +402,10 @@
     "variants": [
       {
         "color": "Silver",
-        "images": ["images/22.JPG"]
+        "images": [
+          "images/22.JPG"
+        ],
+        "stock": 12
       }
     ]
   },
@@ -350,7 +420,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/23.JPG"]
+        "images": [
+          "images/23.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -365,7 +438,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/24.JPG"]
+        "images": [
+          "images/24.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -380,7 +456,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/25.JPG"]
+        "images": [
+          "images/25.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -395,7 +474,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/26.JPG"]
+        "images": [
+          "images/26.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -410,7 +492,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/27.JPG"]
+        "images": [
+          "images/27.JPG"
+        ],
+        "stock": 15
       }
     ]
   },
@@ -425,7 +510,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/28.JPG"]
+        "images": [
+          "images/28.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -440,15 +528,24 @@
     "variants": [
       {
         "color": "Mauve",
-        "images": ["images/29.JPG"]
+        "images": [
+          "images/29.JPG"
+        ],
+        "stock": 20
       },
       {
         "color": "Secret",
-        "images": ["images/29.JPG"]
+        "images": [
+          "images/29.JPG"
+        ],
+        "stock": 20
       },
       {
         "color": "Lovie",
-        "images": ["images/29.JPG"]
+        "images": [
+          "images/29.JPG"
+        ],
+        "stock": 20
       }
     ]
   },
@@ -463,7 +560,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/30.JPG"]
+        "images": [
+          "images/30.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -478,7 +578,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/31.JPG"]
+        "images": [
+          "images/31.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -493,7 +596,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/32.JPG"]
+        "images": [
+          "images/32.JPG"
+        ],
+        "stock": 9
       }
     ]
   },
@@ -508,7 +614,10 @@
     "variants": [
       {
         "color": "Silver",
-        "images": ["images/33.JPG"]
+        "images": [
+          "images/33.JPG"
+        ],
+        "stock": 12
       }
     ]
   },
@@ -523,11 +632,13 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/34.JPG"]
+        "images": [
+          "images/34.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
-
   {
     "id": 35,
     "name": "Classic Cuff Bracelet",
@@ -539,7 +650,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/35.JPG"]
+        "images": [
+          "images/35.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -554,7 +668,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/36.JPG"]
+        "images": [
+          "images/36.JPG"
+        ],
+        "stock": 15
       }
     ]
   },
@@ -569,7 +686,10 @@
     "variants": [
       {
         "color": "Silver",
-        "images": ["images/37.JPG"]
+        "images": [
+          "images/37.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -584,7 +704,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/38.JPG"]
+        "images": [
+          "images/38.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -599,7 +722,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/39.JPG"]
+        "images": [
+          "images/39.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -614,7 +740,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/40.JPG"]
+        "images": [
+          "images/40.JPG"
+        ],
+        "stock": 9
       }
     ]
   },
@@ -629,7 +758,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/42.JPG"]
+        "images": [
+          "images/42.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -644,7 +776,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/45.JPG"]
+        "images": [
+          "images/45.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -659,11 +794,14 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/46.JPG"]
+        "images": [
+          "images/46.JPG"
+        ],
+        "stock": 8
       }
     ]
- },
- {
+  },
+  {
     "id": 48,
     "name": "diana ring  ",
     "price": 230,
@@ -674,10 +812,12 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/48.JPG"]
+        "images": [
+          "images/48.JPG"
+        ],
+        "stock": 7
       }
     ]
-    
   },
   {
     "id": 47,
@@ -690,11 +830,14 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/47.JPG"]
+        "images": [
+          "images/47.JPG"
+        ],
+        "stock": 10
       }
     ]
- },
- {
+  },
+  {
     "id": 49,
     "name": "tira ring  ",
     "price": 230,
@@ -705,7 +848,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/49.JPG"]
+        "images": [
+          "images/49.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -720,12 +866,13 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/50.JPG"]
+        "images": [
+          "images/50.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
-
-  
   {
     "id": 51,
     "name": "studded infinity Necklace",
@@ -737,7 +884,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/51.JPG"]
+        "images": [
+          "images/51.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -752,7 +902,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/52.JPG"]
+        "images": [
+          "images/52.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -767,7 +920,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/53.JPG"]
+        "images": [
+          "images/53.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -782,11 +938,17 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/54.JPG"]
+        "images": [
+          "images/54.JPG"
+        ],
+        "stock": 10
       },
       {
         "color": "Green",
-        "images": ["images/54b.JPG"]
+        "images": [
+          "images/54b.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -801,7 +963,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/55.JPG"]
+        "images": [
+          "images/55.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -816,7 +981,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/56.JPG"]
+        "images": [
+          "images/56.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -831,7 +999,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/57.JPG"]
+        "images": [
+          "images/57.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -846,7 +1017,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/58.JPG"]
+        "images": [
+          "images/58.JPG"
+        ],
+        "stock": 9
       }
     ]
   },
@@ -861,7 +1035,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/59.JPG"]
+        "images": [
+          "images/59.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -876,7 +1053,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/60.JPG"]
+        "images": [
+          "images/60.JPG"
+        ],
+        "stock": 3
       }
     ]
   },
@@ -891,7 +1071,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/61.JPG"]
+        "images": [
+          "images/61.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -906,7 +1089,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/62.JPG"]
+        "images": [
+          "images/62.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -921,7 +1107,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/63.JPG"]
+        "images": [
+          "images/63.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -936,7 +1125,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/64.JPG"]
+        "images": [
+          "images/64.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -951,7 +1143,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/65.JPG"]
+        "images": [
+          "images/65.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -966,7 +1161,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/66.JPG"]
+        "images": [
+          "images/66.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -981,7 +1179,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/67.JPG"]
+        "images": [
+          "images/67.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -996,11 +1197,14 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/68.JPG"]
+        "images": [
+          "images/68.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
-    {
+  {
     "id": 69,
     "name": "Minimal bow necklace",
     "price": 200,
@@ -1011,7 +1215,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/69.JPG"]
+        "images": [
+          "images/69.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -1026,7 +1233,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/70.JPG"]
+        "images": [
+          "images/70.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1041,7 +1251,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/71.JPG"]
+        "images": [
+          "images/71.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -1056,11 +1269,13 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/72.JPG"]
+        "images": [
+          "images/72.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
-
   {
     "id": 73,
     "name": "Snake + amour necklace",
@@ -1072,7 +1287,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/73.JPG"]
+        "images": [
+          "images/73.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1087,7 +1305,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/74.JPG"]
+        "images": [
+          "images/74.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1102,7 +1323,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/75.JPG"]
+        "images": [
+          "images/75.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -1117,7 +1341,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/76.JPG"]
+        "images": [
+          "images/76.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1132,7 +1359,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/77.JPG"]
+        "images": [
+          "images/77.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1147,7 +1377,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/78.JPG"]
+        "images": [
+          "images/78.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1162,7 +1395,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/79.JPG"]
+        "images": [
+          "images/79.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -1177,7 +1413,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/80.JPG"]
+        "images": [
+          "images/80.JPG"
+        ],
+        "stock": 12
       }
     ]
   },
@@ -1192,7 +1431,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/81.JPG"]
+        "images": [
+          "images/81.JPG"
+        ],
+        "stock": 9
       }
     ]
   },
@@ -1207,7 +1449,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/82.JPG"]
+        "images": [
+          "images/82.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1222,7 +1467,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/83.JPG"]
+        "images": [
+          "images/83.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -1237,7 +1485,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/84.JPG"]
+        "images": [
+          "images/84.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1252,7 +1503,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/85.JPG"]
+        "images": [
+          "images/85.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -1267,7 +1521,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/86.JPG"]
+        "images": [
+          "images/86.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1282,7 +1539,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/87.JPG"]
+        "images": [
+          "images/87.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1297,7 +1557,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/88.JPG"]
+        "images": [
+          "images/88.JPG"
+        ],
+        "stock": 12
       }
     ]
   },
@@ -1312,7 +1575,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/89.JPG"]
+        "images": [
+          "images/89.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -1327,11 +1593,17 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/90.JPG"]
+        "images": [
+          "images/90.JPG"
+        ],
+        "stock": 10
       },
       {
         "color": "Silver",
-        "images": ["images/90.JPG"]
+        "images": [
+          "images/90.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1346,7 +1618,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/91.JPG"]
+        "images": [
+          "images/91.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1361,7 +1636,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/92.JPG"]
+        "images": [
+          "images/92.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -1376,7 +1654,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/93.JPG"]
+        "images": [
+          "images/93.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1391,7 +1672,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/94.JPG"]
+        "images": [
+          "images/94.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
@@ -1406,7 +1690,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/95.JPG"]
+        "images": [
+          "images/95.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1421,11 +1708,17 @@
     "variants": [
       {
         "color": "White",
-        "images": ["images/96.JPG"]
+        "images": [
+          "images/96.JPG"
+        ],
+        "stock": 5
       },
       {
         "color": "Black",
-        "images": ["images/97.JPG"]
+        "images": [
+          "images/97.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1440,7 +1733,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/98.JPG"]
+        "images": [
+          "images/98.JPG"
+        ],
+        "stock": 4
       }
     ]
   },
@@ -1455,7 +1751,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/99.JPG"]
+        "images": [
+          "images/99.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1470,7 +1769,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/100.JPG"]
+        "images": [
+          "images/100.JPG"
+        ],
+        "stock": 5
       }
     ]
   },
@@ -1485,7 +1787,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/101.JPG"]
+        "images": [
+          "images/101.JPG"
+        ],
+        "stock": 6
       }
     ]
   },
@@ -1500,7 +1805,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/102.JPG"]
+        "images": [
+          "images/102.JPG"
+        ],
+        "stock": 10
       }
     ]
   },
@@ -1515,24 +1823,30 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/103.JPG"]
+        "images": [
+          "images/103.JPG"
+        ],
+        "stock": 8
       }
     ]
   },
   {
-  "id": 104,
-  "name": "Tennis bracelet",
-  "price": 230,
-  "category": "Bracelets",
-  "description": "Trendy, best seller",
-  "trending": true,
-  "bestSeller": true,
-  "variants": [
-    {
-      "color": "Gold",
-      "images": ["images/104.JPG"]
-    }
-  ]
+    "id": 104,
+    "name": "Tennis bracelet",
+    "price": 230,
+    "category": "Bracelets",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/104.JPG"
+        ],
+        "stock": 6
+      }
+    ]
   },
   {
     "id": 105,
@@ -1545,7 +1859,10 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/105.JPG"]
+        "images": [
+          "images/105.JPG"
+        ],
+        "stock": 7
       }
     ]
   },
@@ -1560,20 +1877,11 @@
     "variants": [
       {
         "color": "Gold",
-        "images": ["images/106.JPG"]
+        "images": [
+          "images/106.JPG"
+        ],
+        "stock": 5
       }
     ]
   }
-
-
-
 ]
-
-
-
-
-
-
-
-
-

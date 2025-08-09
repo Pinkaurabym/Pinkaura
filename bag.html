@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <base href="/Pinkaura/">
 
   <title>My Bag – Mashreen’s Shop</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="css/style.css"/>
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
+
 <body>
   <header class="site-header bag-header">
     <a href="index.html" class="logo-link">
-      <img src="images/logo.png" alt="Mashreen’s Shop Logo" class="logo"/>
+      <img src="images/logo.png" alt="Mashreen’s Shop Logo" class="logo" />
     </a>
     <h1>My Bag</h1>
   </header>
@@ -27,13 +28,9 @@
     </div>
 
     <div v-else class="cart-list">
-      <div
-        class="cart-card"
-        v-for="item in cartItems"
-        :key="item.id + '-' + item.color"
-      >
+      <div class="cart-card" v-for="item in cartItems" :key="item.id + '-' + item.color">
         <div class="card-image">
-          <img :src="getImage(item.id, item.color)" :alt="item.name"/>
+          <img :src="getImage(item.id, item.color)" :alt="item.name" />
         </div>
         <div class="card-info">
           <h2 class="item-name">{{ item.name }}</h2>
@@ -70,6 +67,18 @@
         </button>
       </div>
     </div>
+    <!-- Stock Modal -->
+    <div v-if="showModal" class="modal-backdrop" @click.self="showModal=false">
+      <div class="modal-card">
+        <h3>Can’t add more</h3>
+        <p>{{ modalMessage }}</p>
+        <div class="modal-actions">
+          <button class="modal-btn ghost" @click="showModal=false">Close</button>
+          <button class="modal-btn primary" @click="goToCheckout">Checkout</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <footer class="site-footer">
@@ -82,4 +91,5 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script src="js/bag.js"></script>
 </body>
+
 </html>
