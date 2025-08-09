@@ -1120,7 +1120,407 @@
         "images": ["images/76.JPG"]
       }
     ]
+  },
+  {
+    "id": 77,
+    "name": "Promise ring",
+    "price": 250,
+    "category": "Rings",
+    "description": "Trendy promise ring",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/77.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "Vintage heart ring",
+    "price": 199,
+    "category": "Rings",
+    "description": "18k gold plated ring",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/78.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "Music band ring",
+    "price": 150,
+    "category": "Rings",
+    "description": "Best seller, anti tarnish",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/79.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Leaf band ring",
+    "price": 150,
+    "category": "Rings",
+    "description": "18k gold plated ring",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/80.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "Mini butterfly ring",
+    "price": 199,
+    "category": "Rings",
+    "description": "Best selling, trendy",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/81.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Daisy band ring",
+    "price": 199,
+    "category": "Rings",
+    "description": "Trending, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/82.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Nail ring",
+    "price": 250,
+    "category": "Rings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/83.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Clover band ring",
+    "price": 230,
+    "category": "Rings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/84.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Thin snake ring",
+    "price": 190,
+    "category": "Rings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/85.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Yes to him ring",
+    "price": 200,
+    "category": "Rings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/86.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "One love earrings",
+    "price": 150,
+    "category": "Earrings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/87.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "Amour stud earrings",
+    "price": 200,
+    "category": "Earrings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/88.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Cute heart earrings",
+    "price": 200,
+    "category": "Earrings",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/89.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "Cartier bands",
+    "price": 200,
+    "category": "Rings",
+    "description": "Golden size 10, Silver size 8 & 6, trendy",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/90.JPG"]
+      },
+      {
+        "color": "Silver",
+        "images": ["images/90.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Diva earrings",
+    "price": 250,
+    "category": "Earrings",
+    "description": "Unique and best seller",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/91.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "Link hand cuff bracelet",
+    "price": 350,
+    "category": "Bracelets",
+    "description": "Openable, free size, trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/92.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "name": "Whale necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/93.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "name": "Gold leaf necklace",
+    "price": 220,
+    "category": "Necklaces",
+    "description": "Trendy",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/94.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "Puffed heart necklace",
+    "price": 200,
+    "category": "Necklaces",
+    "description": "Trendy",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/95.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "Studded double sided clover",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "White",
+        "images": ["images/96.JPG"]
+      },
+      {
+        "color": "Black",
+        "images": ["images/97.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Queens emerald necklace",
+    "price": 300,
+    "category": "Necklaces",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/98.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Rope chain necklace",
+    "price": 230,
+    "category": "Necklaces",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/99.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 100,
+    "name": "Promise necklace",
+    "price": 230,
+    "category": "Necklaces",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/100.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 101,
+    "name": "Melted Pearl necklace",
+    "price": 220,
+    "category": "Necklaces",
+    "description": "Best seller, trendy",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/101.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 102,
+    "name": "Double layered chain bracelet",
+    "price": 200,
+    "category": "Bracelets",
+    "description": "Best seller",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/102.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 103,
+    "name": "Bow + diamond necklace",
+    "price": 250,
+    "category": "Necklaces",
+    "description": "Trendy",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/103.JPG"]
+      }
+    ]
   }
+
+
 ]
 
 
