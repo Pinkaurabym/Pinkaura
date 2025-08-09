@@ -1518,7 +1518,53 @@
         "images": ["images/103.JPG"]
       }
     ]
+  },
+  {
+  "id": 104,
+  "name": "Tennis bracelet",
+  "price": 230,
+  "category": "Bracelets",
+  "description": "Trendy, best seller",
+  "trending": true,
+  "bestSeller": true,
+  "variants": [
+    {
+      "color": "Gold",
+      "images": ["images/104.JPG"]
+    }
+  ]
+  },
+  {
+    "id": 105,
+    "name": "Sprinkl hand cuff bracelet",
+    "price": 200,
+    "category": "Bracelets",
+    "description": "Best seller, trendy",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/105.JPG"]
+      }
+    ]
+  },
+  {
+    "id": 106,
+    "name": "Beaded diamond bracelet",
+    "price": 250,
+    "category": "Bracelets",
+    "description": "Trendy, best seller",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": ["images/106.JPG"]
+      }
+    ]
   }
+
 
 
 ]
