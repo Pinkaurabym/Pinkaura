@@ -28,12 +28,10 @@ const app = Vue.createApp({
 
   methods: {
     async submitOrder() {
-      // basic validation
       if (!this.customer.name || !this.customer.email) {
         return alert('Please complete your details.');
       }
 
-      // build orders array
       const orders = this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
         const img = p.variants?.[0]?.images?.[0] || p.image;
@@ -45,7 +43,6 @@ const app = Vue.createApp({
         };
       });
 
-      // cost breakdown
       const cost = {
         shipping: this.shipping.toFixed(2),
         tax: '0.00',
@@ -54,7 +51,6 @@ const app = Vue.createApp({
 
       const order_id = 'ORD' + Date.now();
 
-      // parameters for EmailJS
       const tplParams = {
         order_id,
         user_email: this.customer.email,
@@ -66,30 +62,40 @@ const app = Vue.createApp({
       };
 
       try {
+        // 1️⃣ Send email
         await emailjs.send(
-          'service_l2a19fl',   // ← your Service ID
-          'template_sv1pb1d',  // ← your Template ID
+          'service_l2a19fl',
+          'template_sv1pb1d',
           tplParams
         );
+
+        // 2️⃣ Update stock locally in memory
         this.cart.forEach(item => {
           const p = this.products.find(prod => prod.id === item.id);
           if (!p) return;
           const v = p.variants.find(vr => vr.color === item.color);
           if (v) v.stock = Math.max(0, (v.stock || 0) - item.quantity);
         });
-        localStorage.setItem("products", JSON.stringify(this.products));
 
+        // 3️⃣ Send updated products.json to Vercel API route
+        await fetch('/api/update-stock', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ products: this.products })
+        });
+
+        // 4️⃣ Clear cart & redirect
         alert('Order confirmed & email sent! Thanks for shopping.');
         localStorage.removeItem('cart');
         window.location.href = 'index.html';
+
       } catch (err) {
-        console.error('EmailJS error:', err);
-        alert('Failed to send confirmation. Please try again.');
+        console.error('Checkout error:', err);
+        alert('Something went wrong. Please try again.');
       }
     }
   },
   async mounted() {
-    // fetch your product catalog
     this.products = await (await fetch('data/products.json')).json();
   }
 });
