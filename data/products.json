@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Snake Chain",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated Necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/1.JPG"
-        ],
-        "stock": 11
-      }
-    ]
-  },
-  {
     "id": 2,
     "name": "Bow Ring",
     "price": 200,
