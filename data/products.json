@@ -85,14 +85,14 @@
         "images": [
           "images/9a.JPG"
         ],
-        "stock": 10
+        "stock": 3
       },
       {
         "color": "Silver",
         "images": [
           "images/9b.JPG"
         ],
-        "stock": 10
+        "stock": 2
       }
     ]
   },
