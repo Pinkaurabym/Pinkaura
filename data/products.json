@@ -223,24 +223,6 @@
     ]
   },
   {
-    "id": 20,
-    "name": "Pearl Hoops",
-    "price": 100,
-    "category": "Earrings",
-    "description": "Statement Pearl hoops",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/20.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
     "id": 21,
     "name": "Statement Office Hoops",
     "price": 100,
