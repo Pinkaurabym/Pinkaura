@@ -1,10 +1,7 @@
 // js/checkout.js
 
-// Initialize EmailJS with your Public Key
+// Initialize EmailJS with your Public Key (must match your EmailJS account)
 emailjs.init('ErIegdUfhqmHObATu');
-
-// Vercel API endpoint (production domain from your Vercel project)
-const VERCEL_API = 'https://pinkaura.vercel.app/api/checkout';
 
 const app = Vue.createApp({
   data() {
@@ -12,18 +9,15 @@ const app = Vue.createApp({
       products: [],
       cart: JSON.parse(localStorage.getItem('cart') || '[]'),
       customer: { name: '', email: '', address: '', phone: '' },
-      // optional modal for friendly errors/success
-      showModal: false,
-      modalTitle: '',
-      modalMessage: '',
-      modalType: ''
+      sending: false
     };
   },
+
   computed: {
     subtotal() {
       return this.cart.reduce((sum, item) => {
         const p = this.products.find(x => x.id === item.id) || {};
-        return sum + ((p.price || 0) * item.quantity);
+        return sum + ((Number(p.price) || 0) * Number(item.quantity || 0));
       }, 0);
     },
     shipping() {
@@ -36,119 +30,85 @@ const app = Vue.createApp({
 
   methods: {
     async submitOrder() {
-      // basic validation
       if (!this.customer.name || !this.customer.email) {
-        this.toast('Missing Info', 'Please complete your details.', 'limit');
+        alert('Please complete your details.');
         return;
       }
-      if (this.cart.length === 0) {
-        this.toast('Cart is empty', 'Add some items before checkout.', 'limit');
+      if (!this.cart.length) {
+        alert('Your bag is empty.');
         return;
       }
 
-      // build items the template expects
+      // Build the items exactly as your EmailJS template expects
       const orders = this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
+        const qty = Number(item.quantity || 0);
+        const priceEach = Number(p.price) || 0;
+
         return {
-          name: p.name || `#${item.id}`,
-          units: String(item.quantity),
-          price: String(((p.price || 0) * item.quantity).toFixed(2))
+          // used by {{name}}, {{units}}, {{price}} inside {{#orders}} ... {{/orders}}
+          name: String(p.name || `#${item.id}`),
+          units: String(qty),
+          price: String((priceEach * qty).toFixed(2))
         };
       });
 
-      // totals as strings
       const cost = {
+        // used by {{cost.shipping}}, {{cost.tax}}, {{cost.total}}
         shipping: String(this.shipping.toFixed(2)),
-        tax: "0.00",
+        tax: '0.00',
         total: String(this.total.toFixed(2))
       };
 
       const order_id = 'ORD' + Date.now();
 
+      // These keys must match your template variable names in EmailJS
       const tplParams = {
         order_id,
         user_email: this.customer.email,
         customer_name: this.customer.name,
         customer_address: this.customer.address,
         customer_phone: this.customer.phone,
-        orders,           // array of {name, units, price}
-        cost              // object with {shipping, tax, total}
+        orders,
+        cost
       };
 
-      // (optional) sanity check in console:
-      console.log('EmailJS payload ->', tplParams);
-
-      await emailjs.send('service_l2a19fl', 'template_sv1pb1d', tplParams);
-
-      // (optional) keep a JSON copy too if you add it to the template later
-      // tplParams.orders_json = JSON.stringify(orders, null, 2);
-
-
       try {
-        // 1) Send email via EmailJS
-        await emailjs.send('service_l2a19fl', 'template_sv1pb1d', tplParams);
+        this.sending = true;
 
-        // 2) Ask Vercel API to decrement stock in GitHub (authoritative)
-        const payload = {
-          cart: this.cart.map(i => ({
-            id: i.id,
-            color: i.color,
-            qty: i.quantity
-          }))
-        };
-
-        const resp = await fetch(VERCEL_API, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        if (!resp.ok) {
-          const { error } = await resp.json().catch(() => ({ error: 'Unknown error' }));
-          throw new Error('Stock update failed: ' + error);
-        }
-
-        // 3) Update local cache immediately with server's updated products
-        const { productsUpdated } = await resp.json();
-        if (Array.isArray(productsUpdated)) {
-          localStorage.setItem('products', JSON.stringify(productsUpdated));
-          this.products = productsUpdated;
-        }
-
-        // 4) Finish
-        // 4) Finish
-        this.toast(
-          'Order Confirmed',
-          'Your order was successful. Please check your email for the confirmation.',
-          'success'
+        // ONE send — no duplicates.
+        await emailjs.send(
+          'service_l2a19fl',   // your EmailJS Service ID
+          'template_sv1pb1d',  // your EmailJS Template ID
+          tplParams
         );
 
-        // give them a moment to read the popup before redirect
-        setTimeout(() => {
-          localStorage.removeItem('cart');
-          window.location.href = 'index.html';
-        }, 2000);
+        // Optional: decrement local cache stock so UI looks right after redirect
+        this.cart.forEach(item => {
+          const p = this.products.find(prod => prod.id === item.id);
+          if (!p || !Array.isArray(p.variants)) return;
+          const v = p.variants.find(vr => vr.color === item.color) || p.variants[0];
+          if (v) v.stock = Math.max(0, (Number(v.stock) || 0) - Number(item.quantity || 0));
+        });
+        localStorage.setItem('products', JSON.stringify(this.products));
 
+        alert('Order confirmed & email sent! Thanks for shopping.');
+        localStorage.removeItem('cart');
+        window.location.href = 'index.html';
       } catch (err) {
-        console.error('Checkout error:', err);
-        this.toast('Couldn’t finish checkout', String(err.message || err), 'limit');
+        console.error('EmailJS error:', err);
+        alert('Failed to send confirmation. Please try again.');
+      } finally {
+        this.sending = false;
       }
-    },
-
-    toast(title, msg, type = 'success') {
-      this.modalTitle = title;
-      this.modalMessage = msg;
-      this.modalType = type;
-      this.showModal = true;
-      if (type === 'success') setTimeout(() => (this.showModal = false), 1500);
     }
   },
 
   async mounted() {
-    // Prefer latest cache (gets refreshed after successful checkout)
-    const saved = localStorage.getItem('products');
-    if (saved) {
-      this.products = JSON.parse(saved);
+    // Load products from cached copy first (faster), else from /data
+    const cached = localStorage.getItem('products');
+    if (cached) {
+      this.products = JSON.parse(cached);
     } else {
       this.products = await (await fetch('data/products.json')).json();
       localStorage.setItem('products', JSON.stringify(this.products));
