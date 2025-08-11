@@ -1630,9 +1630,9 @@
     "id": 117,
     "name": "Layered Pearl bracelet ",
     "price": 90,
-    "category": "Bracelets ",
+    "category": "Bracelets",
     "description": "Double layered Pearl bracelet ",
-    "trending": false,
+    "trending": true,
     "bestSeller": true,
     "variants": [
       {
