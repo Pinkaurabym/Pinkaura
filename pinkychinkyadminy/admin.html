@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Products Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    :root {
+      --pink:#d63384; --pink-600:#c12e72;
+      --border:#e5e7eb; --text:#111827; --muted:#6b7280; --bg:#fafafa; --card:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .wrap{max-width:1100px;margin:2rem auto;padding:0 1rem}
+    h1{margin:0 0 .5rem;font-size:1.8rem}
+    .status{color:var(--muted);min-height:1.25rem;margin:.25rem 0 1rem}
+
+    .card{border:1px solid var(--border);border-radius:14px;background:var(--card);
+      padding:1rem;margin:1rem 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+    .card-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;flex-wrap:wrap}
+    .card-title{font-weight:700;font-size:1.05rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .card-actions{margin-left:auto;display:flex;gap:.5rem;flex-wrap:wrap}
+
+    .btn{padding:.55rem .9rem;border-radius:10px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:600}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+    .btn.primary{background:var(--pink);color:#fff;border-color:var(--pink)}
+    .btn.primary:hover{background:var(--pink-600);border-color:var(--pink-600)}
+    .btn.ghost{background:#fff;color:var(--pink);border-color:var(--pink)}
+    .btn.danger{color:#ef4444;border-color:#ef4444;background:#fff}
+    .btn.full{width:100%}
+
+    .row{display:grid;grid-template-columns:1.2fr .9fr .6fr;gap:.75rem;align-items:start}
+    .field{display:flex;flex-direction:column;gap:.4rem}
+    .field label{font-size:.85rem;color:#374151}
+    input,textarea{width:100%;padding:.6rem .7rem;border:1px solid var(--border);border-radius:10px;font:inherit;background:#fff}
+    textarea{resize:vertical;min-height:60px}
+
+    .flags{display:flex;gap:1rem;align-items:center;margin-top:.25rem}
+    .flags label{font-size:.95rem;color:#374151}
+
+    .hr{height:1px;background:var(--border);margin:1rem 0}
+
+    .variants{display:flex;flex-direction:column;gap:.5rem}
+    .variant-grid{display:grid;grid-template-columns:140px 1fr 120px 140px;gap:.5rem}
+
+    .page-actions{margin:1.25rem 0 2rem}
+
+    /* Mobile */
+    @media (max-width:760px){
+      .row{grid-template-columns:1fr}
+      .variant-grid{grid-template-columns:1fr}
+      .card-actions{width:100%}
+      .btn{padding:.6rem .9rem}
+      .page-actions .btn.full{width:100%}
+    }
+  </style>
+</head>
+<body>
+<div id="app" class="wrap">
+  <h1>Products Admin</h1>
+  <div class="status" v-text="status"></div>
+
+  <!-- PRODUCT CARDS -->
+  <div class="card" v-for="p in products" :key="p.id">
+    <div class="card-head">
+      <div class="card-title">#{{ p.id }} — {{ p.name || 'New Product' }}</div>
+      <div class="card-actions">
+        <button class="btn ghost" :disabled="saving" @click="saveOne(p)">💾 Save</button>
+        <button class="btn danger" :disabled="saving" @click="removeProductAndSave(p)">Delete</button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Name</label>
+        <input v-model="p.name" placeholder="Product name" />
+        <label>Description</label>
+        <textarea v-model="p.description" placeholder="Description"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Category</label>
+        <input v-model="p.category" placeholder="Category (e.g., Rings)" />
+        <div class="flags">
+          <label><input type="checkbox" v-model="p.trending" /> Trending</label>
+          <label><input type="checkbox" v-model="p.bestSeller" /> Best Seller</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Price</label>
+        <input type="number" v-model.number="p.price" min="0" placeholder="Price" />
+      </div>
+    </div>
+
+    <div class="hr"></div>
+
+    <!-- Variants -->
+    <div class="variants">
+      <div class="variant-grid" v-for="(v,i) in (p.variants||(p.variants=[]))" :key="i">
+        <input v-model="v.color" placeholder="Color (e.g., Gold)" />
+        <input v-model="v.images[0]" placeholder="Image URL (e.g., images/19.JPG)" />
+        <input type="number" v-model.number="v.stock" min="0" placeholder="Stock" />
+        <button class="btn" :disabled="saving" @click="removeVariant(p,i)">Remove Variant</button>
+      </div>
+
+      <button class="btn" :disabled="saving" @click="addVariant(p)">+ Add Variant</button>
+    </div>
+  </div>
+
+  <!-- ADD NEW PRODUCT (does NOT auto-save) -->
+  <div class="page-actions">
+    <button class="btn primary full" :disabled="saving" @click="addProduct">+ Add New Product</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const API = 'https://pinkaura.vercel.app/api';
+const ADMIN_KEY = 'qwertyu6543212345678iokjhnbgvcxcfghjukl';
+
+const app = Vue.createApp({
+  data(){return{
+    products: [], sha: null,
+    status: 'Loading…', saving: false
+  }},
+  methods:{
+    async load(){
+      try{
+        const r = await fetch(`${API}/products`);
+        const j = await r.json();
+        if(!r.ok) throw new Error(j.error || r.statusText);
+        this.products = (j.products || []).map(p => ({
+          id: p.id,
+          name: p.name || '',
+          price: Number(p.price) || 0,
+          category: p.category || '',
+          description: p.description || '',
+          trending: !!p.trending,
+          bestSeller: !!p.bestSeller,
+          variants: (Array.isArray(p.variants) ? p.variants : []).map(v => ({
+            color: v.color || 'Gold',
+            images: Array.isArray(v.images) && v.images.length ? v.images : ['images/placeholder.jpg'],
+            stock: Number(v.stock) || 0
+          }))
+        }));
+        this.sha = j.sha;
+        this.status = `Loaded (${this.products.length} products)`;
+      }catch(e){
+        this.status = `Load error: ${e.message}`;
+      }
+    },
+
+    /* ---------- UI actions (no auto-save except Delete) ---------- */
+    addProduct(){
+      const nextId = (this.products.reduce((m,p)=>Math.max(m, Number(p.id)||0),0) || 0) + 1;
+      this.products.push({
+        id: nextId,
+        name: 'New Product',
+        category: 'Uncategorized',
+        price: 0,
+        description: '',
+        trending: false,
+        bestSeller: false,
+        variants: [{ color:'Gold', images:['images/placeholder.jpg'], stock:0 }]
+      });
+      this.status = `Added product #${nextId} (not saved yet)`;
+    },
+
+    addVariant(p){
+      if(!Array.isArray(p.variants)) p.variants = [];
+      p.variants.push({ color:'Gold', images:['images/placeholder.jpg'], stock:0 });
+      this.status = 'Variant added (click Save on this product)';
+    },
+
+    removeVariant(p, i){
+      p.variants.splice(i,1);
+      this.status = 'Variant removed (click Save on this product)';
+    },
+
+    async removeProductAndSave(p){
+      if(!confirm('Delete this product?')) return;
+      const undo = JSON.stringify(this.products);
+      try{
+        this.products = this.products.filter(x => x !== p);
+        await this.saveAll(true);      // silent save
+        await this.load();             // <-- auto reload
+        this.status = 'Product deleted ✓ (reloaded)';
+      }catch(e){
+        this.products = JSON.parse(undo);
+        this.status = `Save error: ${e.message}`;
+      }
+    },
+
+    async saveOne(p){
+      try{
+        this.validateProduct(p);
+        await this.saveAll(false);     // shows Saving…
+        await this.load();             // <-- auto reload
+        this.status = `Saved #${p.id} ✓ (reloaded)`;
+      }catch(e){
+        this.status = `Save error: ${e.message}`;
+      }
+    },
+
+    /* ---------- Validation ---------- */
+    validateProduct(p){
+      const name = (p.name || '').trim();
+      const cat  = (p.category || '').trim();
+      if(!name || !cat) throw new Error('Name and category required.');
+      if(!Array.isArray(p.variants) || p.variants.length===0)
+        throw new Error(`"${name || 'Product'}" needs at least one variant.`);
+      for(const v of p.variants){
+        const color = (v.color || '').trim();
+        const img0 = v.images && v.images[0];
+        if(!color) throw new Error(`Variant color missing in "${name}".`);
+        if(!img0)  throw new Error(`Variant image missing in "${name}" (${color || 'variant'}).`);
+      }
+    },
+
+    /* ---------- Core save (writes entire file) ---------- */
+    async saveAll(silent=false){
+      if(!this.sha) throw new Error('Missing file SHA (refresh the page).');
+
+      this.saving = true;
+      if(!silent) this.status = 'Saving…';
+
+      const r = await fetch(`${API}/save-products`, {
+        method:'POST',
+        headers:{'Content-Type':'application/json','x-admin-key':ADMIN_KEY},
+        body: JSON.stringify({ products: this.products, sha: this.sha })
+      });
+      const j = await r.json();
+      this.saving = false;
+
+      if(!r.ok){
+        console.error('Save error body', j);
+        throw new Error(j.error || r.statusText);
+      }
+
+      // Refresh SHA if returned
+      const newSha = j.sha || j.commitSha || (j.content && j.content.sha) || (j.commit && j.commit.sha);
+      if(newSha) this.sha = newSha;
+
+      if(!silent) this.status = 'Saved ✓';
+    }
+  },
+  mounted(){ this.load(); }
+});
+app.mount('#app');
+</script>
+</body>
+</html>
