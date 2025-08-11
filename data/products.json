@@ -115,24 +115,6 @@
     ]
   },
   {
-    "id": 11,
-    "name": "Vintage Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/11.JPG"
-        ],
-        "stock": 8
-      }
-    ]
-  },
-  {
     "id": 13,
     "name": "Bow-Heart Themed Earrings",
     "price": 220,
