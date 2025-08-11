@@ -2025,8 +2025,8 @@
   {
     "id": 111,
     "name": "Baguette ring ",
-    "category": "Rings ",
     "price": 200,
+    "category": "Rings ",
     "description": "Pretty baguette adjustable ring",
     "trending": true,
     "bestSeller": true,
@@ -2034,7 +2034,7 @@
       {
         "color": "Gold",
         "images": [
-          "images/11.JPG"
+          "images/111.JPG"
         ],
         "stock": 2
       },
