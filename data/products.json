@@ -1103,16 +1103,9 @@
     "bestSeller": true,
     "variants": [
       {
-        "color": "White",
+        "color": "White + white",
         "images": [
           "images/96.JPG"
-        ],
-        "stock": 2
-      },
-      {
-        "color": "Black",
-        "images": [
-          "images/97.JPG"
         ],
         "stock": 2
       }
