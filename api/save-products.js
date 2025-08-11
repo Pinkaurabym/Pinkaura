@@ -2,6 +2,8 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", process.env.ALLOW_ORIGIN || "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "content-type,x-admin-key");
+  setCORS(req, res);
+
   if (req.method === "OPTIONS") return res.status(200).end();
   if (req.method !== "POST") return res.status(405).json({ error: "POST only" });
 
@@ -44,4 +46,15 @@ export default async function handler(req, res) {
   }
   const json = await r.json(); // returns new sha
   res.json({ ok: true, commit: json.commit?.sha });
+}
+function setCORS(req, res) {
+  const list = (process.env.ALLOW_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
+  const origin = req.headers.origin || '';
+  const allow = list.includes('*') || list.includes(origin);
+  // tell caches this varies by Origin
+  res.setHeader('Vary', 'Origin');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'content-type, x-admin-key');
+  res.setHeader('Access-Control-Max-Age', '600');
+  res.setHeader('Access-Control-Allow-Origin', allow ? origin : list[0] || '*');
 }
