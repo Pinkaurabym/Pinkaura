@@ -46,22 +46,21 @@ const app = Vue.createApp({
         return;
       }
 
-      // build orders array for email
+      // build items the template expects
       const orders = this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
-        const img = p.variants?.[0]?.images?.[0] || p.image;
         return {
-          name: p.name,
-          units: item.quantity,
-          price: ((p.price || 0) * item.quantity).toFixed(2),
-          image_url: img
+          name: p.name || `#${item.id}`,
+          units: String(item.quantity),
+          price: String(((p.price || 0) * item.quantity).toFixed(2))
         };
       });
 
+      // totals as strings
       const cost = {
-        shipping: this.shipping.toFixed(2),
-        tax: '0.00',
-        total: this.total.toFixed(2)
+        shipping: String(this.shipping.toFixed(2)),
+        tax: "0.00",
+        total: String(this.total.toFixed(2))
       };
 
       const order_id = 'ORD' + Date.now();
@@ -72,10 +71,18 @@ const app = Vue.createApp({
         customer_name: this.customer.name,
         customer_address: this.customer.address,
         customer_phone: this.customer.phone,
-        // EmailJS prefers strings; send JSON strings for arrays/objects if your template needs them
-        orders_json: JSON.stringify(orders),
-        cost_json: JSON.stringify(cost)
+        orders,           // array of {name, units, price}
+        cost              // object with {shipping, tax, total}
       };
+
+      // (optional) sanity check in console:
+      console.log('EmailJS payload ->', tplParams);
+
+      await emailjs.send('service_l2a19fl', 'template_sv1pb1d', tplParams);
+
+      // (optional) keep a JSON copy too if you add it to the template later
+      // tplParams.orders_json = JSON.stringify(orders, null, 2);
+
 
       try {
         // 1) Send email via EmailJS
