@@ -812,25 +812,7 @@
         "images": [
           "images/72.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 73,
-    "name": "Snake + amour necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/73.JPG"
-        ],
-        "stock": 6
+        "stock": 0
       }
     ]
   },
