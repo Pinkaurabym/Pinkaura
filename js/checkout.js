@@ -1,6 +1,6 @@
 // js/checkout.js
 
-// Initialize EmailJS with your Public Key
+// Initialize EmailJS (your public key)
 emailjs.init('ErIegdUfhqmHObATu');
 
 const API_BASE = 'https://pinkaura.vercel.app/api';
@@ -13,7 +13,7 @@ const app = Vue.createApp({
       customer: { name: '', email: '', address: '', phone: '' },
       sending: false,
 
-      // modal
+      // Modal state
       showModal: false,
       modalTitle: '',
       modalMessage: '',
@@ -37,7 +37,7 @@ const app = Vue.createApp({
   },
 
   methods: {
-    // ---------- Modal ----------
+    /* ---------------- Modal helpers ---------------- */
     openModal(title, message, onClose = null) {
       this.modalTitle = title;
       this.modalMessage = message;
@@ -51,7 +51,7 @@ const app = Vue.createApp({
       if (typeof fn === 'function') fn();
     },
 
-    // ---------- Catalog ----------
+    /* ---------------- Catalog helpers ---------------- */
     async fetchCatalogFresh() {
       const r = await fetch(`${API_BASE}/products?ts=${Date.now()}`, { cache: 'no-store' });
       if (!r.ok) throw new Error('Catalog fetch failed');
@@ -61,24 +61,24 @@ const app = Vue.createApp({
       return { products, sha };
     },
 
-    // Normalize cart for server: ensure qty and color exist
+    // Normalize cart for server (expects {id,color,qty})
     buildServerCart() {
       return this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
-        const color = item.color || (p.variants && p.variants[0]?.color) || '';
+        const fallbackColor = p?.variants?.[0]?.color || '';
         return {
           id: Number(item.id),
-          color: String(color),
+          color: String(item.color || fallbackColor),
           qty: Number(item.quantity || 0)
         };
       });
     },
 
-    // Basic pre-check against current products (optional but nice)
+    // Optional client-side stock check for friendly errors
     preflightStock(serverCart) {
       for (const line of serverCart) {
         const prod = this.products.find(x => Number(x.id) === line.id);
-        const variant = prod?.variants?.find(v => String(v.color || '').toLowerCase() === String(line.color).toLowerCase());
+        const variant = prod?.variants?.find(v => String(v.color||'').toLowerCase() === String(line.color||'').toLowerCase());
         if (!prod || !variant) {
           throw new Error(`Variant not found for product #${line.id} (${line.color || 'no color'})`);
         }
@@ -89,7 +89,7 @@ const app = Vue.createApp({
       }
     },
 
-    // EmailJS params matching your template (repeater + nested cost)
+    // EmailJS params (matches your template: {{#orders}} and {{cost.*}})
     buildEmailParams(order_id) {
       const orders = this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
@@ -120,6 +120,7 @@ const app = Vue.createApp({
       };
     },
 
+    /* ---------------- Submit flow ---------------- */
     async submitOrder() {
       if (!this.customer.name || !this.customer.email) {
         this.openModal('Missing info', 'Please enter your name and email.');
@@ -131,13 +132,17 @@ const app = Vue.createApp({
       }
 
       const serverCart = this.buildServerCart();
-      try { this.preflightStock(serverCart); }
-      catch (e) { this.openModal('Out of stock', e.message); return; }
+      try {
+        this.preflightStock(serverCart);
+      } catch (e) {
+        this.openModal('Out of stock', e.message);
+        return;
+      }
 
       try {
         this.sending = true;
 
-        // 1) Decrement stock on server (expects {id,color,qty})
+        // 1) Decrement stock on server (Vercel)
         const resp = await fetch(`${API_BASE}/checkout`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -150,7 +155,7 @@ const app = Vue.createApp({
           return;
         }
 
-        // Accept either shape from API
+        // Update local catalog if API returned it
         const updatedProducts = Array.isArray(data.products)
           ? data.products
           : (Array.isArray(data.productsUpdated) ? data.productsUpdated : null);
@@ -158,24 +163,24 @@ const app = Vue.createApp({
           this.products = updatedProducts;
           localStorage.setItem('products', JSON.stringify(updatedProducts));
         } else {
-          // Fallback refresh
           const fresh = await this.fetchCatalogFresh().catch(() => null);
           if (fresh?.products) this.products = fresh.products;
         }
         if (data.sha) localStorage.setItem('products_sha', data.sha);
 
+        // 2) Email confirmation (your template keys)
         const order_id = data.order_id || data.orderId || ('ORD' + Date.now());
-
-        // 2) Email confirmation (template stays the same)
         const tplParams = this.buildEmailParams(order_id);
         await emailjs.send('service_l2a19fl', 'template_sv1pb1d', tplParams);
 
-        // 3) Success UI
+        // 3) Success modal — empty bag & go home on Close
         this.openModal(
           'Order confirmed 🎉',
           `Your order #${order_id} is confirmed.\nPlease check your email for the receipt.`,
           () => {
-            localStorage.removeItem('cart');
+            // Empty bag + redirect to homepage
+            this.cart = [];
+            localStorage.setItem('cart', '[]'); // or removeItem('cart')
             window.location.href = 'index.html';
           }
         );
@@ -189,7 +194,7 @@ const app = Vue.createApp({
   },
 
   async mounted() {
-    // Load freshest catalog first (so stock/price are current)
+    // Prefer fresh catalog so totals/stock are up-to-date
     try {
       const { products } = await this.fetchCatalogFresh();
       if (Array.isArray(products)) {
