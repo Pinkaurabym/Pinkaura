@@ -313,24 +313,6 @@
     ]
   },
   {
-    "id": 38,
-    "name": "Lacy Filigree Necklace",
-    "price": 240,
-    "category": "Necklaces",
-    "description": "Intricate filigree design for a vintage feel.",
-    "trending": false,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/38.JPG"
-        ],
-        "stock": 7
-      }
-    ]
-  },
-  {
     "id": 40,
     "name": "Eternal Knot Bracelet",
     "price": 200,
