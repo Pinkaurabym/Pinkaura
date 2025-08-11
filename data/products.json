@@ -1985,5 +1985,23 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 109,
+    "name": "Vintage gold flower necklace ",
+    "category": "Necklace",
+    "price": 200,
+    "description": "Gold plated necklace ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/109.JPG"
+        ],
+        "stock": 5
+      }
+    ]
   }
 ]
