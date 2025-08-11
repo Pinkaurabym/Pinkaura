@@ -2157,5 +2157,23 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 117,
+    "name": "Layered Pearl bracelet ",
+    "category": "Bracelets ",
+    "price": 90,
+    "description": "Double layered Pearl bracelet ",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/119.JPG"
+        ],
+        "stock": 5
+      }
+    ]
   }
 ]
