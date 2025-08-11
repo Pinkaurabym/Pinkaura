@@ -2139,5 +2139,23 @@
         "stock": 2
       }
     ]
+  },
+  {
+    "id": 116,
+    "name": "Black clover bracelet ",
+    "category": "Bracelets ",
+    "price": 200,
+    "description": "Anti tarnish black clover bracelet ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/117.jpg"
+        ],
+        "stock": 1
+      }
+    ]
   }
 ]
