@@ -36,24 +36,6 @@
     ]
   },
   {
-    "id": 4,
-    "name": "Amour Earring",
-    "price": 190,
-    "category": "Earrings",
-    "description": "18k gold plated earring",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/4.JPG"
-        ],
-        "stock": 12
-      }
-    ]
-  },
-  {
     "id": 5,
     "name": "Vintage Flower Necklace",
     "price": 220,
