@@ -295,38 +295,6 @@
     ]
   },
   {
-    "id": 29,
-    "name": "Teddy Keychain Matte Lipsticks",
-    "price": 70,
-    "category": "Makeup",
-    "description": "Cutest teddy keychain lipstick.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Mauve",
-        "images": [
-          "images/29.JPG"
-        ],
-        "stock": 20
-      },
-      {
-        "color": "Secret",
-        "images": [
-          "images/29.JPG"
-        ],
-        "stock": 20
-      },
-      {
-        "color": "Lovie",
-        "images": [
-          "images/29.JPG"
-        ],
-        "stock": 20
-      }
-    ]
-  },
-  {
     "id": 30,
     "name": "Amour Chain Bracelet",
     "price": 220,
