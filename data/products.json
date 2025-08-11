@@ -331,24 +331,6 @@
     ]
   },
   {
-    "id": 33,
-    "name": "Moonstone Droplet Earrings",
-    "price": 180,
-    "category": "Earrings",
-    "description": "Pearl and moonstone drops for a moonlit glow.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Silver",
-        "images": [
-          "images/33.JPG"
-        ],
-        "stock": 12
-      }
-    ]
-  },
-  {
     "id": 34,
     "name": "Floral Harmony Necklace",
     "price": 230,
