@@ -164,25 +164,7 @@
         "images": [
           "images/13.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 14,
-    "name": "Crystine Heart Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/14.JPG"
-        ],
-        "stock": 7
+        "stock": 0
       }
     ]
   },
