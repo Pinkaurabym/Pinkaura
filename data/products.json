@@ -2103,5 +2103,23 @@
         "stock": 2
       }
     ]
+  },
+  {
+    "id": 114,
+    "name": "Royal goldie ring ",
+    "category": "Rings ",
+    "price": 170,
+    "description": "Gold plated adjustable ring ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/115.jpg"
+        ],
+        "stock": 0
+      }
+    ]
   }
 ]
