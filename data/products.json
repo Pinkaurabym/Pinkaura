@@ -1918,5 +1918,72 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 108,
+    "name": "Cat eye press ons ",
+    "category": "Makeup ",
+    "price": 190,
+    "description": "Cat eye press nails 12 pieces set inc glue taps ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "1",
+        "images": [
+          "images/108.JOG"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "2",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "3",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "4",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "5",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "6",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "7",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "8",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      }
+    ]
   }
 ]
