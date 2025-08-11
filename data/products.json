@@ -380,7 +380,7 @@
         "images": [
           "images/40.JPG"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
@@ -417,24 +417,6 @@
           "images/45.JPG"
         ],
         "stock": 5
-      }
-    ]
-  },
-  {
-    "id": 46,
-    "name": "crystal pieces ring  ",
-    "price": 230,
-    "category": "Rings",
-    "description": "crystal pieces anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/46.JPG"
-        ],
-        "stock": 8
       }
     ]
   },
