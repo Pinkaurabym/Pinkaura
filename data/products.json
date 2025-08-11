@@ -187,24 +187,6 @@
     ]
   },
   {
-    "id": 16,
-    "name": "11:11 Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/16.JPG"
-        ],
-        "stock": 5
-      }
-    ]
-  },
-  {
     "id": 17,
     "name": "Toi et Moi Ring",
     "price": 250,
