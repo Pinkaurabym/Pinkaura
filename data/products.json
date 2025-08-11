@@ -502,18 +502,11 @@
     "bestSeller": false,
     "variants": [
       {
-        "color": "Gold",
+        "color": "Maroon",
         "images": [
           "images/54.JPG"
         ],
-        "stock": 10
-      },
-      {
-        "color": "Green",
-        "images": [
-          "images/54b.JPG"
-        ],
-        "stock": 10
+        "stock": 1
       }
     ]
   },
