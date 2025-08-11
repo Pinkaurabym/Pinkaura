@@ -2161,8 +2161,8 @@
   {
     "id": 117,
     "name": "Layered Pearl bracelet ",
-    "category": "Bracelets ",
     "price": 90,
+    "category": "Bracelets ",
     "description": "Double layered Pearl bracelet ",
     "trending": false,
     "bestSeller": true,
@@ -2173,6 +2173,24 @@
           "images/119.JPG"
         ],
         "stock": 5
+      }
+    ]
+  },
+  {
+    "id": 118,
+    "name": "Curvy hand cuff",
+    "category": "Bracelets ",
+    "price": 199,
+    "description": "Adjustable hand cuff ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/119.JPG"
+        ],
+        "stock": 2
       }
     ]
   }
