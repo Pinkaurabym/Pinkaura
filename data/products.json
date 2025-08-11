@@ -331,24 +331,6 @@
     ]
   },
   {
-    "id": 37,
-    "name": "Interlocking Circles Ring",
-    "price": 210,
-    "category": "Rings",
-    "description": "Two entwined circles, symbolizing unity and love.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Silver",
-        "images": [
-          "images/37.JPG"
-        ],
-        "stock": 5
-      }
-    ]
-  },
-  {
     "id": 38,
     "name": "Lacy Filigree Necklace",
     "price": 240,
