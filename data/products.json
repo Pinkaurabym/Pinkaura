@@ -992,14 +992,14 @@
         "images": [
           "images/90.JPG"
         ],
-        "stock": 10
+        "stock": 1
       },
       {
         "color": "Silver",
         "images": [
           "images/90.JPG"
         ],
-        "stock": 10
+        "stock": 2
       }
     ]
   },
