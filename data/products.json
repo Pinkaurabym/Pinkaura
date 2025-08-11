@@ -2085,5 +2085,23 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "id": 113,
+    "name": "Sassy ring ",
+    "category": "Rings ",
+    "price": 160,
+    "description": "Gold plated adjustable ring ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/114.JPG"
+        ],
+        "stock": 2
+      }
+    ]
   }
 ]
