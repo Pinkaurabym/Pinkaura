@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Products Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .admin { max-width: 1000px; margin: 2rem auto; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .row { display: grid; grid-template-columns: 1fr 1fr 120px 120px 120px; gap: .5rem; align-items: center; }
+    .row.header { font-weight: 600; }
+    input, textarea { width: 100%; padding: .5rem; border: 1px solid #ddd; border-radius: 6px; }
+    .btn { padding: .5rem .9rem; border-radius: 8px; border: 1px solid #bbb; background:#fff; cursor:pointer }
+    .btn.primary { background:#d63384; color:#fff; border-color:#d63384 }
+    .pill { display:inline-block; padding:.2rem .5rem; border:1px solid #ccc; border-radius:12px; font-size:.8rem; }
+    .card { border:1px solid #eee; border-radius:10px; padding:1rem; margin:.75rem 0; background:#fff; }
+    .variant { display:flex; gap:.5rem; margin:.3rem 0; }
+    .muted { color:#777; font-size:.9rem; }
+  </style>
+</head>
+<body>
+<div id="app" class="admin">
+  <h1>Products Admin</h1>
+
+  <div class="card">
+    <button class="btn" @click="load">Reload</button>
+    <button class="btn primary" @click="save">Save All</button>
+    <span class="muted" v-if="status">{{ status }}</span>
+  </div>
+
+  <div class="row header">
+    <div>Name / Details</div><div>Category</div><div>Price</div><div>Flags</div><div>Actions</div>
+  </div>
+
+  <div class="card" v-for="p in products" :key="p.id">
+    <div class="row">
+      <div>
+        <input v-model="p.name" placeholder="Name" />
+        <textarea v-model="p.description" placeholder="Description" rows="2"></textarea>
+      </div>
+      <div><input v-model="p.category" placeholder="Category" /></div>
+      <div><input type="number" v-model.number="p.price" placeholder="Price" /></div>
+      <div>
+        <label><input type="checkbox" v-model="p.trending" /> Trending</label><br/>
+        <label><input type="checkbox" v-model="p.bestSeller" /> Best Seller</label>
+      </div>
+      <div>
+        <button class="btn" @click="addVariant(p)">+ Variant</button>
+        <button class="btn" @click="duplicate(p)">Duplicate</button>
+        <button class="btn" @click="removeProduct(p)">Delete</button>
+      </div>
+    </div>
+
+    <!-- Variants -->
+    <div>
+      <div class="variant" v-for="(v, i) in p.variants" :key="i">
+        <input style="max-width:140px" v-model="v.color" placeholder="Color (e.g., Gold)" />
+        <input style="flex:1" v-model="v.images[0]" placeholder="Image URL (images/19.JPG)" />
+        <input style="max-width:120px" type="number" v-model.number="v.stock" placeholder="Stock" />
+        <button class="btn" @click="p.variants.splice(i,1)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="btn primary" @click="addProduct">+ Add New Product</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+const API = 'https://pinkaurabym.github.io';
+const ADMIN_KEY = 'qwertyu6543212345678iokjhnbgvcxcfghjukl'; // same as Vercel env ADMIN_KEY
+
+const app = Vue.createApp({
+  data(){return{ products:[], sha:null, status:'' }},
+  methods:{
+    async load(){
+      this.status = 'Loading...';
+      const r = await fetch(`${API}/products`);
+      const { products, sha, error } = await r.json();
+      if (error) { this.status = 'Load error: '+error; return; }
+      this.products = products;
+      this.sha = sha;
+      this.status = 'Loaded';
+    },
+    addProduct(){
+      const nextId = (this.products.reduce((m,p)=>Math.max(m, Number(p.id)||0),0) || 0) + 1;
+      this.products.push({
+        id: nextId,
+        name: "New Product",
+        price: 0,
+        category: "",
+        description: "",
+        trending: false,
+        bestSeller: false,
+        variants: [{ color:"Gold", images:["images/placeholder.jpg"], stock:0 }]
+      });
+    },
+    addVariant(p){
+      p.variants = p.variants || [];
+      p.variants.push({ color:"Gold", images:["images/placeholder.jpg"], stock:0 });
+    },
+    duplicate(p){
+      const nextId = (this.products.reduce((m,x)=>Math.max(m, Number(x.id)||0),0) || 0) + 1;
+      const copy = JSON.parse(JSON.stringify(p));
+      copy.id = nextId;
+      this.products.push(copy);
+    },
+    removeProduct(p){
+      if (!confirm('Delete this product?')) return;
+      this.products = this.products.filter(x => x !== p);
+    },
+    async save(){
+      this.status = 'Saving...';
+      const r = await fetch(`${API}/save-products`, {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json', 'x-admin-key': ADMIN_KEY },
+        body: JSON.stringify({ products: this.products, sha: this.sha })
+      });
+      const j = await r.json();
+      if (!r.ok) { this.status = 'Save error: '+(j.error || r.status); return; }
+      this.status = 'Saved ✓';
+    }
+  },
+  mounted(){ this.load(); }
+});
+app.mount('#app');
+</script>
+</body>
+</html>
