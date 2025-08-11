@@ -848,25 +848,7 @@
         "images": [
           "images/75.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 76,
-    "name": "Stylish bow necklace",
-    "price": 230,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/76.JPG"
-        ],
-        "stock": 6
+        "stock": 0
       }
     ]
   },
