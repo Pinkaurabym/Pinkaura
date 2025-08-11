@@ -2121,5 +2121,23 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 115,
+    "name": "Minimal band ring",
+    "category": "Rings ",
+    "price": 150,
+    "description": "Gold plated adjustable ring ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/116.jpg"
+        ],
+        "stock": 2
+      }
+    ]
   }
 ]
