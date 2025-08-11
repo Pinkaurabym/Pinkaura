@@ -362,7 +362,7 @@
         "images": [
           "images/39.JPG"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
@@ -380,7 +380,7 @@
         "images": [
           "images/40.JPG"
         ],
-        "stock": 9
+        "stock": ""
       }
     ]
   },
