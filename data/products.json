@@ -254,25 +254,7 @@
         "images": [
           "images/23.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 24,
-    "name": "Luxe Green Emerald Chain Earring",
-    "price": 250,
-    "category": "Earrings",
-    "description": "18k gold plated",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/24.JPG"
-        ],
-        "stock": 4
+        "stock": 0
       }
     ]
   },
