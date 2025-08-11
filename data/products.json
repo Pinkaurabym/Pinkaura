@@ -295,24 +295,6 @@
     ]
   },
   {
-    "id": 30,
-    "name": "Amour Chain Bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "An elegant 18k gold-plated bracelet with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/30.JPG"
-        ],
-        "stock": 8
-      }
-    ]
-  },
-  {
     "id": 31,
     "name": "Bow-lý Necklace",
     "price": 200,
