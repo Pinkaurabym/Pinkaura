@@ -151,24 +151,6 @@
     ]
   },
   {
-    "id": 12,
-    "name": "Fairy Bow Earrings",
-    "price": 200,
-    "category": "Earrings",
-    "description": "18k gold plated",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/12.JPG"
-        ],
-        "stock": 6
-      }
-    ]
-  },
-  {
     "id": 13,
     "name": "Bow-Heart Themed Earrings",
     "price": 220,
