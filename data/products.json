@@ -36,24 +36,6 @@
     ]
   },
   {
-    "id": 5,
-    "name": "Vintage Flower Necklace",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/5.JPG"
-        ],
-        "stock": 7
-      }
-    ]
-  },
-  {
     "id": 6,
     "name": "Twin Heart Necklace",
     "price": 190,
