@@ -1,7 +1,9 @@
 // js/checkout.js
 
-// Initialize EmailJS with your Public Key (must match your EmailJS account)
+// Initialize EmailJS
 emailjs.init('ErIegdUfhqmHObATu');
+
+const API_BASE = 'https://pinkaura.vercel.app/api';
 
 const app = Vue.createApp({
   data() {
@@ -9,7 +11,14 @@ const app = Vue.createApp({
       products: [],
       cart: JSON.parse(localStorage.getItem('cart') || '[]'),
       customer: { name: '', email: '', address: '', phone: '' },
-      sending: false
+
+      sending: false,
+
+      // modal
+      showModal: false,
+      modalTitle: '',
+      modalMessage: '',
+      modalOnClose: null
     };
   },
 
@@ -29,24 +38,39 @@ const app = Vue.createApp({
   },
 
   methods: {
-    async submitOrder() {
-      if (!this.customer.name || !this.customer.email) {
-        alert('Please complete your details.');
-        return;
-      }
-      if (!this.cart.length) {
-        alert('Your bag is empty.');
-        return;
-      }
+    // ---------- Modal helpers ----------
+    openModal(title, message, onClose = null) {
+      this.modalTitle = title;
+      this.modalMessage = message;
+      this.modalOnClose = onClose;
+      this.showModal = true;
+    },
+    closeModal() {
+      this.showModal = false;
+      const fn = this.modalOnClose;
+      this.modalOnClose = null;
+      if (typeof fn === 'function') fn();
+    },
 
-      // Build the items exactly as your EmailJS template expects
+    // ---------- API ----------
+    async fetchCatalogFresh() {
+      const r = await fetch(`${API_BASE}/products?ts=${Date.now()}`, { cache: 'no-store' });
+      if (!r.ok) throw new Error('Catalog fetch failed');
+      const json = await r.json();
+      const { products, sha } = json || {};
+      // keep local cache current (helps other pages)
+      if (sha) localStorage.setItem('products_sha', sha);
+      if (Array.isArray(products)) localStorage.setItem('products', JSON.stringify(products));
+      return { products, sha };
+    },
+
+    // ---------- EmailJS payload (matches your template) ----------
+    buildEmailParams(order_id) {
       const orders = this.cart.map(item => {
         const p = this.products.find(x => x.id === item.id) || {};
         const qty = Number(item.quantity || 0);
         const priceEach = Number(p.price) || 0;
-
         return {
-          // used by {{name}}, {{units}}, {{price}} inside {{#orders}} ... {{/orders}}
           name: String(p.name || `#${item.id}`),
           units: String(qty),
           price: String((priceEach * qty).toFixed(2))
@@ -54,50 +78,83 @@ const app = Vue.createApp({
       });
 
       const cost = {
-        // used by {{cost.shipping}}, {{cost.tax}}, {{cost.total}}
         shipping: String(this.shipping.toFixed(2)),
         tax: '0.00',
         total: String(this.total.toFixed(2))
       };
 
-      const order_id = 'ORD' + Date.now();
-
-      // These keys must match your template variable names in EmailJS
-      const tplParams = {
+      return {
         order_id,
-        user_email: this.customer.email,
-        customer_name: this.customer.name,
-        customer_address: this.customer.address,
-        customer_phone: this.customer.phone,
+        user_email:       String(this.customer.email || ''),
+        customer_name:    String(this.customer.name || ''),
+        customer_address: String(this.customer.address || ''),
+        customer_phone:   String(this.customer.phone || ''),
         orders,
         cost
       };
+    },
+
+    // ---------- Submit ----------
+    async submitOrder() {
+      if (!this.customer.name || !this.customer.email) {
+        this.openModal('Missing info', 'Please enter your name and email.');
+        return;
+      }
+      if (!this.cart.length) {
+        this.openModal('Empty bag', 'Your bag is empty.');
+        return;
+      }
 
       try {
         this.sending = true;
 
-        // ONE send — no duplicates.
-        await emailjs.send(
-          'service_l2a19fl',   // your EmailJS Service ID
-          'template_sv1pb1d',  // your EmailJS Template ID
-          tplParams
-        );
-
-        // Optional: decrement local cache stock so UI looks right after redirect
-        this.cart.forEach(item => {
-          const p = this.products.find(prod => prod.id === item.id);
-          if (!p || !Array.isArray(p.variants)) return;
-          const v = p.variants.find(vr => vr.color === item.color) || p.variants[0];
-          if (v) v.stock = Math.max(0, (Number(v.stock) || 0) - Number(item.quantity || 0));
+        // 1) Reserve & decrement stock on server (Vercel)
+        const resp = await fetch(`${API_BASE}/checkout`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            cart: this.cart,       // include {id, quantity, color?}
+            customer: this.customer
+          })
         });
-        localStorage.setItem('products', JSON.stringify(this.products));
 
-        alert('Order confirmed & email sent! Thanks for shopping.');
-        localStorage.removeItem('cart');
-        window.location.href = 'index.html';
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok || data.ok === false) {
+          const msg = data.error || data.message || `Checkout failed (HTTP ${resp.status})`;
+          this.openModal('Checkout failed', msg);
+          return;
+        }
+
+        // accept a few possible field names
+        const order_id = data.order_id || data.orderId || ('ORD' + Date.now());
+
+        // 2) Update local cache with fresh products from server
+        if (Array.isArray(data.products)) {
+          this.products = data.products;
+          localStorage.setItem('products', JSON.stringify(data.products));
+        } else {
+          // fallback: at least refresh from API
+          const fresh = await this.fetchCatalogFresh().catch(() => null);
+          if (fresh?.products) this.products = fresh.products;
+        }
+        if (data.sha) localStorage.setItem('products_sha', data.sha);
+
+        // 3) Send confirmation email
+        const tplParams = this.buildEmailParams(order_id);
+        await emailjs.send('service_l2a19fl', 'template_sv1pb1d', tplParams);
+
+        // 4) Success modal -> clear & redirect on OK
+        this.openModal(
+          'Order confirmed 🎉',
+          `Your order #${order_id} is confirmed.\nPlease check your email for the receipt.`,
+          () => {
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html';
+          }
+        );
       } catch (err) {
-        console.error('EmailJS error:', err);
-        alert('Failed to send confirmation. Please try again.');
+        console.error('Checkout Error:', err);
+        this.openModal('Error', 'Something went wrong. Please try again.');
       } finally {
         this.sending = false;
       }
@@ -105,14 +162,19 @@ const app = Vue.createApp({
   },
 
   async mounted() {
-    // Load products from cached copy first (faster), else from /data
-    const cached = localStorage.getItem('products');
-    if (cached) {
-      this.products = JSON.parse(cached);
-    } else {
-      this.products = await (await fetch('data/products.json')).json();
-      localStorage.setItem('products', JSON.stringify(this.products));
+    // Load freshest catalog (so totals/stock are current)
+    try {
+      const { products } = await this.fetchCatalogFresh();
+      if (Array.isArray(products)) {
+        this.products = products;
+        return;
+      }
+    } catch (e) {
+      // ignore and fall back
     }
+    const saved = localStorage.getItem('products');
+    if (saved) this.products = JSON.parse(saved);
+    else this.products = await (await fetch('data/products.json?v=' + Date.now())).json();
   }
 });
 
