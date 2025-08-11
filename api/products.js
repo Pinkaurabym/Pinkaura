@@ -36,4 +36,8 @@ function setCORS(req, res) {
     res.setHeader('Access-Control-Allow-Headers', 'content-type, x-admin-key');
     res.setHeader('Access-Control-Max-Age', '600');
     res.setHeader('Access-Control-Allow-Origin', allow ? origin : list[0] || '*');
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+
 }

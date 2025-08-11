@@ -124,46 +124,47 @@ const app = Vue.createApp({
       return n === 0 ? 'Out of stock' : `${n} left`;
     }
   },
-  mounted() {
-    // restore cart
+  mounted: async function () {
     const c = localStorage.getItem("cart");
     if (c) this.cart = JSON.parse(c);
 
-    // prefer locally-updated products (after checkout we save here)
-    const savedProducts = localStorage.getItem("products");
-    if (savedProducts) {
-      const data = JSON.parse(savedProducts);
-      this.products = data;
-      this.categories = Array.from(new Set(data.map(p => p.category))).sort();
-    } else {
-      fetch("data/products.json")
-        .then(r => r.json())
-        .then(data => {
-          this.products = data;
-          this.categories = Array.from(new Set(data.map(p => p.category))).sort();
-          localStorage.setItem("products", JSON.stringify(data));
-        });
+    try {
+      const { products } = await fetchCatalogFresh();
+      this.products = products;
+    } catch (e) {
+      // graceful fallback
+      const saved = localStorage.getItem('products');
+      if (saved) this.products = JSON.parse(saved);
+      else this.products = await (await fetch('data/products.json?v=' + Date.now())).json();
     }
+    this.categories = Array.from(new Set(this.products.map(p => p.category))).sort();
 
-    // parse filters from URL
     const p = new URLSearchParams(location.search);
-    const cat = p.get("category");
-    const trending = p.get("trending");
-    const filter = p.get("filter");
-
-    if (cat) {
-      this.selectedCategory = cat;
-      this.isFilterPage = true;
-    }
-    if (trending === "true") {
-      this.trendingMode = true;
-      this.isFilterPage = true;
-    }
-    if (filter === "bestSeller") {
-      this.bestSellerMode = true;
-      this.isFilterPage = true;
-    }
+    const cat = p.get("category"), trending = p.get("trending"), filter = p.get("filter");
+    if (cat) { this.selectedCategory = cat; this.isFilterPage = true; }
+    if (trending === "true") { this.trendingMode = true; this.isFilterPage = true; }
+    if (filter === "bestSeller") { this.bestSellerMode = true; this.isFilterPage = true; }
   }
 });
 
 app.mount("#app");
+
+async function fetchCatalogFresh() {
+  // always bypass browser/CDN caches
+  const r = await fetch('https://pinkaura.vercel.app/api/products?ts=' + Date.now(), {
+    cache: 'no-store'
+  });
+  if (!r.ok) throw new Error('Catalog fetch failed');
+  const { products, sha } = await r.json();
+
+  const prevSha = localStorage.getItem('products_sha');
+  if (sha && sha !== prevSha) {
+    localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('products_sha', sha);
+  } else if (!localStorage.getItem('products')) {
+    // first load
+    localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('products_sha', sha || '');
+  }
+  return { products, sha };
+}

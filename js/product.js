@@ -97,10 +97,42 @@ const productApp = Vue.createApp({
       window.location.href = "bag.html";
     }
   },
-  mounted() {
+  mounted: async function () {
     this.loadCart();
-    this.fetchProduct();
+    const params = new URLSearchParams(window.location.search);
+    const id = Number(params.get("id"));
+
+    try {
+      const { products } = await fetchCatalogFresh();
+      this.product = products.find(p => p.id === id);
+    } catch (e) {
+      const saved = localStorage.getItem('products');
+      const list = saved ? JSON.parse(saved) : await (await fetch('data/products.json?v=' + Date.now())).json();
+      this.product = list.find(p => p.id === id);
+    }
+
+    if (this.product) this.selectedVariant = this.product.variants[0];
   }
 });
 
 productApp.mount("#app");
+
+async function fetchCatalogFresh() {
+  // always bypass browser/CDN caches
+  const r = await fetch('https://pinkaura.vercel.app/api/products?ts=' + Date.now(), {
+    cache: 'no-store'
+  });
+  if (!r.ok) throw new Error('Catalog fetch failed');
+  const { products, sha } = await r.json();
+
+  const prevSha = localStorage.getItem('products_sha');
+  if (sha && sha !== prevSha) {
+    localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('products_sha', sha);
+  } else if (!localStorage.getItem('products')) {
+    // first load
+    localStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('products_sha', sha || '');
+  }
+  return { products, sha };
+}
