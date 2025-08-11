@@ -36,24 +36,6 @@
     ]
   },
   {
-    "id": 6,
-    "name": "Twin Heart Necklace",
-    "price": 190,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/6.JPG"
-        ],
-        "stock": 6
-      }
-    ]
-  },
-  {
     "id": 7,
     "name": "One Love Necklace",
     "price": 210,
