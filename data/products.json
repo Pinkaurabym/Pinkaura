@@ -586,24 +586,6 @@
     ]
   },
   {
-    "id": 35,
-    "name": "Classic Cuff Bracelet",
-    "price": 190,
-    "category": "Bracelets",
-    "description": "Smooth 18k gold-plated cuff—timeless and elegant.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/35.JPG"
-        ],
-        "stock": 8
-      }
-    ]
-  },
-  {
     "id": 36,
     "name": "Petite Heart Studs",
     "price": 140,
