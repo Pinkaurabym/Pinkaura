@@ -470,7 +470,7 @@
         "images": [
           "images/57.JPG"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
@@ -1580,6 +1580,24 @@
           "images/119.jpg"
         ],
         "stock": 2
+      }
+    ]
+  },
+  {
+    "id": 119,
+    "name": "V ring ",
+    "category": "Rings ",
+    "price": 190,
+    "description": "Anti tarnish adjustable v ring ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/121.jpg"
+        ],
+        "stock": 4
       }
     ]
   }
