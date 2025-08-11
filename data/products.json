@@ -223,31 +223,6 @@
     ]
   },
   {
-    "id": 21,
-    "name": "Statement Office Hoops",
-    "price": 100,
-    "category": "Earrings",
-    "description": "Gold plated and silver plated earring",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/21a.JPG"
-        ],
-        "stock": 10
-      },
-      {
-        "color": "Silver",
-        "images": [
-          "images/21b.JPG"
-        ],
-        "stock": 10
-      }
-    ]
-  },
-  {
     "id": 22,
     "name": "Chunky Three Layer Hoops",
     "price": 100,
