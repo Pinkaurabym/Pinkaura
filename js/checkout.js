@@ -109,11 +109,18 @@ const app = Vue.createApp({
         }
 
         // 4) Finish
-        this.toast('Order Confirmed', 'Order placed & email sent! Thank you.', 'success');
+        // 4) Finish
+        this.toast(
+          'Order Confirmed',
+          'Your order was successful. Please check your email for the confirmation.',
+          'success'
+        );
+
+        // give them a moment to read the popup before redirect
         setTimeout(() => {
           localStorage.removeItem('cart');
           window.location.href = 'index.html';
-        }, 1200);
+        }, 2000);
 
       } catch (err) {
         console.error('Checkout error:', err);

@@ -55,6 +55,17 @@
         </div>
       </div>
     </section>
+    <!-- Success / Error Modal -->
+    <div v-if="showModal" class="modal-backdrop" @click.self="showModal=false">
+      <div class="modal-card">
+        <h3>{{ modalTitle }}</h3>
+        <p style="margin: .5rem 0 1rem">{{ modalMessage }}</p>
+        <div class="modal-actions">
+          <button class="modal-btn primary" @click="showModal=false">Okay</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <footer class="site-footer">
