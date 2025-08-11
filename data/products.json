@@ -565,24 +565,6 @@
     ]
   },
   {
-    "id": 64,
-    "name": "Hexagonal bangle",
-    "price": 350,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": false,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/64.JPG"
-        ],
-        "stock": 5
-      }
-    ]
-  },
-  {
     "id": 66,
     "name": "Promise + love  necklace",
     "price": 250,
