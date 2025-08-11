@@ -1876,11 +1876,46 @@
     "bestSeller": true,
     "variants": [
       {
-        "color": "1,2,3,4,5,6",
+        "color": "1",
         "images": [
           "images/107.JPG"
         ],
-        "stock": 6
+        "stock": 1
+      },
+      {
+        "color": "2",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "3",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "4",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "5",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
+      },
+      {
+        "color": "6",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 1
       }
     ]
   }
