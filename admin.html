@@ -1,131 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>Products Admin</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="css/style.css" />
   <style>
-    .admin { max-width: 1000px; margin: 2rem auto; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
-    .row { display: grid; grid-template-columns: 1fr 1fr 120px 120px 120px; gap: .5rem; align-items: center; }
-    .row.header { font-weight: 600; }
-    input, textarea { width: 100%; padding: .5rem; border: 1px solid #ddd; border-radius: 6px; }
-    .btn { padding: .5rem .9rem; border-radius: 8px; border: 1px solid #bbb; background:#fff; cursor:pointer }
-    .btn.primary { background:#d63384; color:#fff; border-color:#d63384 }
-    .pill { display:inline-block; padding:.2rem .5rem; border:1px solid #ccc; border-radius:12px; font-size:.8rem; }
-    .card { border:1px solid #eee; border-radius:10px; padding:1rem; margin:.75rem 0; background:#fff; }
-    .variant { display:flex; gap:.5rem; margin:.3rem 0; }
-    .muted { color:#777; font-size:.9rem; }
+    :root { --pink:#d63384; --border:#e5e7eb; --text:#111827; --muted:#6b7280; --bg:#fafafa; }
+    html,body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .admin { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { margin: 0 0 1rem; font-size: 1.8rem; }
+    .toolbar { display:flex; gap:.5rem; align-items:center; margin-bottom:1rem; }
+    .btn { padding:.55rem .9rem; border-radius:10px; border:1px solid var(--border); background:#fff; cursor:pointer; font-weight:600; }
+    .btn.primary { background:var(--pink); color:#fff; border-color:var(--pink); }
+    .btn:disabled { opacity:.55; cursor:not-allowed; }
+    .status { margin-left:.75rem; color:var(--muted); }
+    .grid-head { display:grid; grid-template-columns: 1fr 140px 100px 180px 160px; gap:.75rem; padding:.3rem 0; font-weight:700; color:#374151; }
+    .card { border:1px solid var(--border); border-radius:14px; background:#fff; padding:1rem; margin:.75rem 0; }
+    .row { display:grid; grid-template-columns: 1fr 140px 100px 180px 160px; gap:.75rem; align-items:start; }
+    .muted { color:var(--muted); font-size:.9rem; }
+    input, textarea { width:100%; padding:.6rem .7rem; border:1px solid var(--border); border-radius:10px; font:inherit; background:#fff; }
+    textarea { resize:vertical; min-height:60px; }
+    .flags { display:flex; gap:.75rem; align-items:center; }
+    .actions { display:flex; gap:.5rem; flex-wrap:wrap; }
+    .variant { display:grid; grid-template-columns: 140px 1fr 110px 120px; gap:.5rem; margin:.4rem 0; }
+    .variant small { color:var(--muted); }
+    .hr { height:1px; background:var(--border); margin:.75rem 0; }
+    .footer { display:flex; justify-content:flex-start; margin-top:1rem; }
   </style>
 </head>
 <body>
 <div id="app" class="admin">
   <h1>Products Admin</h1>
 
-  <div class="card">
-    <button class="btn" @click="load">Reload</button>
-    <button class="btn primary" @click="save">Save All</button>
-    <span class="muted" v-if="status">{{ status }}</span>
+  <div class="toolbar">
+    <button class="btn" @click="load" :disabled="loading || saving">Reload</button>
+    <button class="btn primary" @click="save" :disabled="loading || saving">Save All</button>
+    <span class="status" v-if="status">{{ status }}</span>
   </div>
 
-  <div class="row header">
-    <div>Name / Details</div><div>Category</div><div>Price</div><div>Flags</div><div>Actions</div>
+  <div class="grid-head">
+    <div>Name / Description</div>
+    <div>Category</div>
+    <div>Price</div>
+    <div>Flags</div>
+    <div>Actions</div>
   </div>
 
   <div class="card" v-for="p in products" :key="p.id">
     <div class="row">
       <div>
-        <input v-model="p.name" placeholder="Name" />
-        <textarea v-model="p.description" placeholder="Description" rows="2"></textarea>
+        <input v-model="p.name" placeholder="Product name" />
+        <textarea v-model="p.description" placeholder="Description"></textarea>
       </div>
-      <div><input v-model="p.category" placeholder="Category" /></div>
-      <div><input type="number" v-model.number="p.price" placeholder="Price" /></div>
       <div>
-        <label><input type="checkbox" v-model="p.trending" /> Trending</label><br/>
+        <input v-model="p.category" placeholder="Category (e.g., Rings)" />
+      </div>
+      <div>
+        <input type="number" v-model.number="p.price" placeholder="Price" min="0" />
+      </div>
+      <div class="flags">
+        <label><input type="checkbox" v-model="p.trending" /> Trending</label>
         <label><input type="checkbox" v-model="p.bestSeller" /> Best Seller</label>
       </div>
-      <div>
+      <div class="actions">
         <button class="btn" @click="addVariant(p)">+ Variant</button>
         <button class="btn" @click="duplicate(p)">Duplicate</button>
         <button class="btn" @click="removeProduct(p)">Delete</button>
       </div>
     </div>
 
+    <div class="hr"></div>
+
     <!-- Variants -->
-    <div>
-      <div class="variant" v-for="(v, i) in p.variants" :key="i">
-        <input style="max-width:140px" v-model="v.color" placeholder="Color (e.g., Gold)" />
-        <input style="flex:1" v-model="v.images[0]" placeholder="Image URL (images/19.JPG)" />
-        <input style="max-width:120px" type="number" v-model.number="v.stock" placeholder="Stock" />
-        <button class="btn" @click="p.variants.splice(i,1)">Remove</button>
-      </div>
+    <div class="variant" v-for="(v, i) in (p.variants || (p.variants=[]))" :key="i">
+      <input v-model="v.color" placeholder="Color (e.g., Gold)" />
+      <input v-model="v.images[0]" placeholder="Image URL (images/19.JPG)" />
+      <input type="number" v-model.number="v.stock" min="0" placeholder="Stock" />
+      <button class="btn" @click="p.variants.splice(i,1)">Remove</button>
     </div>
   </div>
 
-  <div class="card">
-    <button class="btn primary" @click="addProduct">+ Add New Product</button>
+  <div class="footer">
+    <button class="btn primary" @click="addProduct" :disabled="saving">+ Add New Product</button>
   </div>
 </div>
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script>
+/** CONFIG: set these for your project */
 const API = 'https://pinkaura.vercel.app/api'; // Vercel API endpoint
 const ADMIN_KEY = 'qwertyu6543212345678iokjhnbgvcxcfghjukl'; // same as Vercel env ADMIN_KEY
 
 const app = Vue.createApp({
-  data(){return{ products:[], sha:null, status:'' }},
-  methods:{
-    async load(){
-      this.status = 'Loading...';
-      const r = await fetch(`${API}/products`);
-      const { products, sha, error } = await r.json();
-      if (error) { this.status = 'Load error: '+error; return; }
-      this.products = products;
-      this.sha = sha;
-      this.status = 'Loaded';
+  data() {
+    return {
+      products: [],
+      sha: null,            // file SHA from GitHub
+      loading: false,
+      saving: false,
+      status: ''
+    };
+  },
+  methods: {
+    async load() {
+      try {
+        this.loading = true;
+        this.status = 'Loading...';
+        const r = await fetch(`${API}/products`);
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+
+        // Basic normalize: ensure required fields exist
+        this.products = (j.products || []).map(p => ({
+          id: p.id,
+          name: p.name || '',
+          price: Number(p.price) || 0,
+          category: p.category || '',
+          description: p.description || '',
+          trending: !!p.trending,
+          bestSeller: !!p.bestSeller,
+          variants: (p.variants || []).map(v => ({
+            color: v.color || 'Gold',
+            images: Array.isArray(v.images) && v.images.length ? v.images : ['images/placeholder.jpg'],
+            stock: Number(v.stock) || 0
+          }))
+        }));
+        this.sha = j.sha;
+        this.status = `Loaded (${this.products.length} products)`;
+      } catch (e) {
+        console.error(e);
+        this.status = `Load error: ${e.message}`;
+      } finally {
+        this.loading = false;
+      }
     },
-    addProduct(){
+
+    addProduct() {
       const nextId = (this.products.reduce((m,p)=>Math.max(m, Number(p.id)||0),0) || 0) + 1;
       this.products.push({
         id: nextId,
-        name: "New Product",
+        name: 'New Product',
         price: 0,
-        category: "",
-        description: "",
+        category: '',
+        description: '',
         trending: false,
         bestSeller: false,
-        variants: [{ color:"Gold", images:["images/placeholder.jpg"], stock:0 }]
+        variants: [{ color: 'Gold', images: ['images/placeholder.jpg'], stock: 0 }]
       });
+      this.status = `Added product #${nextId}`;
     },
-    addVariant(p){
-      p.variants = p.variants || [];
-      p.variants.push({ color:"Gold", images:["images/placeholder.jpg"], stock:0 });
+
+    addVariant(p) {
+      if (!Array.isArray(p.variants)) p.variants = [];
+      p.variants.push({ color:'Gold', images:['images/placeholder.jpg'], stock:0 });
     },
-    duplicate(p){
+
+    duplicate(p) {
       const nextId = (this.products.reduce((m,x)=>Math.max(m, Number(x.id)||0),0) || 0) + 1;
       const copy = JSON.parse(JSON.stringify(p));
       copy.id = nextId;
       this.products.push(copy);
+      this.status = `Duplicated as #${nextId}`;
     },
-    removeProduct(p){
+
+    removeProduct(p) {
       if (!confirm('Delete this product?')) return;
       this.products = this.products.filter(x => x !== p);
+      this.status = 'Deleted';
     },
-    async save(){
-      this.status = 'Saving...';
-      const r = await fetch(`${API}/save-products`, {
-        method:'POST',
-        headers:{ 'Content-Type':'application/json', 'x-admin-key': ADMIN_KEY },
-        body: JSON.stringify({ products: this.products, sha: this.sha })
-      });
-      const j = await r.json();
-      if (!r.ok) { this.status = 'Save error: '+(j.error || r.status); return; }
-      this.status = 'Saved ✓';
+
+    validateAll() {
+      for (const p of this.products) {
+        if (!p.name || !p.category) {
+          throw new Error('Each product needs a name and category.');
+        }
+        if (!Array.isArray(p.variants) || p.variants.length === 0) {
+          throw new Error(`Product "${p.name}" needs at least one variant.`);
+        }
+        for (const v of p.variants) {
+          if (!v.color) throw new Error(`Variant color missing in "${p.name}".`);
+          if (!Array.isArray(v.images) || !v.images[0]) {
+            throw new Error(`Variant image missing in "${p.name}" (${v.color}).`);
+          }
+          v.stock = Number(v.stock)||0;
+        }
+        p.price = Number(p.price)||0;
+      }
+    },
+
+    async save() {
+      try {
+        this.validateAll();
+        if (!this.sha) throw new Error('Missing file SHA. Reload and try again.');
+
+        this.saving = true;
+        this.status = 'Saving...';
+
+        const r = await fetch(`${API}/save-products`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'x-admin-key': ADMIN_KEY
+          },
+          body: JSON.stringify({ products: this.products, sha: this.sha })
+        });
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.error || r.statusText);
+
+        // server returns new content sha for subsequent edits
+        if (j.sha) this.sha = j.sha;
+        this.status = 'Saved ✓';
+      } catch (e) {
+        console.error(e);
+        this.status = `Save error: ${e.message}`;
+      } finally {
+        this.saving = false;
+      }
     }
   },
-  mounted(){ this.load(); }
+  mounted() {
+    this.load();
+  }
 });
+
 app.mount('#app');
 </script>
 </body>
 </html>
+
