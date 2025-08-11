@@ -1923,7 +1923,7 @@
     "id": 108,
     "name": "Cat eye press ons ",
     "price": 190,
-    "category": "Makeup ",
+    "category": "Makeup",
     "description": "Cat eye press nails 12 pieces set inc glue taps ",
     "trending": true,
     "bestSeller": true,
@@ -2007,8 +2007,8 @@
   {
     "id": 110,
     "name": "Pearl galaxy necklace ",
-    "category": "Necklaces ",
     "price": 250,
+    "category": "Necklaces ",
     "description": "Gold plated necklace ",
     "trending": true,
     "bestSeller": true,
