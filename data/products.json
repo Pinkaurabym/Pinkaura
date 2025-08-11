@@ -578,25 +578,7 @@
         "images": [
           "images/58.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 59,
-    "name": "Amour bracelet",
-    "price": 230,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/59.JPG"
-        ],
-        "stock": 6
+        "stock": 0
       }
     ]
   },
