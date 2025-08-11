@@ -200,24 +200,6 @@
         "images": [
           "images/17.JPG"
         ],
-        "stock": ""
-      }
-    ]
-  },
-  {
-    "id": 18,
-    "name": "Plain Nail Cartier",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "An elegant 18k gold-plated bracelet with a delicate design.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/18.JPG"
-        ],
         "stock": 0
       }
     ]
