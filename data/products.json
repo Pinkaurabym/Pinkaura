@@ -475,24 +475,6 @@
     ]
   },
   {
-    "id": 50,
-    "name": "elegant swirl ring  ",
-    "price": 230,
-    "category": "Rings",
-    "description": "  anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/50.JPG"
-        ],
-        "stock": 6
-      }
-    ]
-  },
-  {
     "id": 51,
     "name": "studded infinity Necklace",
     "price": 240,
