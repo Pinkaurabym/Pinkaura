@@ -295,24 +295,6 @@
     ]
   },
   {
-    "id": 40,
-    "name": "Eternal Knot Bracelet",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "Knot motif symbolizing eternity and strength.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/40.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
     "id": 42,
     "name": "CD BASED 18k gold plated ring",
     "price": 250,
