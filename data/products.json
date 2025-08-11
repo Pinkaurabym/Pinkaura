@@ -331,24 +331,6 @@
     ]
   },
   {
-    "id": 34,
-    "name": "Floral Harmony Necklace",
-    "price": 230,
-    "category": "Necklaces",
-    "description": "Delicate floral pendant on a fine 18k gold-plated chain.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/34.JPG"
-        ],
-        "stock": 6
-      }
-    ]
-  },
-  {
     "id": 36,
     "name": "Petite Heart Studs",
     "price": 140,
