@@ -331,24 +331,6 @@
     ]
   },
   {
-    "id": 39,
-    "name": "Pearl Drop Pendant",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "Single pearl drop on a dainty chain.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/39.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
     "id": 40,
     "name": "Eternal Knot Bracelet",
     "price": 200,
