@@ -704,7 +704,7 @@
         "images": [
           "images/66.JPG"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
@@ -722,7 +722,7 @@
         "images": [
           "images/67.JPG"
         ],
-        "stock": 6
+        "stock": ""
       }
     ]
   },
