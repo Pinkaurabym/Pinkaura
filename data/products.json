@@ -475,24 +475,6 @@
     ]
   },
   {
-    "id": 51,
-    "name": "studded infinity Necklace",
-    "price": 240,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/51.JPG"
-        ],
-        "stock": 5
-      }
-    ]
-  },
-  {
     "id": 52,
     "name": "twin van vleef bracelet",
     "price": 230,
