@@ -259,24 +259,6 @@
     ]
   },
   {
-    "id": 25,
-    "name": "Heart Cartier",
-    "price": 250,
-    "category": "Bracelets",
-    "description": "An elegant 18k gold-plated bracelet with a delicate design.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/25.JPG"
-        ],
-        "stock": 4
-      }
-    ]
-  },
-  {
     "id": 26,
     "name": "Chunky Chain Bracelet",
     "price": 200,
