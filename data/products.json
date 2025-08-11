@@ -331,24 +331,6 @@
     ]
   },
   {
-    "id": 36,
-    "name": "Petite Heart Studs",
-    "price": 140,
-    "category": "Earrings",
-    "description": "Small heart-shaped studs, perfect for everyday wear.",
-    "trending": false,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/36.JPG"
-        ],
-        "stock": 15
-      }
-    ]
-  },
-  {
     "id": 37,
     "name": "Interlocking Circles Ring",
     "price": 210,
