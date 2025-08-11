@@ -583,24 +583,6 @@
     ]
   },
   {
-    "id": 65,
-    "name": "Bowly necklace set",
-    "price": 320,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/65.JPG"
-        ],
-        "stock": 4
-      }
-    ]
-  },
-  {
     "id": 66,
     "name": "Promise + love  necklace",
     "price": 250,
