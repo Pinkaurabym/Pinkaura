@@ -1618,5 +1618,23 @@
         "stock": 4
       }
     ]
+  },
+  {
+    "id": 121,
+    "name": "Double snake bracelet ",
+    "category": "Bracelets ",
+    "price": 220,
+    "description": "Snake chain bracelet ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/123.HEIC"
+        ],
+        "stock": 4
+      }
+    ]
   }
 ]
