@@ -1600,5 +1600,23 @@
         "stock": 4
       }
     ]
+  },
+  {
+    "id": 120,
+    "name": "Studded nail ring ",
+    "category": "Rings ",
+    "price": 250,
+    "description": "Adjustable 18k gold plated ring ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/122.jpg"
+        ],
+        "stock": 2
+      }
+    ]
   }
 ]
