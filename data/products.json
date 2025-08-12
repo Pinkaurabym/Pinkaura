@@ -1600,5 +1600,23 @@
         "stock": 4
       }
     ]
+  },
+  {
+    "id": 120,
+    "name": "Chunky chain bracelet",
+    "category": "Bracelets ",
+    "price": 230,
+    "description": "Anti tarnish gold plated bracelet",
+    "trending": false,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/122.jpg"
+        ],
+        "stock": 4
+      }
+    ]
   }
 ]
