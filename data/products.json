@@ -1640,8 +1640,8 @@
   {
     "id": 122,
     "name": "Studded infinity bracelet",
-    "category": "Bracelets",
     "price": 200,
+    "category": "Bracelets",
     "description": "Infinity bracelet ",
     "trending": true,
     "bestSeller": true,
@@ -1649,7 +1649,7 @@
       {
         "color": "Gold",
         "images": [
-          "images/150.HEIC"
+          "images/125.HEIC"
         ],
         "stock": 1
       }
