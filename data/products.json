@@ -1622,8 +1622,8 @@
   {
     "id": 121,
     "name": "Double snake bracelet ",
-    "category": "Bracelets ",
     "price": 220,
+    "category": "Bracelets",
     "description": "Snake chain bracelet ",
     "trending": true,
     "bestSeller": true,
