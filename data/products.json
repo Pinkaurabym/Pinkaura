@@ -85,7 +85,7 @@
         "images": [
           "images/9a.JPG"
         ],
-        "stock": 3
+        "stock": 2
       },
       {
         "color": "Silver",
@@ -884,7 +884,7 @@
         "images": [
           "images/85.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1507,7 +1507,7 @@
         "images": [
           "images/115.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -1597,7 +1597,7 @@
         "images": [
           "images/121.jpg"
         ],
-        "stock": 4
+        "stock": 3
       }
     ]
   },
