@@ -1161,7 +1161,7 @@
         "images": [
           "images/101.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1233,7 +1233,7 @@
         "images": [
           "images/105.JPG"
         ],
-        "stock": 4
+        "stock": 3
       }
     ]
   },
@@ -1489,7 +1489,7 @@
         "images": [
           "images/114.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
