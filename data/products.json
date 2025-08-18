@@ -236,7 +236,7 @@
         "images": [
           "images/27.JPG"
         ],
-        "stock": 11
+        "stock": 10
       }
     ]
   },
@@ -434,7 +434,7 @@
         "images": [
           "images/55.JPG"
         ],
-        "stock": 4
+        "stock": 3
       }
     ]
   },
@@ -650,7 +650,7 @@
         "images": [
           "images/70.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -704,7 +704,7 @@
         "images": [
           "images/74.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -920,7 +920,7 @@
         "images": [
           "images/87.JPG"
         ],
-        "stock": 3
+        "stock": 1
       }
     ]
   },
@@ -974,7 +974,7 @@
         "images": [
           "images/90.JPG"
         ],
-        "stock": 1
+        "stock": 0
       },
       {
         "color": "Silver",
@@ -1125,7 +1125,7 @@
         "images": [
           "images/99.JPG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
@@ -1179,7 +1179,7 @@
         "images": [
           "images/102.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1525,7 +1525,7 @@
         "images": [
           "images/116.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1651,7 +1651,7 @@
         "images": [
           "images/125.HEIC"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   }
