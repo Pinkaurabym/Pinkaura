@@ -1658,8 +1658,8 @@
   {
     "id": 123,
     "name": "Love ring ",
-    "category": "Rings",
     "price": 200,
+    "category": "Rings",
     "description": "Anti tarnish , s925 plated ring ",
     "trending": true,
     "bestSeller": true,
@@ -1667,9 +1667,9 @@
       {
         "color": "Silver ",
         "images": [
-          "images/placeholder.jpg"
+          "images/126.PNG"
         ],
-        "stock": 0
+        "stock": 5
       }
     ]
   }
