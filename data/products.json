@@ -1748,8 +1748,8 @@
   {
     "id": 128,
     "name": "Multi colour pendant ",
-    "category": "Necklaces",
     "price": 270,
+    "category": "Necklaces",
     "description": "Gold plated and anti tarnish ",
     "trending": true,
     "bestSeller": false,
@@ -1758,6 +1758,24 @@
         "color": "Gold",
         "images": [
           "images/131.HEIC"
+        ],
+        "stock": 1
+      }
+    ]
+  },
+  {
+    "id": 129,
+    "name": "Christmas necklace ",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Gold plated anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/132.HEIC"
         ],
         "stock": 1
       }
