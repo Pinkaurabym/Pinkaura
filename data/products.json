@@ -1690,5 +1690,23 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 125,
+    "name": "Multiple stone necklace ",
+    "category": "Necklaces ",
+    "price": 270,
+    "description": "Gold plated anti tarnish ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/128.HEIC"
+        ],
+        "stock": 1
+      }
+    ]
   }
 ]
