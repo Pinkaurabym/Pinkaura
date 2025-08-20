@@ -1672,5 +1672,23 @@
         "stock": 5
       }
     ]
+  },
+  {
+    "id": 124,
+    "name": "Caratline necklace",
+    "category": "Necklaces ",
+    "price": 250,
+    "description": "Gold plated anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/127 HEIC"
+        ],
+        "stock": 1
+      }
+    ]
   }
 ]
