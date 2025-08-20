@@ -1784,8 +1784,8 @@
   {
     "id": 130,
     "name": "Pearl heart + snake necklace ",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Gold plated anti tarnish ",
     "trending": true,
     "bestSeller": false,
@@ -1793,7 +1793,7 @@
       {
         "color": "Gold",
         "images": [
-          "images/placeholder.jpg"
+          "images/133.HEIC"
         ],
         "stock": 3
       }
