@@ -1744,5 +1744,23 @@
         "stock": 1
       }
     ]
+  },
+  {
+    "id": 128,
+    "name": "Multi colour pendant ",
+    "category": "Necklaces",
+    "price": 270,
+    "description": "Gold plated and anti tarnish ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/131.HEIC"
+        ],
+        "stock": 1
+      }
+    ]
   }
 ]
