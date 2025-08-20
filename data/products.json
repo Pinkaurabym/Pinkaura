@@ -1730,8 +1730,8 @@
   {
     "id": 127,
     "name": "Ballerina necklace ",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Gold plated necklace ",
     "trending": true,
     "bestSeller": false,
