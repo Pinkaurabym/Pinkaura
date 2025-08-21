@@ -1798,5 +1798,23 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "id": 131,
+    "name": "Layered emerald chain ",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Gold plated anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/134.HEIC"
+        ],
+        "stock": 3
+      }
+    ]
   }
 ]
