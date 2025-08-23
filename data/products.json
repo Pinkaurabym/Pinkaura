@@ -1838,8 +1838,8 @@
   {
     "id": 133,
     "name": "Meesh necklace",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Anti tarnish gold plated necklace ",
     "trending": true,
     "bestSeller": false,
@@ -1848,6 +1848,24 @@
         "color": "Gold",
         "images": [
           "images/136.HEIC"
+        ],
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": 134,
+    "name": "Luxe fish necklace ",
+    "category": "Necklaces",
+    "price": 220,
+    "description": "Anti tarnish gold plated ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/137.HEIC"
         ],
         "stock": 3
       }
