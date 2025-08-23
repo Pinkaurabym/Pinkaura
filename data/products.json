@@ -1874,8 +1874,8 @@
   {
     "id": 135,
     "name": "Channel necklace ",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Anti tarnish gold plated necklace ",
     "trending": true,
     "bestSeller": true,
@@ -1884,6 +1884,24 @@
         "color": "Gold",
         "images": [
           "images/138.HEIC"
+        ],
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": 136,
+    "name": "Queen bee necklace ",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Anti tarnish gold plated ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/139.HEIC"
         ],
         "stock": 3
       }
