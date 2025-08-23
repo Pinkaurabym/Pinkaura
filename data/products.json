@@ -1820,8 +1820,8 @@
   {
     "id": 132,
     "name": "Luxe green emerald necklace ",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Gold plated anti tarnish ",
     "trending": true,
     "bestSeller": true,
@@ -1832,6 +1832,24 @@
           "images/135.HEIC"
         ],
         "stock": 2
+      }
+    ]
+  },
+  {
+    "id": 133,
+    "name": "Meesh necklace",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Anti tarnish gold plated necklace ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/136.HEIC"
+        ],
+        "stock": 3
       }
     ]
   }
