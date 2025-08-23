@@ -1892,8 +1892,8 @@
   {
     "id": 136,
     "name": "Queen bee necklace ",
-    "category": "Necklaces",
     "price": 250,
+    "category": "Necklaces",
     "description": "Anti tarnish gold plated ",
     "trending": true,
     "bestSeller": false,
@@ -1901,7 +1901,7 @@
       {
         "color": "Gold",
         "images": [
-          "images/139.HEIC"
+          "images/139.PNG"
         ],
         "stock": 3
       }
