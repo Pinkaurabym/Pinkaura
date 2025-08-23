@@ -1856,8 +1856,8 @@
   {
     "id": 134,
     "name": "Luxe fish necklace ",
-    "category": "Necklaces",
     "price": 220,
+    "category": "Necklaces",
     "description": "Anti tarnish gold plated ",
     "trending": true,
     "bestSeller": false,
@@ -1866,6 +1866,24 @@
         "color": "Gold",
         "images": [
           "images/137.HEIC"
+        ],
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": 135,
+    "name": "Channel necklace ",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Anti tarnish gold plated necklace ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/138.HEIC"
         ],
         "stock": 3
       }
