@@ -1457,7 +1457,7 @@
         "images": [
           "images/placeholder.jpg"
         ],
-        "stock": 1
+        "stock": 0
       },
       {
         "color": "N",
@@ -1579,7 +1579,7 @@
         "images": [
           "images/119.jpg"
         ],
-        "stock": 2
+        "stock": 0
       }
     ]
   },
