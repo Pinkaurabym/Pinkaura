@@ -1906,5 +1906,23 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "id": 137,
+    "name": "Love Bands (small sized )",
+    "category": "Bracelets ",
+    "price": 190,
+    "description": "Cartier bangle ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/140.HEIC"
+        ],
+        "stock": 2
+      }
+    ]
   }
 ]
