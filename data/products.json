@@ -488,7 +488,7 @@
         "images": [
           "images/58.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -794,7 +794,7 @@
         "images": [
           "images/80.JPG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
@@ -938,7 +938,7 @@
         "images": [
           "images/88.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1215,7 +1215,7 @@
         "images": [
           "images/104.JPG"
         ],
-        "stock": 5
+        "stock": 4
       }
     ]
   },
