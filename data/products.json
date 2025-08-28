@@ -1931,5 +1931,23 @@
         "stock": 2
       }
     ]
+  },
+  {
+    "id": 138,
+    "name": "Pink heart glow necklace ",
+    "category": "Necklaces",
+    "price": 250,
+    "description": "Silver plated anti tarnish ",
+    "trending": true,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Silver ",
+        "images": [
+          "images/141.HEIC"
+        ],
+        "stock": 3
+      }
+    ]
   }
 ]
