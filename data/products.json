@@ -164,7 +164,7 @@
         "images": [
           "images/17.JPG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
@@ -452,7 +452,7 @@
         "images": [
           "images/56.JPG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
@@ -794,7 +794,7 @@
         "images": [
           "images/80.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -812,7 +812,7 @@
         "images": [
           "images/81.JPG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
@@ -1215,7 +1215,7 @@
         "images": [
           "images/104.JPG"
         ],
-        "stock": 4
+        "stock": 3
       }
     ]
   },
@@ -1425,7 +1425,7 @@
         "images": [
           "images/111.JPG"
         ],
-        "stock": 1
+        "stock": 0
       },
       {
         "color": "Purple",
@@ -1489,7 +1489,7 @@
         "images": [
           "images/114.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
