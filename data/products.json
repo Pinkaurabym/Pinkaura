@@ -2028,5 +2028,23 @@
         "stock": 3
       }
     ]
+  },
+  {
+    "id": 143,
+    "name": "Knot ring ",
+    "category": "Rings",
+    "price": 170,
+    "description": "Anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/146.jpg"
+        ],
+        "stock": 3
+      }
+    ]
   }
 ]
