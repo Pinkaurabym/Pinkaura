@@ -1949,5 +1949,23 @@
         "stock": 0
       }
     ]
+  },
+  {
+    "id": 139,
+    "name": "Sprinkle adjustable ring ",
+    "category": "Rings",
+    "price": 190,
+    "description": "Anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/142.jpg"
+        ],
+        "stock": 3
+      }
+    ]
   }
 ]
