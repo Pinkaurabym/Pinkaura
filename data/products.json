@@ -1723,7 +1723,7 @@
         "images": [
           "images/129.HEIC"
         ],
-        "stock": 1
+        "stock": ""
       }
     ]
   },
@@ -1777,7 +1777,7 @@
         "images": [
           "images/132.HEIC"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
