@@ -1953,8 +1953,8 @@
   {
     "id": 139,
     "name": "Sprinkle adjustable ring ",
-    "category": "Rings",
     "price": 190,
+    "category": "Rings",
     "description": "Anti tarnish ",
     "trending": true,
     "bestSeller": true,
@@ -1965,6 +1965,42 @@
           "images/142.jpg"
         ],
         "stock": 3
+      }
+    ]
+  },
+  {
+    "id": 140,
+    "name": "Circular adjustable ring ",
+    "category": "",
+    "price": 190,
+    "description": "Anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/143.jpg"
+        ],
+        "stock": 3
+      }
+    ]
+  },
+  {
+    "id": 141,
+    "name": "New Product",
+    "category": "Uncategorized",
+    "price": 0,
+    "description": "",
+    "trending": false,
+    "bestSeller": false,
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 0
       }
     ]
   }
