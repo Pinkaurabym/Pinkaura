@@ -146,7 +146,7 @@
         "images": [
           "images/15.JPG"
         ],
-        "stock": ""
+        "stock": 0
       }
     ]
   },
@@ -1946,7 +1946,7 @@
         "images": [
           "images/141.HEIC"
         ],
-        "stock": 0
+        "stock": 3
       }
     ]
   },
