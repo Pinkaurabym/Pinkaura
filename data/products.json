@@ -1472,6 +1472,13 @@
           "images/placeholder.jpg"
         ],
         "stock": 3
+      },
+      {
+        "color": "A",
+        "images": [
+          "images/placeholder.jpg"
+        ],
+        "stock": 3
       }
     ]
   },
