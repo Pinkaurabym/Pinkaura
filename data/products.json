@@ -1988,19 +1988,26 @@
   },
   {
     "id": 141,
-    "name": "New Product",
-    "price": 0,
-    "category": "Uncategorized",
-    "description": "",
-    "trending": false,
-    "bestSeller": false,
+    "name": "Studded clover ring ",
+    "price": 190,
+    "category": "Rings",
+    "description": "Anti tarnish ",
+    "trending": true,
+    "bestSeller": true,
     "variants": [
+      {
+        "color": "Black ",
+        "images": [
+          "images/144.jpg"
+        ],
+        "stock": 3
+      },
       {
         "color": "Gold",
         "images": [
-          "images/placeholder.jpg"
+          "images/144.jpg"
         ],
-        "stock": 0
+        "stock": 3
       }
     ]
   }
