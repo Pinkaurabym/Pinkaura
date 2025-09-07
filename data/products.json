@@ -452,7 +452,7 @@
         "images": [
           "images/56.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -830,7 +830,7 @@
         "images": [
           "images/82.JPG"
         ],
-        "stock": 2
+        "stock": 1
       }
     ]
   },
@@ -1017,7 +1017,7 @@
         "images": [
           "images/92.JPG"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -1143,7 +1143,7 @@
         "images": [
           "images/100.JPG"
         ],
-        "stock": 6
+        "stock": 5
       }
     ]
   },
@@ -1676,7 +1676,7 @@
         "images": [
           "images/126.PNG"
         ],
-        "stock": 5
+        "stock": 4
       }
     ]
   },
@@ -1748,7 +1748,7 @@
         "images": [
           "images/130.HEIC"
         ],
-        "stock": 1
+        "stock": 0
       }
     ]
   },
@@ -1910,7 +1910,7 @@
         "images": [
           "images/139.PNG"
         ],
-        "stock": 3
+        "stock": 2
       }
     ]
   },
