@@ -46,7 +46,7 @@ const HomePage = () => {
           transition={{ duration: 0.8 }}
           className="relative max-w-4xl mx-auto text-center mb-12 text-white"
         >
-          <h1 className="text-6xl sm:text-4xl font-heading font-bold mb-6 drop-shadow-lg">
+          <h1 className="text-3xl sm:text-2xl font-heading font-bold mb-6 drop-shadow-lg">
             ✨ Luxury Awaits
           </h1>
           <p className="text-l text-white/90 mb-8 drop-shadow-md">
