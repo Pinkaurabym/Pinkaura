@@ -1,2057 +1,2057 @@
-[
-  {
-    "id": 2,
-    "name": "Bow Ring",
-    "price": 200,
-    "category": "Rings",
-    "description": "18k gold plated ring (adjustable size)",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/2.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 3,
-    "name": "Amour Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/3.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 7,
-    "name": "One Love Necklace",
-    "price": 210,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/7.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 8,
-    "name": "Luxe Green Emerald Bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "An elegant 18k gold-plated bracelet with a delicate design.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/8.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 9,
-    "name": "Drop Earrings",
-    "price": 150,
-    "category": "Earrings",
-    "description": "Gold plated and plated drop earring",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/9a.JPG"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "Silver",
-        "images": [
-          "images/9b.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 10,
-    "name": "Puff Heart Necklace",
-    "price": 210,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/10.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 13,
-    "name": "Bow-Heart Themed Earrings",
-    "price": 220,
-    "category": "Earrings",
-    "description": "18k gold plated heart-bow themed earrings",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/13.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 15,
-    "name": "Tiny Heart Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/15.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 17,
-    "name": "Toi et Moi Ring",
-    "price": 250,
-    "category": "Rings",
-    "description": "18k gold plated ring (adjustable size)",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Silver",
-        "images": [
-          "images/17.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "name": "Goldie Luxe Ring",
-    "price": 200,
-    "category": "Rings",
-    "description": "18k gold plated ring (adjustable size)",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/19.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 22,
-    "name": "Chunky Three Layer Hoops",
-    "price": 100,
-    "category": "Earrings",
-    "description": "Gold plated and silver plated earring",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Silver",
-        "images": [
-          "images/22.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 23,
-    "name": "Angeline Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/23.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 27,
-    "name": "Crystilla Bow Ring",
-    "price": 60,
-    "category": "Rings",
-    "description": "Plated rings (adjustable size)",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/27.JPG"
-        ],
-        "stock": 10
-      }
-    ]
-  },
-  {
-    "id": 28,
-    "name": "Princess Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/28.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 31,
-    "name": "Bow-lý Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/31.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 32,
-    "name": "Love Heart Necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "An elegant 18k gold-plated necklace with a delicate design.",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/32.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 42,
-    "name": "CD BASED 18k gold plated ring",
-    "price": 250,
-    "category": "Rings",
-    "description": "daily wear anti tarnish CD ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/42.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 45,
-    "name": "fairy leave ring ",
-    "price": 230,
-    "category": "Rings",
-    "description": "daily wear anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/45.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 48,
-    "name": "diana ring  ",
-    "price": 230,
-    "category": "Rings",
-    "description": "crystal pieces anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/48.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 47,
-    "name": "swiss ring  ",
-    "price": 190,
-    "category": "Rings",
-    "description": "anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/47.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 49,
-    "name": "tira ring  ",
-    "price": 230,
-    "category": "Rings",
-    "description": "  anti tarnish adjustable ring.",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/49.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 52,
-    "name": "twin van vleef bracelet",
-    "price": 230,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/52.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 54,
-    "name": "Van cleef ( maroon )",
-    "price": 160,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Maroon",
-        "images": [
-          "images/54.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 55,
-    "name": "Gold beaded layered bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelets",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/55.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 56,
-    "name": "Green emerald beaded bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelets",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/56.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 57,
-    "name": "Swirl bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/57.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 58,
-    "name": "Golden van cleef bracelet",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/58.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 60,
-    "name": "Solid van cleef bangle",
-    "price": 400,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/60.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 61,
-    "name": "Bold white clover bangle",
-    "price": 350,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/61.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 62,
-    "name": "Twistie bangle",
-    "price": 350,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/62.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 63,
-    "name": "Luxe wrist bangle",
-    "price": 350,
-    "category": "Bracelets",
-    "description": "18k gold plated bracelet",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/63.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 66,
-    "name": "Promise + love  necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/66.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 67,
-    "name": "LV based necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/67.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 68,
-    "name": "Heartsy bow necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/68.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 69,
-    "name": "Minimal bow necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/69.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 70,
-    "name": "Snake chain bow necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/70.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 71,
-    "name": "Mini heart necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/71.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 72,
-    "name": "Gorgeous Saturn necklace",
-    "price": 230,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/72.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 74,
-    "name": "Heartsy 11:11 necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/74.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 75,
-    "name": "Infinity necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "18k gold plated necklace",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/75.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 77,
-    "name": "Promise ring",
-    "price": 250,
-    "category": "Rings",
-    "description": "Trendy promise ring",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/77.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 78,
-    "name": "Vintage heart ring",
-    "price": 199,
-    "category": "Rings",
-    "description": "18k gold plated ring",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/78.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 79,
-    "name": "Music band ring",
-    "price": 150,
-    "category": "Rings",
-    "description": "Best seller, anti tarnish",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/79.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 80,
-    "name": "Leaf band ring",
-    "price": 150,
-    "category": "Rings",
-    "description": "18k gold plated ring",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/80.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 81,
-    "name": "Mini butterfly ring",
-    "price": 199,
-    "category": "Rings",
-    "description": "Best selling, trendy",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/81.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 82,
-    "name": "Daisy band ring",
-    "price": 199,
-    "category": "Rings",
-    "description": "Trending, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/82.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 83,
-    "name": "Nail ring",
-    "price": 250,
-    "category": "Rings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/83.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 84,
-    "name": "Clover band ring",
-    "price": 230,
-    "category": "Rings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/84.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 85,
-    "name": "Thin snake ring",
-    "price": 190,
-    "category": "Rings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/85.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 86,
-    "name": "Yes to him ring",
-    "price": 200,
-    "category": "Rings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/86.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 87,
-    "name": "One love earrings",
-    "price": 150,
-    "category": "Earrings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/87.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 88,
-    "name": "Amour stud earrings",
-    "price": 200,
-    "category": "Earrings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/88.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 89,
-    "name": "Cute heart earrings",
-    "price": 200,
-    "category": "Earrings",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/89.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 90,
-    "name": "Cartier bands",
-    "price": 200,
-    "category": "Rings",
-    "description": "Golden size 10, Silver size 8 & 6, trendy",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/90.JPG"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "Silver",
-        "images": [
-          "images/90.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 91,
-    "name": "Diva earrings",
-    "price": 250,
-    "category": "Earrings",
-    "description": "Unique and best seller",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/91.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 92,
-    "name": "Link hand cuff bracelet",
-    "price": 350,
-    "category": "Bracelets",
-    "description": "Openable, free size, trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/92.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 93,
-    "name": "Whale necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/93.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 94,
-    "name": "Gold leaf necklace",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "Trendy",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/94.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 95,
-    "name": "Puffed heart necklace",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "Trendy",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/95.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 96,
-    "name": "Studded double sided clover",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "White + white",
-        "images": [
-          "images/96.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 98,
-    "name": "Queens emerald necklace",
-    "price": 300,
-    "category": "Necklaces",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/98.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 99,
-    "name": "Rope chain necklace",
-    "price": 230,
-    "category": "Necklaces",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/99.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 100,
-    "name": "Promise necklace",
-    "price": 230,
-    "category": "Necklaces",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/100.JPG"
-        ],
-        "stock": 5
-      }
-    ]
-  },
-  {
-    "id": 101,
-    "name": "Melted Pearl necklace",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "Best seller, trendy",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/101.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 102,
-    "name": "Double layered chain bracelet",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "Best seller",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/102.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 103,
-    "name": "Bow + diamond necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Trendy",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/103.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 104,
-    "name": "Tennis bracelet",
-    "price": 230,
-    "category": "Bracelets",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/104.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 105,
-    "name": "Sprinkl hand cuff bracelet",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "Best seller, trendy",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/105.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 106,
-    "name": "Beaded diamond bracelet",
-    "price": 250,
-    "category": "Bracelets",
-    "description": "Trendy, best seller",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/106.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 107,
-    "name": "Cat eye almond shaped press one ",
-    "price": 190,
-    "category": "Makeup",
-    "description": "Cat eye press nails 12 pieces set inc glue taps ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "1",
-        "images": [
-          "images/107.JPG"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "2",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "3",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "4",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "5",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "6",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 108,
-    "name": "Cat eye press ons ",
-    "price": 190,
-    "category": "Makeup",
-    "description": "Cat eye press nails 12 pieces set inc glue taps ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "1",
-        "images": [
-          "images/108.JPG"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "2",
-        "images": [
-          "images/108.JPG"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "3",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "4",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "5",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "6",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "7",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      },
-      {
-        "color": "8",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 109,
-    "name": "Vintage gold flower necklace ",
-    "price": 200,
-    "category": "Necklaces",
-    "description": "Gold plated necklace ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/109.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 110,
-    "name": "Pearl galaxy necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated necklace ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/110.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 111,
-    "name": "Baguette ring ",
-    "price": 200,
-    "category": "Rings",
-    "description": "Pretty baguette adjustable ring",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/111.JPG"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "Purple",
-        "images": [
-          "images/120.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 112,
-    "name": "Bubble initial necklace ",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "Cute initial gold plated necklace ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "I",
-        "images": [
-          "images/113.JPG"
-        ],
-        "stock": 2
-      },
-      {
-        "color": "M",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "N",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "T",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 3
-      },
-      {
-        "color": "A",
-        "images": [
-          "images/placeholder.jpg"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 113,
-    "name": "Sassy ring ",
-    "price": 160,
-    "category": "Rings",
-    "description": "Gold plated adjustable ring ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/114.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 114,
-    "name": "Royal goldie ring ",
-    "price": 170,
-    "category": "Rings",
-    "description": "Gold plated adjustable ring ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/115.JPG"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 115,
-    "name": "Minimal band ring",
-    "price": 150,
-    "category": "Rings",
-    "description": "Gold plated adjustable ring ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/116.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 116,
-    "name": "Black clover bracelet ",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "Anti tarnish black clover bracelet ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/117.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 117,
-    "name": "Layered Pearl bracelet ",
-    "price": 90,
-    "category": "Bracelets",
-    "description": "Double layered Pearl bracelet ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/118.JPG"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 118,
-    "name": "Curvy hand cuff",
-    "price": 199,
-    "category": "Bracelets",
-    "description": "Adjustable hand cuff ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/119.jpg"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 119,
-    "name": "V ring ",
-    "price": 190,
-    "category": "Rings",
-    "description": "Anti tarnish adjustable v ring ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/121.jpg"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 120,
-    "name": "Chunky chain bracelet",
-    "price": 230,
-    "category": "Bracelets",
-    "description": "Anti tarnish gold plated bracelet",
-    "trending": false,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/122.HEIC"
-        ],
-        "stock": 4
-      }
-    ]
-  },
-  {
-    "id": 121,
-    "name": "Double snake bracelet ",
-    "price": 220,
-    "category": "Bracelets",
-    "description": "Snake chain bracelet ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/123.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 122,
-    "name": "Studded infinity bracelet",
-    "price": 200,
-    "category": "Bracelets",
-    "description": "Infinity bracelet ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/125.HEIC"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 123,
-    "name": "Love ring ",
-    "price": 200,
-    "category": "Rings",
-    "description": "Anti tarnish , s925 plated ring ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Silver ",
-        "images": [
-          "images/126.PNG"
-        ],
-        "stock": 4
-      }
-    ]
-  },
-  {
-    "id": 124,
-    "name": "Caratline necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/127.HEIC"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 125,
-    "name": "Multiple stone necklace ",
-    "price": 270,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/128.HEIC"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 126,
-    "name": "Daisy Pearl necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated necklaces ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/129.HEIC"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 127,
-    "name": "Ballerina necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated necklace ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/130.HEIC"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 128,
-    "name": "Multi colour pendant ",
-    "price": 270,
-    "category": "Necklaces",
-    "description": "Gold plated and anti tarnish ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/131.HEIC"
-        ],
-        "stock": 1
-      }
-    ]
-  },
-  {
-    "id": 129,
-    "name": "Christmas necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/132.HEIC"
-        ],
-        "stock": 0
-      }
-    ]
-  },
-  {
-    "id": 130,
-    "name": "Pearl heart + snake necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/133.HEIC"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 131,
-    "name": "Layered emerald chain ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/134.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 132,
-    "name": "Luxe green emerald necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Gold plated anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/135.HEIC"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 133,
-    "name": "Meesh necklace",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Anti tarnish gold plated necklace ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/136.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 134,
-    "name": "Luxe fish necklace ",
-    "price": 220,
-    "category": "Necklaces",
-    "description": "Anti tarnish gold plated ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/137.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 135,
-    "name": "Channel necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Anti tarnish gold plated necklace ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/138.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 136,
-    "name": "Queen bee necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Anti tarnish gold plated ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/139.PNG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 137,
-    "name": "Love Bands ",
-    "price": 190,
-    "category": "Bracelets",
-    "description": "Cartier bangle ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold (small sized )",
-        "images": [
-          "images/140.HEIC"
-        ],
-        "stock": 2
-      },
-      {
-        "color": "Gold (standard sized)",
-        "images": [
-          "images/140.HEIC"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 138,
-    "name": "Pink heart glow necklace ",
-    "price": 250,
-    "category": "Necklaces",
-    "description": "Silver plated anti tarnish ",
-    "trending": true,
-    "bestSeller": false,
-    "variants": [
-      {
-        "color": "Silver ",
-        "images": [
-          "images/141.HEIC"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 139,
-    "name": "Sprinkle adjustable ring ",
-    "price": 190,
-    "category": "Rings",
-    "description": "Anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/142.JPG"
-        ],
-        "stock": 2
-      }
-    ]
-  },
-  {
-    "id": 140,
-    "name": "Circular adjustable ring ",
-    "price": 190,
-    "category": "Rings",
-    "description": "Anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/143.JPG"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 141,
-    "name": "Studded clover ring ",
-    "price": 190,
-    "category": "Rings",
-    "description": "Anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Black ",
-        "images": [
-          "images/144.jpg"
-        ],
-        "stock": 0
-      },
-      {
-        "color": "White",
-        "images": [
-          "images/144.jpg"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 142,
-    "name": "Little star band ring ",
-    "price": 190,
-    "category": "Rings",
-    "description": "Anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/145.jpg"
-        ],
-        "stock": 3
-      }
-    ]
-  },
-  {
-    "id": 143,
-    "name": "Knot ring ",
-    "price": 170,
-    "category": "Rings",
-    "description": "Anti tarnish ",
-    "trending": true,
-    "bestSeller": true,
-    "variants": [
-      {
-        "color": "Gold",
-        "images": [
-          "images/146.jpg"
-        ],
-        "stock": 2
-      }
-    ]
-  }
-]
+// [
+//   {
+//     "id": 2,
+//     "name": "Bow Ring",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "18k gold plated ring (adjustable size)",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/2.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 3,
+//     "name": "Amour Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/3.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 7,
+//     "name": "One Love Necklace",
+//     "price": 210,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/7.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 8,
+//     "name": "Luxe Green Emerald Bracelet",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "An elegant 18k gold-plated bracelet with a delicate design.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/8.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 9,
+//     "name": "Drop Earrings",
+//     "price": 150,
+//     "category": "Earrings",
+//     "description": "Gold plated and plated drop earring",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/9a.JPG"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "Silver",
+//         "images": [
+//           "images/9b.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 10,
+//     "name": "Puff Heart Necklace",
+//     "price": 210,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/10.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 13,
+//     "name": "Bow-Heart Themed Earrings",
+//     "price": 220,
+//     "category": "Earrings",
+//     "description": "18k gold plated heart-bow themed earrings",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/13.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 15,
+//     "name": "Tiny Heart Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/15.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 17,
+//     "name": "Toi et Moi Ring",
+//     "price": 250,
+//     "category": "Rings",
+//     "description": "18k gold plated ring (adjustable size)",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Silver",
+//         "images": [
+//           "images/17.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 19,
+//     "name": "Goldie Luxe Ring",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "18k gold plated ring (adjustable size)",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/19.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 22,
+//     "name": "Chunky Three Layer Hoops",
+//     "price": 100,
+//     "category": "Earrings",
+//     "description": "Gold plated and silver plated earring",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Silver",
+//         "images": [
+//           "images/22.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 23,
+//     "name": "Angeline Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/23.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 27,
+//     "name": "Crystilla Bow Ring",
+//     "price": 60,
+//     "category": "Rings",
+//     "description": "Plated rings (adjustable size)",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/27.JPG"
+//         ],
+//         "stock": 10
+//       }
+//     ]
+//   },
+//   {
+//     "id": 28,
+//     "name": "Princess Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/28.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 31,
+//     "name": "Bow-lý Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/31.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 32,
+//     "name": "Love Heart Necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "An elegant 18k gold-plated necklace with a delicate design.",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/32.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 42,
+//     "name": "CD BASED 18k gold plated ring",
+//     "price": 250,
+//     "category": "Rings",
+//     "description": "daily wear anti tarnish CD ring.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/42.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 45,
+//     "name": "fairy leave ring ",
+//     "price": 230,
+//     "category": "Rings",
+//     "description": "daily wear anti tarnish adjustable ring.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/45.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 48,
+//     "name": "diana ring  ",
+//     "price": 230,
+//     "category": "Rings",
+//     "description": "crystal pieces anti tarnish adjustable ring.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/48.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 47,
+//     "name": "swiss ring  ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "anti tarnish adjustable ring.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/47.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 49,
+//     "name": "tira ring  ",
+//     "price": 230,
+//     "category": "Rings",
+//     "description": "  anti tarnish adjustable ring.",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/49.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 52,
+//     "name": "twin van vleef bracelet",
+//     "price": 230,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/52.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 54,
+//     "name": "Van cleef ( maroon )",
+//     "price": 160,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Maroon",
+//         "images": [
+//           "images/54.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 55,
+//     "name": "Gold beaded layered bracelet",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelets",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/55.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 56,
+//     "name": "Green emerald beaded bracelet",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelets",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/56.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 57,
+//     "name": "Swirl bracelet",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/57.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 58,
+//     "name": "Golden van cleef bracelet",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/58.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 60,
+//     "name": "Solid van cleef bangle",
+//     "price": 400,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/60.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 61,
+//     "name": "Bold white clover bangle",
+//     "price": 350,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/61.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 62,
+//     "name": "Twistie bangle",
+//     "price": 350,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/62.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 63,
+//     "name": "Luxe wrist bangle",
+//     "price": 350,
+//     "category": "Bracelets",
+//     "description": "18k gold plated bracelet",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/63.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 66,
+//     "name": "Promise + love  necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/66.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 67,
+//     "name": "LV based necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/67.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 68,
+//     "name": "Heartsy bow necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/68.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 69,
+//     "name": "Minimal bow necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/69.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 70,
+//     "name": "Snake chain bow necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/70.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 71,
+//     "name": "Mini heart necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/71.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 72,
+//     "name": "Gorgeous Saturn necklace",
+//     "price": 230,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/72.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 74,
+//     "name": "Heartsy 11:11 necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/74.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 75,
+//     "name": "Infinity necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "18k gold plated necklace",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/75.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 77,
+//     "name": "Promise ring",
+//     "price": 250,
+//     "category": "Rings",
+//     "description": "Trendy promise ring",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/77.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 78,
+//     "name": "Vintage heart ring",
+//     "price": 199,
+//     "category": "Rings",
+//     "description": "18k gold plated ring",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/78.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 79,
+//     "name": "Music band ring",
+//     "price": 150,
+//     "category": "Rings",
+//     "description": "Best seller, anti tarnish",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/79.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 80,
+//     "name": "Leaf band ring",
+//     "price": 150,
+//     "category": "Rings",
+//     "description": "18k gold plated ring",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/80.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 81,
+//     "name": "Mini butterfly ring",
+//     "price": 199,
+//     "category": "Rings",
+//     "description": "Best selling, trendy",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/81.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 82,
+//     "name": "Daisy band ring",
+//     "price": 199,
+//     "category": "Rings",
+//     "description": "Trending, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/82.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 83,
+//     "name": "Nail ring",
+//     "price": 250,
+//     "category": "Rings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/83.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 84,
+//     "name": "Clover band ring",
+//     "price": 230,
+//     "category": "Rings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/84.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 85,
+//     "name": "Thin snake ring",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/85.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 86,
+//     "name": "Yes to him ring",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/86.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 87,
+//     "name": "One love earrings",
+//     "price": 150,
+//     "category": "Earrings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/87.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 88,
+//     "name": "Amour stud earrings",
+//     "price": 200,
+//     "category": "Earrings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/88.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 89,
+//     "name": "Cute heart earrings",
+//     "price": 200,
+//     "category": "Earrings",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/89.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 90,
+//     "name": "Cartier bands",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "Golden size 10, Silver size 8 & 6, trendy",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/90.JPG"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "Silver",
+//         "images": [
+//           "images/90.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 91,
+//     "name": "Diva earrings",
+//     "price": 250,
+//     "category": "Earrings",
+//     "description": "Unique and best seller",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/91.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 92,
+//     "name": "Link hand cuff bracelet",
+//     "price": 350,
+//     "category": "Bracelets",
+//     "description": "Openable, free size, trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/92.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 93,
+//     "name": "Whale necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/93.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 94,
+//     "name": "Gold leaf necklace",
+//     "price": 220,
+//     "category": "Necklaces",
+//     "description": "Trendy",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/94.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 95,
+//     "name": "Puffed heart necklace",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "Trendy",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/95.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 96,
+//     "name": "Studded double sided clover",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "White + white",
+//         "images": [
+//           "images/96.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 98,
+//     "name": "Queens emerald necklace",
+//     "price": 300,
+//     "category": "Necklaces",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/98.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 99,
+//     "name": "Rope chain necklace",
+//     "price": 230,
+//     "category": "Necklaces",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/99.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 100,
+//     "name": "Promise necklace",
+//     "price": 230,
+//     "category": "Necklaces",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/100.JPG"
+//         ],
+//         "stock": 5
+//       }
+//     ]
+//   },
+//   {
+//     "id": 101,
+//     "name": "Melted Pearl necklace",
+//     "price": 220,
+//     "category": "Necklaces",
+//     "description": "Best seller, trendy",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/101.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 102,
+//     "name": "Double layered chain bracelet",
+//     "price": 200,
+//     "category": "Bracelets",
+//     "description": "Best seller",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/102.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 103,
+//     "name": "Bow + diamond necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Trendy",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/103.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 104,
+//     "name": "Tennis bracelet",
+//     "price": 230,
+//     "category": "Bracelets",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/104.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 105,
+//     "name": "Sprinkl hand cuff bracelet",
+//     "price": 200,
+//     "category": "Bracelets",
+//     "description": "Best seller, trendy",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/105.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 106,
+//     "name": "Beaded diamond bracelet",
+//     "price": 250,
+//     "category": "Bracelets",
+//     "description": "Trendy, best seller",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/106.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 107,
+//     "name": "Cat eye almond shaped press one ",
+//     "price": 190,
+//     "category": "Makeup",
+//     "description": "Cat eye press nails 12 pieces set inc glue taps ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "1",
+//         "images": [
+//           "images/107.JPG"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "2",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "3",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "4",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "5",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "6",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 108,
+//     "name": "Cat eye press ons ",
+//     "price": 190,
+//     "category": "Makeup",
+//     "description": "Cat eye press nails 12 pieces set inc glue taps ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "1",
+//         "images": [
+//           "images/108.JPG"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "2",
+//         "images": [
+//           "images/108.JPG"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "3",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "4",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "5",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "6",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "7",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       },
+//       {
+//         "color": "8",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 109,
+//     "name": "Vintage gold flower necklace ",
+//     "price": 200,
+//     "category": "Necklaces",
+//     "description": "Gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/109.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 110,
+//     "name": "Pearl galaxy necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/110.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 111,
+//     "name": "Baguette ring ",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "Pretty baguette adjustable ring",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/111.JPG"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "Purple",
+//         "images": [
+//           "images/120.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 112,
+//     "name": "Bubble initial necklace ",
+//     "price": 220,
+//     "category": "Necklaces",
+//     "description": "Cute initial gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "I",
+//         "images": [
+//           "images/113.JPG"
+//         ],
+//         "stock": 2
+//       },
+//       {
+//         "color": "M",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "N",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "T",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 3
+//       },
+//       {
+//         "color": "A",
+//         "images": [
+//           "images/placeholder.jpg"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 113,
+//     "name": "Sassy ring ",
+//     "price": 160,
+//     "category": "Rings",
+//     "description": "Gold plated adjustable ring ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/114.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 114,
+//     "name": "Royal goldie ring ",
+//     "price": 170,
+//     "category": "Rings",
+//     "description": "Gold plated adjustable ring ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/115.JPG"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 115,
+//     "name": "Minimal band ring",
+//     "price": 150,
+//     "category": "Rings",
+//     "description": "Gold plated adjustable ring ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/116.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 116,
+//     "name": "Black clover bracelet ",
+//     "price": 200,
+//     "category": "Bracelets",
+//     "description": "Anti tarnish black clover bracelet ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/117.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 117,
+//     "name": "Layered Pearl bracelet ",
+//     "price": 90,
+//     "category": "Bracelets",
+//     "description": "Double layered Pearl bracelet ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/118.JPG"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 118,
+//     "name": "Curvy hand cuff",
+//     "price": 199,
+//     "category": "Bracelets",
+//     "description": "Adjustable hand cuff ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/119.jpg"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 119,
+//     "name": "V ring ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Anti tarnish adjustable v ring ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/121.jpg"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 120,
+//     "name": "Chunky chain bracelet",
+//     "price": 230,
+//     "category": "Bracelets",
+//     "description": "Anti tarnish gold plated bracelet",
+//     "trending": false,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/122.HEIC"
+//         ],
+//         "stock": 4
+//       }
+//     ]
+//   },
+//   {
+//     "id": 121,
+//     "name": "Double snake bracelet ",
+//     "price": 220,
+//     "category": "Bracelets",
+//     "description": "Snake chain bracelet ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/123.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 122,
+//     "name": "Studded infinity bracelet",
+//     "price": 200,
+//     "category": "Bracelets",
+//     "description": "Infinity bracelet ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/125.HEIC"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 123,
+//     "name": "Love ring ",
+//     "price": 200,
+//     "category": "Rings",
+//     "description": "Anti tarnish , s925 plated ring ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Silver ",
+//         "images": [
+//           "images/126.PNG"
+//         ],
+//         "stock": 4
+//       }
+//     ]
+//   },
+//   {
+//     "id": 124,
+//     "name": "Caratline necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/127.HEIC"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 125,
+//     "name": "Multiple stone necklace ",
+//     "price": 270,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/128.HEIC"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 126,
+//     "name": "Daisy Pearl necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated necklaces ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/129.HEIC"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 127,
+//     "name": "Ballerina necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/130.HEIC"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 128,
+//     "name": "Multi colour pendant ",
+//     "price": 270,
+//     "category": "Necklaces",
+//     "description": "Gold plated and anti tarnish ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/131.HEIC"
+//         ],
+//         "stock": 1
+//       }
+//     ]
+//   },
+//   {
+//     "id": 129,
+//     "name": "Christmas necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/132.HEIC"
+//         ],
+//         "stock": 0
+//       }
+//     ]
+//   },
+//   {
+//     "id": 130,
+//     "name": "Pearl heart + snake necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/133.HEIC"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 131,
+//     "name": "Layered emerald chain ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/134.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 132,
+//     "name": "Luxe green emerald necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Gold plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/135.HEIC"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 133,
+//     "name": "Meesh necklace",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Anti tarnish gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/136.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 134,
+//     "name": "Luxe fish necklace ",
+//     "price": 220,
+//     "category": "Necklaces",
+//     "description": "Anti tarnish gold plated ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/137.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 135,
+//     "name": "Channel necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Anti tarnish gold plated necklace ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/138.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 136,
+//     "name": "Queen bee necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Anti tarnish gold plated ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/139.PNG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 137,
+//     "name": "Love Bands ",
+//     "price": 190,
+//     "category": "Bracelets",
+//     "description": "Cartier bangle ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold (small sized )",
+//         "images": [
+//           "images/140.HEIC"
+//         ],
+//         "stock": 2
+//       },
+//       {
+//         "color": "Gold (standard sized)",
+//         "images": [
+//           "images/140.HEIC"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 138,
+//     "name": "Pink heart glow necklace ",
+//     "price": 250,
+//     "category": "Necklaces",
+//     "description": "Silver plated anti tarnish ",
+//     "trending": true,
+//     "bestSeller": false,
+//     "variants": [
+//       {
+//         "color": "Silver ",
+//         "images": [
+//           "images/141.HEIC"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 139,
+//     "name": "Sprinkle adjustable ring ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/142.JPG"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   },
+//   {
+//     "id": 140,
+//     "name": "Circular adjustable ring ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/143.JPG"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 141,
+//     "name": "Studded clover ring ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Black ",
+//         "images": [
+//           "images/144.jpg"
+//         ],
+//         "stock": 0
+//       },
+//       {
+//         "color": "White",
+//         "images": [
+//           "images/144.jpg"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 142,
+//     "name": "Little star band ring ",
+//     "price": 190,
+//     "category": "Rings",
+//     "description": "Anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/145.jpg"
+//         ],
+//         "stock": 3
+//       }
+//     ]
+//   },
+//   {
+//     "id": 143,
+//     "name": "Knot ring ",
+//     "price": 170,
+//     "category": "Rings",
+//     "description": "Anti tarnish ",
+//     "trending": true,
+//     "bestSeller": true,
+//     "variants": [
+//       {
+//         "color": "Gold",
+//         "images": [
+//           "images/146.jpg"
+//         ],
+//         "stock": 2
+//       }
+//     ]
+//   }
+// ]
