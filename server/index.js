@@ -63,7 +63,26 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
       });
     }
 
-    const productData = JSON.parse(req.body.productData);
+    // Check if productData exists
+    if (!req.body.productData) {
+      return res.status(400).json({
+        success: false,
+        message: 'Product data is missing'
+      });
+    }
+
+    // Parse productData with error handling
+    let productData;
+    try {
+      productData = JSON.parse(req.body.productData);
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError);
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid product data format'
+      });
+    }
+
     const productsFilePath = path.join(__dirname, '../public/data/products.json');
 
     // Read existing products

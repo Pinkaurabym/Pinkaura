@@ -177,6 +177,47 @@ const AdminPage = () => {
     setImagePreview(null);
   };
 
+  const handleDeleteProduct = async (productId) => {
+    if (!confirm('Are you sure you want to delete this product?')) {
+      return;
+    }
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${API_URL}/api/products/${productId}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error: ${response.status} - ${errorText || 'Unknown error'}`);
+      }
+
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response.');
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        showNotification('✅ Product deleted successfully! Refreshing...', 'success');
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        showNotification(result.message || 'Failed to delete product', 'error');
+      }
+
+    } catch (error) {
+      console.error('Delete error:', error);
+      if (error.message.includes('Failed to fetch')) {
+        showNotification('❌ Cannot connect to backend.', 'error');
+      } else {
+        showNotification(`❌ ${error.message}`, 'error');
+      }
+    }
+  };
+
   // Login screen
   if (!isAuthenticated) {
     return (
@@ -440,7 +481,85 @@ const AdminPage = () => {
               </button>
             </div>
           </div>
+        </div>
 
+        {/* Products List */}
+        <div className="bg-white rounded-2xl shadow-lg p-8 mt-8">
+          <h2 className="text-2xl font-heading font-bold text-dark-900 mb-6">Existing Products</h2>
+          
+          {products.length === 0 ? (
+            <p className="text-center text-dark-500 py-8">No products yet. Add your first product above!</p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-dark-200">
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Image</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Name</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Price</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Category</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Stock</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Status</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {products.map((product) => (
+                    <tr key={product.id} className="border-b border-dark-100 hover:bg-dark-50">
+                      <td className="py-3 px-4">
+                        <img 
+                          src={product.variants[0].images[0]} 
+                          alt={product.name}
+                          className="w-12 h-12 object-cover rounded-lg"
+                        />
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="font-medium text-dark-900">{product.name}</div>
+                        {product.description && (
+                          <div className="text-xs text-dark-500 truncate max-w-xs">{product.description}</div>
+                        )}
+                      </td>
+                      <td className="py-3 px-4 text-dark-700">₹{product.price}</td>
+                      <td className="py-3 px-4 text-dark-700">{product.category}</td>
+                      <td className="py-3 px-4">
+                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                          product.variants[0].stock > 5 
+                            ? 'bg-green-100 text-green-700' 
+                            : product.variants[0].stock > 0 
+                              ? 'bg-yellow-100 text-yellow-700' 
+                              : 'bg-red-100 text-red-700'
+                        }`}>
+                          {product.variants[0].stock} left
+                        </span>
+                      </td>
+                      <td className="py-3 px-4">
+                        <div className="flex gap-1">
+                          {product.trending && (
+                            <span className="px-2 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">
+                              🔥 Trending
+                            </span>
+                          )}
+                          {product.bestSeller && (
+                            <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
+                              ⭐ Best
+                            </span>
+                          )}
+                        </div>
+                      </td>
+                      <td className="py-3 px-4">
+                        <button
+                          onClick={() => handleDeleteProduct(product.id)}
+                          className="text-red-500 hover:text-red-700 font-medium text-sm px-3 py-1 rounded-lg hover:bg-red-50 transition"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </div>
