@@ -26,9 +26,10 @@ const useCartStore = create(
        * @returns {void}
        */
       addToCart: (product, variant) => {
-        const imagePath = variant.images[0].startsWith('/') 
+        // Preserve full URLs (Cloudinary), otherwise ensure leading slash for local images
+        const imagePath = variant.images[0].startsWith('http') 
           ? variant.images[0] 
-          : `/${variant.images[0]}`;
+          : (variant.images[0].startsWith('/') ? variant.images[0] : `/${variant.images[0]}`);
         
         const newItem = {
           id: product.id,

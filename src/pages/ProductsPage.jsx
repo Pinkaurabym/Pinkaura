@@ -3,11 +3,9 @@ import { Link, useLocation } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import ProductCard from '../components/ProductCard';
 import { useProducts } from '../hooks/useProducts';
-import useCartStore from '../store/cartStore';
 
 const ProductsPage = () => {
   const { products, loading, error } = useProducts();
-  const { addToCart } = useCartStore();
   const location = useLocation();
 
   const searchParams = new URLSearchParams(location.search);
@@ -162,7 +160,6 @@ const ProductsPage = () => {
                 <ProductCard
                   product={product}
                   variant={product.variants[0]}
-                  onClick={() => addToCart(product, product.variants[0])}
                 />
               </motion.div>
             ))}

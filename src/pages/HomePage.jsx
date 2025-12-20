@@ -3,11 +3,9 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import { useProducts } from '../hooks/useProducts';
-import useCartStore from '../store/cartStore';
 
 const HomePage = () => {
   const { products } = useProducts();
-  const { addToCart } = useCartStore();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [...new Set(products.map((p) => p.category))];
@@ -117,9 +115,6 @@ const HomePage = () => {
                     <ProductCard
                       product={product}
                       variant={product.variants[0]}
-                      onClick={() =>
-                        addToCart(product, product.variants[0])
-                      }
                     />
                   </motion.div>
                 ))}
@@ -172,9 +167,6 @@ const HomePage = () => {
                   <ProductCard
                     product={product}
                     variant={product.variants[0]}
-                    onClick={() =>
-                      addToCart(product, product.variants[0])
-                    }
                   />
                 </motion.div>
               ))}
@@ -227,9 +219,6 @@ const HomePage = () => {
                   <ProductCard
                     product={product}
                     variant={product.variants[0]}
-                    onClick={() =>
-                      addToCart(product, product.variants[0])
-                    }
                   />
                 </motion.div>
               ))}

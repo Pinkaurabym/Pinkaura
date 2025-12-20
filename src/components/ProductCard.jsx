@@ -92,17 +92,13 @@ const ProductCard = ({ product, variant, onClick }) => {
             whileHover="hover"
             className="absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center"
           >
-            <motion.button
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={(e) => {
-                e.preventDefault();
-                onClick && onClick();
-              }}
               className="btn-primary shadow-lg"
             >
               Quick View
-            </motion.button>
+            </motion.div>
           </motion.div>
 
         </div>
