@@ -48,10 +48,10 @@ const HomePage = () => {
           transition={{ duration: 0.8 }}
           className="relative max-w-4xl mx-auto text-center mb-12 text-white"
         >
-          <h1 className="text-6xl sm:text-7xl font-heading font-bold mb-6 drop-shadow-lg">
+          <h1 className="text-6xl sm:text-4xl font-heading font-bold mb-6 drop-shadow-lg">
             ✨ Luxury Awaits
           </h1>
-          <p className="text-xl text-white/90 mb-8 drop-shadow-md">
+          <p className="text-l text-white/90 mb-8 drop-shadow-md">
             Discover our exclusive collection of premium jewelry and accessories
           </p>
           <Link to="/products">
