@@ -26,8 +26,8 @@ const AdminPage = () => {
   const [notification, setNotification] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Simple password protection (change 'admin123' to your secure password)
-  const ADMIN_PASSWORD = 'admin123';
+  // Password from environment variable (required)
+  const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -128,6 +128,18 @@ const AdminPage = () => {
         body: formDataToSend,
       });
 
+      // Check if response is ok before parsing
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error: ${response.status} - ${errorText || 'Unknown error'}`);
+      }
+
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Server returned non-JSON response. Make sure backend is deployed and running.');
+      }
+
       const result = await response.json();
 
       if (result.success) {
@@ -140,7 +152,11 @@ const AdminPage = () => {
 
     } catch (error) {
       console.error('Upload error:', error);
-      showNotification('Failed to upload. Make sure backend server is running on port 3001.', 'error');
+      if (error.message.includes('Failed to fetch')) {
+        showNotification('❌ Cannot connect to backend. Deploy your backend to Render first!', 'error');
+      } else {
+        showNotification(`❌ ${error.message}`, 'error');
+      }
     } finally {
       setIsLoading(false);
     }
@@ -202,18 +218,10 @@ const AdminPage = () => {
             <button
               type="submit"
               className="btn-primary w-full py-3"
-            >
+            >  
               Login
             </button>
           </form>
-
-          <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-            <p className="text-sm text-yellow-800">
-              <strong>⚠️ Demo Mode:</strong> Default password is <code className="bg-yellow-100 px-2 py-1 rounded">admin123</code>
-              <br />
-              <span className="text-xs">Change this in AdminPage.jsx before deploying!</span>
-            </p>
-          </div>
         </div>
       </div>
     );
@@ -433,14 +441,6 @@ const AdminPage = () => {
             </div>
           </div>
 
-          <div className="mt-6 bg-blue-50 border border-blue-200 rounded-xl p-4">
-            <h3 className="font-semibold text-blue-900 mb-2 flex items-center gap-2">
-              <span>ℹ️</span> Backend Required
-            </h3>
-            <p className="text-sm text-blue-800">
-              Make sure the backend server is running on port 3001. Run: <code className="bg-blue-100 px-2 py-1 rounded font-mono">npm run server</code>
-            </p>
-          </div>
         </div>
       </div>
     </div>
