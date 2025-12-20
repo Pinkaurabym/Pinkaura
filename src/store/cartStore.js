@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { SHIPPING_COST, STORAGE_KEYS } from '../utils/constants';
+import { SHIPPING_COST, FREE_SHIPPING_THRESHOLD, STORAGE_KEYS } from '../utils/constants';
 
 /**
  * Cart Store - Global state management for shopping cart
@@ -141,7 +141,7 @@ const useCartStore = create(
           (sum, item) => sum + item.price * item.quantity,
           0
         );
-        const shipping = currentCart.length > 0 ? SHIPPING_COST : 0;
+        const shipping = currentCart.length > 0 && subtotal < FREE_SHIPPING_THRESHOLD ? SHIPPING_COST : 0;
         return { subtotal, shipping, total: subtotal + shipping };
       },
     }),

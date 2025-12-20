@@ -80,8 +80,8 @@ export default {
         '5xl': '3rem',
       },
       fontFamily: {
-        heading: ['Playfair Display', 'serif'],
-        body: ['Poppins', 'sans-serif'],
+        heading: ['Pinyon Script', 'cursive'],
+        body: ['Pinyon Script', 'cursive'],
       },
       fontSize: {
         '2xl': ['1.5rem', { lineHeight: '2rem' }],

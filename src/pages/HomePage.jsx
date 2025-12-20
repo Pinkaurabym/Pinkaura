@@ -36,8 +36,8 @@ const HomePage = () => {
     <div className="min-h-screen bg-gradient-to-br from-dark-50 via-pink-50 to-purple-50">
       {/* Hero Section */}
       <section 
-        className="relative overflow-hidden h-screen sm:h-[90vh] lg:h-[120vh] px-4 sm:px-6 lg:px-8 bg-cover bg-center bg-no-repeat bg-fixed flex items-center justify-center"
-        style={{backgroundImage: `url('/images/hero.png')`}}
+        className="relative overflow-hidden h-screen sm:h-[90vh] lg:h-[120vh] px-4 sm:px-6 lg:px-8 bg-center bg-no-repeat bg-fixed flex items-center justify-center"
+        style={{backgroundImage: `url('/images/hero.png')`, backgroundSize: '100%'}}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/25" aria-hidden="true" />
         <motion.div
@@ -47,7 +47,7 @@ const HomePage = () => {
           className="relative max-w-4xl mx-auto text-center mb-12 text-white"
         >
           <h1 className="text-3xl sm:text-2xl font-heading font-bold mb-6 drop-shadow-lg">
-            ✨ Luxury Awaits
+            ✨ Luxury Awaits ✨
           </h1>
           <p className="text-l text-white/90 mb-8 drop-shadow-md">
             Discover our exclusive collection of premium jewelry and accessories
