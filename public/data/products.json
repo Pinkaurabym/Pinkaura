@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "name": "Mashreen Khalil",
+    "price": 312,
+    "category": "Rings",
+    "description": "",
+    "trending": false,
+    "bestSeller": false,
+    "cloudinaryId": "pinkaura-products/sjxj3csi7iyayurezglp",
+    "variants": [
+      {
+        "color": "Gold",
+        "images": [
+          "https://res.cloudinary.com/dvikhulrl/image/upload/v1766266814/pinkaura-products/sjxj3csi7iyayurezglp.jpg"
+        ],
+        "stock": 12
+      }
+    ]
+  }
+]

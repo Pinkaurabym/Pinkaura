@@ -56,6 +56,11 @@ const upload = multer({
  */
 app.post('/api/products', upload.single('image'), async (req, res) => {
   try {
+    console.log('=== Upload Request Received ===');
+    console.log('File:', req.file ? 'Present' : 'Missing');
+    console.log('Body keys:', Object.keys(req.body));
+    console.log('ProductData raw:', req.body.productData);
+    
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -65,9 +70,10 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
 
     // Check if productData exists
     if (!req.body.productData) {
+      console.error('ProductData is missing from request body');
       return res.status(400).json({
         success: false,
-        message: 'Product data is missing'
+        message: 'Product data is missing from request'
       });
     }
 
@@ -75,19 +81,29 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     let productData;
     try {
       productData = JSON.parse(req.body.productData);
+      console.log('Parsed productData:', productData);
     } catch (parseError) {
       console.error('JSON parse error:', parseError);
+      console.error('Raw productData that failed to parse:', req.body.productData);
       return res.status(400).json({
         success: false,
-        message: 'Invalid product data format'
+        message: `Invalid product data format: ${parseError.message}`
       });
     }
 
     const productsFilePath = path.join(__dirname, '../public/data/products.json');
 
-    // Read existing products
-    const productsFile = await fs.readFile(productsFilePath, 'utf-8');
-    const products = JSON.parse(productsFile);
+    // Read existing products with error handling
+    let products = [];
+    try {
+      const productsFile = await fs.readFile(productsFilePath, 'utf-8');
+      if (productsFile.trim()) {
+        products = JSON.parse(productsFile);
+      }
+    } catch (readError) {
+      console.warn('Could not read products.json, starting with empty array:', readError.message);
+      products = [];
+    }
 
     // Generate new ID
     const maxId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
