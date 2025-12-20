@@ -82,6 +82,7 @@ export const ROUTES = {
   BESTSELLERS: '/bestsellers',
   BAG: '/bag',
   CHECKOUT: '/checkout',
+  ADMIN: '/admin',
   ORDER_SUCCESS: '/order-success',
   SEARCH: '/search',
 };
