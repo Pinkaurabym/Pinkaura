@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Typography & Overrides */
+@layer base {
+  body {
+    @apply font-body text-dark-900 bg-dark-50;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading font-semibold;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl;
+  }
+}
+
+/* Custom Animations */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-pink-500 text-white rounded-full font-medium hover:bg-pink-600 transition-all duration-300 shadow-lg hover:shadow-glow-pink;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-pink-500 border-2 border-pink-500 rounded-full font-medium hover:bg-pink-50 transition-all duration-300;
+  }
+
+  .btn-icon {
+    @apply p-2 hover:bg-dark-100 rounded-full transition-colors duration-200;
+  }
+
+  .glass-card {
+    @apply glass p-6 rounded-3xl border border-white/20;
+  }
+
+  .product-card {
+    @apply relative overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-glass-lg transition-all duration-500;
+  }
+
+  .product-card:hover img {
+    transform: scale(1.08);
+    filter: brightness(1.1);
+  }
+
+  .variant-pill {
+    @apply inline-block px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-110;
+  }
+
+  .variant-pill.active {
+    @apply ring-2 ring-offset-2 ring-pink-500;
+  }
+
+  /* Hide scrollbar for horizontal scroll containers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+}
+
+/* Loading Skeleton Animation */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.05) 25%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for modal-like elements */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
