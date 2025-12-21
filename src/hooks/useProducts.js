@@ -12,16 +12,19 @@ export const useProducts = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      const API_URL = import.meta.env.VITE_API_URL || '';
       try {
-        // Fetch fresh data from JSON (cache-busting with timestamp)
-        const response = await fetch('/data/products.json?t=' + Date.now());
-        if (!response.ok) throw new Error('Failed to fetch products');
-        
-        const productData = await response.json();
-        setProducts(productData);
-        
-        // Cache in localStorage for offline fallback
-        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(productData));
+        // Prefer live API (Supabase-backed). Falls back to static JSON only if API fails.
+        const apiResponse = await fetch(`${API_URL}/api/products`);
+        if (!apiResponse.ok) throw new Error('Failed to fetch products');
+
+        const apiData = await apiResponse.json();
+        if (!apiData.success || !Array.isArray(apiData.products)) {
+          throw new Error('Invalid product payload');
+        }
+
+        setProducts(apiData.products);
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(apiData.products));
       } catch (err) {
         setError(err.message);
         
@@ -30,6 +33,14 @@ export const useProducts = () => {
           const cachedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
           if (cachedProducts) {
             setProducts(JSON.parse(cachedProducts));
+            return;
+          }
+          // As last resort, attempt static JSON (older data bundled with app)
+          const staticResponse = await fetch('/data/products.json?t=' + Date.now());
+          if (staticResponse.ok) {
+            const staticData = await staticResponse.json();
+            setProducts(staticData);
+            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(staticData));
           }
         } catch (cacheError) {
           // Silent fail - cached data is corrupted
