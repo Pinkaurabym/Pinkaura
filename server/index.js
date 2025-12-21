@@ -7,6 +7,7 @@ import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import { v2 as cloudinary } from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { createClient } from '@supabase/supabase-js';
 
 // Load environment variables
 dotenv.config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '.env') });
@@ -17,12 +18,11 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Check if running on Render (ephemeral filesystem)
+// Check if running on Render
 const isRender = process.env.RENDER === 'true';
 if (isRender) {
-  console.warn('⚠️  WARNING: Running on Render with ephemeral filesystem.');
-  console.warn('   Products saved to JSON files will be lost on dyno restart.');
-  console.warn('   Please migrate to a proper database (MongoDB, PostgreSQL, etc.)');
+  console.warn('⚠️  Running on Render with ephemeral filesystem.');
+  console.warn('   Using Supabase for data persistence.');
 }
 
 // Configure Cloudinary
@@ -31,6 +31,17 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
+
+// Configure Supabase
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseKey = process.env.SUPABASE_ANON_KEY;
+let supabase = null;
+let supabaseAvailable = false;
+
+if (supabaseUrl && supabaseKey) {
+  supabase = createClient(supabaseUrl, supabaseKey);
+  supabaseAvailable = true;
+}
 
 // Middleware
 app.use(cors({
@@ -46,13 +57,13 @@ const storage = new CloudinaryStorage({
   params: {
     folder: process.env.CLOUDINARY_FOLDER || 'pinkaura-products',
     allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
-    transformation: [{ width: 1000, height: 1000, crop: 'limit' }] // Optional: optimize images
+    transformation: [{ width: 1000, height: 1000, crop: 'limit' }]
   }
 });
 
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: (req, file, cb) => {
     if (file.mimetype.startsWith('image/')) {
       cb(null, true);
@@ -64,7 +75,7 @@ const upload = multer({
 
 /**
  * POST /api/products
- * Add a new product to products.json with Cloudinary image upload
+ * Add a new product with Cloudinary image upload
  */
 app.post('/api/products', upload.single('image'), async (req, res) => {
   try {
@@ -80,7 +91,6 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
       });
     }
 
-    // Check if productData exists
     if (!req.body.productData) {
       console.error('ProductData is missing from request body');
       return res.status(400).json({
@@ -89,7 +99,6 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
       });
     }
 
-    // Parse productData with error handling
     let productData;
     try {
       productData = JSON.parse(req.body.productData);
@@ -97,68 +106,92 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
       console.log('Stock value:', productData.stock, 'Type:', typeof productData.stock);
     } catch (parseError) {
       console.error('JSON parse error:', parseError);
-      console.error('Raw productData that failed to parse:', req.body.productData);
       return res.status(400).json({
         success: false,
         message: `Invalid product data format: ${parseError.message}`
       });
     }
 
-    const productsFilePath = path.join(__dirname, '../public/data/products.json');
+    const imageUrl = req.file.path;
+    const cloudinaryPublicId = req.file.filename;
 
-    // Read existing products with error handling
-    let products = [];
-    try {
-      const productsFile = await fs.readFile(productsFilePath, 'utf-8');
-      if (productsFile.trim()) {
-        products = JSON.parse(productsFile);
-      }
-    } catch (readError) {
-      console.warn('Could not read products.json, starting with empty array:', readError.message);
-      products = [];
-    }
-
-    // Generate new ID
-    const maxId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
-    const newId = maxId + 1;
-
-    // Get Cloudinary URL from uploaded file
-    const imageUrl = req.file.path; // Cloudinary URL
-    const cloudinaryPublicId = req.file.filename; // Cloudinary public_id
-
-    // Create product object with Cloudinary URL
-    const newProduct = {
-      id: newId,
+    const newProductData = {
       name: productData.name,
       price: parseFloat(productData.price),
       category: productData.category,
       description: productData.description,
       trending: productData.trending,
-      bestSeller: productData.bestSeller,
-      cloudinaryId: cloudinaryPublicId, // Store for deletion later
-      variants: [
-        {
-          color: productData.color,
-          images: [imageUrl], // Use Cloudinary URL instead of local path
-          stock: parseInt(productData.stock)
-        }
-      ]
+      best_seller: productData.bestSeller,
+      cloudinary_id: cloudinaryPublicId,
+      color: productData.color,
+      image_url: imageUrl,
+      stock: parseInt(productData.stock)
     };
 
-    // Add to products array
-    products.push(newProduct);
+    let newProduct;
 
-    console.log('New product to save:', JSON.stringify(newProduct, null, 2));
-    console.log('Total products after adding:', products.length);
-    console.log('File path:', productsFilePath);
+    if (supabaseAvailable) {
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .insert([newProductData])
+          .select();
 
-    // Write back to file
-    try {
-      await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
-      console.log('✅ Product successfully written to file');
-    } catch (writeError) {
-      console.error('❌ Failed to write products.json:', writeError);
-      throw writeError;
+        if (error) {
+          console.error('Supabase insert error:', error);
+          throw new Error(`Database error: ${error.message}`);
+        }
+
+        newProduct = data[0];
+        console.log('✅ Product saved to Supabase');
+      } catch (dbError) {
+        console.error('Supabase error:', dbError);
+        throw new Error(`Database error: ${dbError.message}`);
+      }
+    } else {
+      // Fallback to JSON file
+      const productsFilePath = path.join(__dirname, '../public/data/products.json');
+      
+      let products = [];
+      try {
+        const productsFile = await fs.readFile(productsFilePath, 'utf-8');
+        if (productsFile.trim()) {
+          products = JSON.parse(productsFile);
+        }
+      } catch (readError) {
+        console.warn('Could not read products.json:', readError.message);
+        products = [];
+      }
+
+      const maxId = products.length > 0 ? Math.max(...products.map(p => p.id)) : 0;
+      
+      newProduct = {
+        id: maxId + 1,
+        name: productData.name,
+        price: parseFloat(productData.price),
+        category: productData.category,
+        description: productData.description,
+        trending: productData.trending,
+        best_seller: productData.bestSeller,
+        cloudinary_id: cloudinaryPublicId,
+        variants: [
+          {
+            color: productData.color,
+            images: [imageUrl],
+            stock: parseInt(productData.stock)
+          }
+        ]
+      };
+
+      products.push(newProduct);
+
+      try {
+        await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
+        console.log('⚠️  Product saved to JSON file (NOT PERSISTENT ON RENDER)');
+      } catch (writeError) {
+        console.error('❌ Failed to write products.json:', writeError);
+        throw new Error(`File write error: ${writeError.message}`);
+      }
     }
 
     res.json({
@@ -182,10 +215,57 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
  */
 app.get('/api/products', async (req, res) => {
   try {
-    const productsFilePath = path.join(__dirname, '../public/data/products.json');
-    const productsFile = await fs.readFile(productsFilePath, 'utf-8');
-    const products = JSON.parse(productsFile);
-    
+    let products;
+
+    if (supabaseAvailable) {
+      try {
+        const { data, error } = await supabase
+          .from('products')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Supabase query error:', error);
+          throw new Error(`Database error: ${error.message}`);
+        }
+
+        // Transform Supabase data to match expected format
+        products = data.map(product => ({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          category: product.category,
+          description: product.description,
+          trending: product.trending,
+          bestSeller: product.best_seller,
+          cloudinaryId: product.cloudinary_id,
+          variants: [
+            {
+              color: product.color,
+              images: [product.image_url],
+              stock: product.stock
+            }
+          ]
+        }));
+
+        console.log(`📦 Retrieved ${products.length} products from Supabase`);
+      } catch (dbError) {
+        console.error('Supabase error:', dbError);
+        throw new Error(`Database error: ${dbError.message}`);
+      }
+    } else {
+      // Fallback to JSON file
+      const productsFilePath = path.join(__dirname, '../public/data/products.json');
+      try {
+        const productsFile = await fs.readFile(productsFilePath, 'utf-8');
+        products = productsFile.trim() ? JSON.parse(productsFile) : [];
+        console.log(`📦 Retrieved ${products.length} products from JSON file`);
+      } catch (readError) {
+        console.warn('Could not read products.json:', readError.message);
+        products = [];
+      }
+    }
+
     res.json({
       success: true,
       products
@@ -194,7 +274,7 @@ app.get('/api/products', async (req, res) => {
     console.error('Error reading products:', error);
     res.status(500).json({
       success: false,
-      message: 'Failed to read products'
+      message: error.message || 'Failed to read products'
     });
   }
 });
@@ -205,37 +285,77 @@ app.get('/api/products', async (req, res) => {
  */
 app.delete('/api/products/:id', async (req, res) => {
   try {
-    const productId = parseInt(req.params.id);
-    const productsFilePath = path.join(__dirname, '../public/data/products.json');
+    const productId = req.params.id;
+    let product;
 
-    // Read existing products
-    const productsFile = await fs.readFile(productsFilePath, 'utf-8');
-    let products = JSON.parse(productsFile);
+    if (supabaseAvailable) {
+      try {
+        // First get the product to find the cloudinary ID
+        const { data: productData, error: selectError } = await supabase
+          .from('products')
+          .select('*')
+          .eq('id', productId)
+          .single();
 
-    // Find product
-    const product = products.find(p => p.id === productId);
-    if (!product) {
-      return res.status(404).json({
-        success: false,
-        message: 'Product not found'
-      });
+        if (selectError || !productData) {
+          return res.status(404).json({
+            success: false,
+            message: 'Product not found'
+          });
+        }
+
+        product = productData;
+
+        // Delete from database
+        const { error: deleteError } = await supabase
+          .from('products')
+          .delete()
+          .eq('id', productId);
+
+        if (deleteError) {
+          console.error('Supabase delete error:', deleteError);
+          throw new Error(`Database error: ${deleteError.message}`);
+        }
+
+        console.log('✅ Product deleted from Supabase');
+      } catch (dbError) {
+        console.error('Supabase error:', dbError);
+        throw new Error(`Database error: ${dbError.message}`);
+      }
+    } else {
+      // Fallback to JSON file
+      const productsFilePath = path.join(__dirname, '../public/data/products.json');
+      
+      try {
+        const productsFile = await fs.readFile(productsFilePath, 'utf-8');
+        let products = productsFile.trim() ? JSON.parse(productsFile) : [];
+        
+        product = products.find(p => p.id === parseInt(productId));
+        if (!product) {
+          return res.status(404).json({
+            success: false,
+            message: 'Product not found'
+          });
+        }
+
+        products = products.filter(p => p.id !== parseInt(productId));
+        await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
+        console.log('⚠️  Product deleted from JSON file (NOT PERSISTENT ON RENDER)');
+      } catch (error) {
+        console.error('JSON file operation error:', error);
+        throw new Error(`File operation error: ${error.message}`);
+      }
     }
 
-    // Delete image from Cloudinary if cloudinaryId exists
-    if (product.cloudinaryId) {
+    // Delete image from Cloudinary if it exists
+    if (product && product.cloudinary_id) {
       try {
-        await cloudinary.uploader.destroy(product.cloudinaryId);
-        console.log(`Deleted image from Cloudinary: ${product.cloudinaryId}`);
+        await cloudinary.uploader.destroy(product.cloudinary_id);
+        console.log(`🗑️  Deleted image from Cloudinary: ${product.cloudinary_id}`);
       } catch (err) {
         console.warn('Failed to delete Cloudinary image:', err.message);
       }
     }
-
-    // Remove from products
-    products = products.filter(p => p.id !== productId);
-
-    // Write back to file
-    await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
 
     res.json({
       success: true,
@@ -246,7 +366,7 @@ app.delete('/api/products/:id', async (req, res) => {
     console.error('Error deleting product:', error);
     res.status(500).json({
       success: false,
-      message: 'Failed to delete product'
+      message: error.message || 'Failed to delete product'
     });
   }
 });
@@ -256,18 +376,35 @@ app.get('/api/health', (req, res) => {
   res.json({
     success: true,
     status: 'Server is running',
-    storage: 'JSON file (Render: NOT PERSISTENT)',
-    warning: '⚠️  Data will be lost on Render server restart. Use MongoDB for persistent storage.',
-    mongoSetupGuide: 'See MONGODB_SETUP.md for instructions'
+    supabaseAvailable,
+    message: supabaseAvailable 
+      ? '✅ Using Supabase (PostgreSQL) for data persistence' 
+      : '⚠️  Using JSON file storage (data will be lost on Render restart)'
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`\n🚀 Admin API Server running on http://localhost:${PORT}`);
-  console.log(`📁 Cloudinary folder: ${process.env.CLOUDINARY_FOLDER || 'pinkaura-products'}`);
-  if (isRender) {
-    console.log('\n⚠️  IMPORTANT: This server is using JSON file storage on Render.');
-    console.log('   Products will be LOST when the server restarts.');
-    console.log('   See MONGODB_SETUP.md for how to use MongoDB.\n');
+// Start server
+const startServer = async () => {
+  // Test Supabase connection if available
+  if (supabaseAvailable) {
+    try {
+      const { error } = await supabase.from('products').select('count', { count: 'exact', head: true });
+      if (error && error.code !== 'PGRST116') { // PGRST116 = table doesn't exist yet
+        throw error;
+      }
+      console.log('✅ Connected to Supabase');
+    } catch (error) {
+      console.warn('⚠️  Could not connect to Supabase:', error.message);
+      console.warn('   Make sure your products table exists');
+      supabaseAvailable = false;
+    }
   }
-});
+
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Admin API Server running on http://localhost:${PORT}`);
+    console.log(`📁 Cloudinary folder: ${process.env.CLOUDINARY_FOLDER || 'pinkaura-products'}`);
+    console.log(`💾 Storage: ${supabaseAvailable ? 'Supabase (PostgreSQL) ✅' : 'JSON file (Render: NOT PERSISTENT ⚠️)'}\n`);
+  });
+};
+
+startServer();
