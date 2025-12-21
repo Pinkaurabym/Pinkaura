@@ -17,6 +17,14 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Check if running on Render (ephemeral filesystem)
+const isRender = process.env.RENDER === 'true';
+if (isRender) {
+  console.warn('⚠️  WARNING: Running on Render with ephemeral filesystem.');
+  console.warn('   Products saved to JSON files will be lost on dyno restart.');
+  console.warn('   Please migrate to a proper database (MongoDB, PostgreSQL, etc.)');
+}
+
 // Configure Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -86,6 +94,7 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     try {
       productData = JSON.parse(req.body.productData);
       console.log('Parsed productData:', productData);
+      console.log('Stock value:', productData.stock, 'Type:', typeof productData.stock);
     } catch (parseError) {
       console.error('JSON parse error:', parseError);
       console.error('Raw productData that failed to parse:', req.body.productData);
@@ -139,8 +148,18 @@ app.post('/api/products', upload.single('image'), async (req, res) => {
     // Add to products array
     products.push(newProduct);
 
+    console.log('New product to save:', JSON.stringify(newProduct, null, 2));
+    console.log('Total products after adding:', products.length);
+    console.log('File path:', productsFilePath);
+
     // Write back to file
-    await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
+    try {
+      await fs.writeFile(productsFilePath, JSON.stringify(products, null, 2), 'utf-8');
+      console.log('✅ Product successfully written to file');
+    } catch (writeError) {
+      console.error('❌ Failed to write products.json:', writeError);
+      throw writeError;
+    }
 
     res.json({
       success: true,
@@ -232,7 +251,23 @@ app.delete('/api/products/:id', async (req, res) => {
   }
 });
 
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({
+    success: true,
+    status: 'Server is running',
+    storage: 'JSON file (Render: NOT PERSISTENT)',
+    warning: '⚠️  Data will be lost on Render server restart. Use MongoDB for persistent storage.',
+    mongoSetupGuide: 'See MONGODB_SETUP.md for instructions'
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`🚀 Admin API Server running on http://localhost:${PORT}`);
+  console.log(`\n🚀 Admin API Server running on http://localhost:${PORT}`);
   console.log(`📁 Cloudinary folder: ${process.env.CLOUDINARY_FOLDER || 'pinkaura-products'}`);
+  if (isRender) {
+    console.log('\n⚠️  IMPORTANT: This server is using JSON file storage on Render.');
+    console.log('   Products will be LOST when the server restarts.');
+    console.log('   See MONGODB_SETUP.md for how to use MongoDB.\n');
+  }
 });
