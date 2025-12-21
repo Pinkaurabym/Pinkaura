@@ -34,13 +34,25 @@ cloudinary.config({
 
 // Configure Supabase
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
+// Prefer service role if provided to avoid RLS surprises; fall back to anon
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
 let supabase = null;
 let supabaseAvailable = false;
 
 if (supabaseUrl && supabaseKey) {
-  supabase = createClient(supabaseUrl, supabaseKey);
-  supabaseAvailable = true;
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey);
+    supabaseAvailable = true;
+    const urlHost = (() => {
+      try { return new URL(supabaseUrl).host; } catch { return 'unknown-host'; }
+    })();
+    console.log(`✅ Supabase client initialised (host: ${urlHost}, key: ${process.env.SUPABASE_SERVICE_ROLE_KEY ? 'service-role' : 'anon'})`);
+  } catch (err) {
+    console.error('❌ Supabase client init failed:', err.message);
+    supabaseAvailable = false;
+  }
+} else {
+  console.warn('⚠️ Supabase URL or key missing; API will fall back to JSON file.');
 }
 
 // Middleware
@@ -230,7 +242,7 @@ app.get('/api/products', async (req, res) => {
         }
 
         // Transform Supabase data to match expected format
-        products = data.map(product => ({
+        products = (data || []).map(product => ({
           id: product.id,
           name: product.name,
           price: product.price,
@@ -388,14 +400,14 @@ const startServer = async () => {
   // Test Supabase connection if available
   if (supabaseAvailable) {
     try {
-      const { error } = await supabase.from('products').select('count', { count: 'exact', head: true });
+      const { error, count } = await supabase.from('products').select('id', { count: 'exact', head: true });
       if (error && error.code !== 'PGRST116') { // PGRST116 = table doesn't exist yet
         throw error;
       }
-      console.log('✅ Connected to Supabase');
+      console.log(`✅ Supabase reachable. Products count: ${Number.isFinite(count) ? count : 'unknown'} (head query)`);
     } catch (error) {
       console.warn('⚠️  Could not connect to Supabase:', error.message);
-      console.warn('   Make sure your products table exists');
+      console.warn('   Make sure your products table exists and credentials are correct');
       supabaseAvailable = false;
     }
   }
