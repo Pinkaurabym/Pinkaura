@@ -1,9 +1,16 @@
 node_modules/
 dist/
+*.DS_Store
 .DS_Store
 *.local
 .vscode/
 *.pem
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
 
 # Environment variables
 .env
@@ -19,3 +26,11 @@ server/.env.production
 # Keep .env.example files for documentation
 !.env.example
 !server/.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+Thumbs.db
