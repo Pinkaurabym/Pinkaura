@@ -31,7 +31,7 @@ const ProductPage = () => {
     if (!selectedVariant || !product) return 0;
     
     const cartItem = cart.find(
-      (item) => item.id === product.id && item.color === selectedVariant.color
+      (item) => item.id === product.id && item.variantNumber === selectedVariant.number
     );
     
     const quantityInCart = cartItem ? cartItem.quantity : 0;
@@ -164,36 +164,31 @@ const ProductPage = () => {
               {product.description}
             </p>
 
-            {/* Color Variants */}
+            {/* Variant Selection */}
             <div className="mb-8">
               <h3 className="text-sm font-bold text-dark-900 mb-4">
-                Color: <span className="text-pink-500">{selectedVariant?.color}</span>
+                Variant: <span className="text-pink-500">#{selectedVariant?.number}</span>
               </h3>
               <div className="flex gap-3 flex-wrap">
                 {product.variants.map((variant) => (
                   <motion.button
-                    key={variant.color}
+                    key={variant.number}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => setSelectedVariant(variant)}
                     className={`variant-pill ${
-                      selectedVariant?.color === variant.color
-                        ? 'active ring-2 ring-pink-500'
-                        : ''
+                      selectedVariant?.number === variant.number
+                        ? 'active ring-2 ring-pink-500 bg-pink-100 text-dark-900'
+                        : 'bg-white text-dark-700'
                     }`}
                     style={{
-                      backgroundColor:
-                        variant.color.toLowerCase() === 'gold'
-                          ? '#FFD700'
-                          : variant.color.toLowerCase(),
-                      color: ['white', 'gold'].includes(
-                        variant.color.toLowerCase()
-                      )
-                        ? '#000'
-                        : '#fff',
+                      padding: '8px 16px',
+                      borderRadius: '8px',
+                      border: selectedVariant?.number === variant.number ? '2px solid #ec4899' : '1px solid #e5e7eb',
+                      fontWeight: selectedVariant?.number === variant.number ? '600' : '500',
                     }}
                   >
-                    {variant.color}
+                    Variant {variant.number}
                   </motion.button>
                 ))}
               </div>

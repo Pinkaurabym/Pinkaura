@@ -1,14 +1,9 @@
 import { motion } from 'framer-motion';
-import { colors, borderRadius, shadows, spacing } from '../../theme';
+import { colors } from '../../theme';
 
 /**
- * ⚛️ Badge Component
+ * Badge Component
  * Small label for categorization, status, etc.
- * 
- * Usage:
- * <Badge variant="trending">🔥 Trending</Badge>
- * <Badge variant="bestseller">⭐ Best Seller</Badge>
- * <Badge variant="stock" size="sm">Only 5 left</Badge>
  */
 
 const badgeStyles = {

@@ -1,5 +1,5 @@
 /**
- * 🛠️ Utility Functions - helpers.js
+ * Utility Functions - helpers.js
  * Common array, object, and string helpers
  */
 

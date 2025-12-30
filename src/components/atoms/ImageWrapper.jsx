@@ -1,12 +1,6 @@
-import { colors, spacing } from '../../theme';
-
 /**
- * ⚛️ ImageWrapper Component
+ * ImageWrapper Component
  * Handles image loading, lazy loading, placeholders
- * 
- * Usage:
- * <ImageWrapper src="..." alt="..." ratio="square" />
- * <ImageWrapper src="..." lazyLoad />
  */
 
 const ImageWrapper = ({
@@ -43,9 +37,9 @@ const ImageWrapper = ({
         src={src}
         alt={alt}
         loading={lazyLoad ? 'lazy' : 'eager'}
+        decoding="async"
         onLoad={(e) => {
-          // Remove skeleton when loaded
-          e.target.parentElement.querySelector('.skeleton')?.remove?.();
+          e.target.parentElement.querySelector('.animate-pulse')?.remove?.();
           onLoad?.(e);
         }}
         className={`

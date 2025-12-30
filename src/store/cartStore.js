@@ -22,7 +22,7 @@ const useCartStore = create(
       /**
        * Add item to cart or increment quantity
        * @param {Object} product - Product object
-       * @param {Object} variant - Selected variant (color, images, stock)
+       * @param {Object} variant - Selected variant (number, images, stock)
        * @returns {void}
        */
       addToCart: (product, variant) => {
@@ -35,7 +35,7 @@ const useCartStore = create(
           id: product.id,
           name: product.name,
           price: product.price,
-          color: variant.color,
+          variantNumber: variant.number,
           quantity: 1,
           image: imagePath,
           stock: variant.stock,
@@ -43,7 +43,7 @@ const useCartStore = create(
 
         set((state) => {
           const existingItem = state.cart.find(
-            (item) => item.id === product.id && item.color === variant.color
+            (item) => item.id === product.id && item.variantNumber === variant.number
           );
 
           if (existingItem) {
@@ -64,13 +64,13 @@ const useCartStore = create(
       /**
        * Remove specific item from cart
        * @param {string|number} id - Product ID
-       * @param {string} color - Variant color
+       * @param {number} variantNumber - Variant number
        * @returns {void}
        */
-      removeFromCart: (id, color) => {
+      removeFromCart: (id, variantNumber) => {
         set((state) => ({
           cart: state.cart.filter(
-            (item) => !(item.id === id && item.color === color)
+            (item) => !(item.id === id && item.variantNumber === variantNumber)
           ),
         }));
       },
@@ -78,14 +78,14 @@ const useCartStore = create(
       /**
        * Update item quantity (removes if quantity <= 0)
        * @param {string|number} id - Product ID
-       * @param {string} color - Variant color
+       * @param {number} variantNumber - Variant number
        * @param {number} quantity - New quantity
        * @returns {void}
        */
-      updateQuantity: (id, color, quantity) => {
+      updateQuantity: (id, variantNumber, quantity) => {
         set((state) => {
           const cartItem = state.cart.find(
-            (item) => item.id === id && item.color === color
+            (item) => item.id === id && item.variantNumber === variantNumber
           );
           
           if (!cartItem) return state;
@@ -94,7 +94,7 @@ const useCartStore = create(
           if (quantity <= 0) {
             return {
               cart: state.cart.filter(
-                (item) => !(item.id === id && item.color === color)
+                (item) => !(item.id === id && item.variantNumber === variantNumber)
               ),
             };
           }

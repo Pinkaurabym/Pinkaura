@@ -1,14 +1,7 @@
 import { useState, useCallback } from 'react';
 
 /**
- * 🪝 useModal - Modal state management
- * 
- * Usage:
- * const { isOpen, open, close, toggle } = useModal();
- * 
- * <Modal isOpen={isOpen} onClose={close}>
- *   Content
- * </Modal>
+ * useModal - Modal state management
  */
 
 export const useModal = (initialState = false) => {
@@ -22,11 +15,7 @@ export const useModal = (initialState = false) => {
 };
 
 /**
- * 🪝 useNotification - Toast notification management
- * 
- * Usage:
- * const { show, notifications } = useNotification();
- * show({ type: 'success', message: 'Item added!' });
+ * useNotification - Toast notification management
  */
 
 export const useNotification = () => {
@@ -69,10 +58,7 @@ export const useNotification = () => {
 };
 
 /**
- * 🪝 useDebounce - Debounce a value
- * 
- * Usage:
- * const debouncedSearchTerm = useDebounce(searchTerm, 500);
+ * useDebounce - Debounce a value
  */
 
 export const useDebounce = (value, delay = 500) => {

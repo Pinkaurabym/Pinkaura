@@ -1,5 +1,5 @@
 /**
- * ⚛️ Spinner Component
+ * Spinner Component
  * Loading indicator
  */
 

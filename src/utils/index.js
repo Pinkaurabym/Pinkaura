@@ -1,5 +1,5 @@
 /**
- * 🛠️ Utils Index
+ * Utils Index
  * Export all utilities from one place
  */
 

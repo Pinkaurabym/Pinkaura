@@ -1,16 +1,8 @@
 import { useCallback, useState, useEffect } from 'react';
 
 /**
- * 🪝 useFilters - Product filtering & sorting
- * 
- * Handles:
- * - Category filtering
- * - Sorting (price, trending, bestsellers)
- * - Price range filtering
- * - Search
- * 
- * Usage:
- * const { filtered, setCategory, setSortBy } = useFilters(products);
+ * useFilters - Product filtering & sorting
+ * Handles category filtering, sorting, price range filtering, and search
  */
 
 export const useFilters = (products = []) => {

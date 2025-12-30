@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "id": 2,
+    "name": "Pinkaura",
+    "price": 12,
+    "category": "Rings",
+    "description": "1213133",
+    "trending": false,
+    "best_seller": true,
+    "cloudinary_id": "pinkaura-products/ucppl72uubwkazevbrzb",
+    "variants": [
+      {
+        "number": 1,
+        "images": [
+          "https://res.cloudinary.com/dvikhulrl/image/upload/v1767136707/pinkaura-products/ucppl72uubwkazevbrzb.png"
+        ],
+        "stock": 3
+      },
+      {
+        "number": 2,
+        "images": [
+          "https://res.cloudinary.com/dvikhulrl/image/upload/v1767136707/pinkaura-products/ucppl72uubwkazevbrzb.png"
+        ],
+        "stock": 4
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Pinkaura",
+    "price": 12,
+    "category": "Rings",
+    "description": "",
+    "trending": false,
+    "best_seller": false,
+    "cloudinary_id": "pinkaura-products/hxnttu7lc5gbplbvfg0d",
+    "variants": [
+      {
+        "number": 1,
+        "images": [
+          "https://res.cloudinary.com/dvikhulrl/image/upload/v1767136748/pinkaura-products/hxnttu7lc5gbplbvfg0d.png"
+        ],
+        "stock": 2
+      },
+      {
+        "number": 2,
+        "images": [
+          "https://res.cloudinary.com/dvikhulrl/image/upload/v1767136748/pinkaura-products/hxnttu7lc5gbplbvfg0d.png"
+        ],
+        "stock": 3
+      }
+    ]
+  }
+]

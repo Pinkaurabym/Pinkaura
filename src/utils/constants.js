@@ -1,5 +1,5 @@
 /**
- * 🛠️ Utility Functions - constants.js
+ * Utility Functions - constants.js
  * Enums, hardcoded values, configuration
  */
 

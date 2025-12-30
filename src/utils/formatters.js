@@ -1,5 +1,5 @@
 /**
- * 🛠️ Utility Functions - formatters.js
+ * Utility Functions - formatters.js
  * Price, date, text formatting
  */
 

@@ -1,5 +1,5 @@
 /**
- * 🛠️ Utility Functions - validators.js
+ * Utility Functions - validators.js
  * Form validation and data validation
  */
 

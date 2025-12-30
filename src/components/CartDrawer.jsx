@@ -19,18 +19,18 @@ const CartDrawer = () => {
   /**
    * Handle quantity update with stock validation
    * @param {string|number} id - Product ID
-   * @param {string} color - Variant color
+   * @param {number} variantNumber - Variant number
    * @param {number} newQuantity - Requested quantity
    * @param {number} stock - Available stock
    */
-  const handleQuantityUpdate = (id, color, newQuantity, stock) => {
-    const cartItem = cart.find(item => item.id === id && item.color === color);
+  const handleQuantityUpdate = (id, variantNumber, newQuantity, stock) => {
+    const cartItem = cart.find(item => item.id === id && item.variantNumber === variantNumber);
     if (newQuantity > stock) {
       setStockMessage(`Only ${stock} item${stock > 1 ? 's' : ''} available in stock`);
       setTimeout(() => setStockMessage(null), NOTIFICATION_DURATION.MEDIUM);
       return;
     }
-    updateQuantity(id, color, newQuantity);
+    updateQuantity(id, variantNumber, newQuantity);
   };
 
   const drawerVariants = {
@@ -121,7 +121,7 @@ const CartDrawer = () => {
                   <div className="space-y-4 mb-6">
                     {cart.map((item) => (
                       <motion.div
-                        key={`${item.id}-${item.color}`}
+                        key={`${item.id}-${item.variantNumber}`}
                         layout
                         className="flex gap-4 pb-4 border-b border-dark-100"
                       >
@@ -135,7 +135,7 @@ const CartDrawer = () => {
                             {item.name}
                           </h3>
                           <p className="text-sm text-dark-600">
-                            {item.color}
+                            Variant #{item.variantNumber}
                           </p>
                           <p className="text-pink-500 font-bold">
                             ₹{item.price}
@@ -147,7 +147,7 @@ const CartDrawer = () => {
                               onClick={() =>
                                 updateQuantity(
                                   item.id,
-                                  item.color,
+                                  item.variantNumber,
                                   item.quantity - 1
                                 )
                               }
@@ -162,7 +162,7 @@ const CartDrawer = () => {
                               onClick={() =>
                                 handleQuantityUpdate(
                                   item.id,
-                                  item.color,
+                                  item.variantNumber,
                                   item.quantity + 1,
                                   item.stock
                                 )
@@ -174,7 +174,7 @@ const CartDrawer = () => {
                             <span className="text-xs text-dark-500 ml-1">({item.stock} max)</span>
                             <button
                               onClick={() =>
-                                removeFromCart(item.id, item.color)
+                                removeFromCart(item.id, item.variantNumber)
                               }
                               className="ml-auto text-red-500 hover:text-red-700 text-sm"
                             >

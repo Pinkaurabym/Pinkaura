@@ -5,7 +5,7 @@ import { useProducts } from '../hooks/useProducts';
 /**
  * AdminPage - Product management interface
  * @component
- * @description Allows admin to add new products with automatic upload
+ * @description Allows admin to add new products with variants and manage inventory
  */
 const AdminPage = () => {
   const { products } = useProducts();
@@ -18,13 +18,16 @@ const AdminPage = () => {
     description: '',
     trending: false,
     bestSeller: false,
-    color: 'Gold',
-    stock: '',
   });
+  const [variants, setVariants] = useState([
+    { number: 1, stock: '' }
+  ]);
   const [imageFile, setImageFile] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [notification, setNotification] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
+  const [expandedVariants, setExpandedVariants] = useState({});
 
   // Password from environment variable (required)
   const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
@@ -49,7 +52,6 @@ const AdminPage = () => {
   }, []);
 
   const categories = ['Rings', 'Necklaces', 'Earrings', 'Bracelets'];
-  const colors = ['Gold', 'Silver', 'Rose Gold', 'White', 'Black'];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -57,6 +59,28 @@ const AdminPage = () => {
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
+  };
+
+  const handleVariantChange = (index, field, value) => {
+    const newVariants = [...variants];
+    newVariants[index] = {
+      ...newVariants[index],
+      [field]: value
+    };
+    setVariants(newVariants);
+  };
+
+  const addVariant = () => {
+    const maxNumber = Math.max(...variants.map(v => v.number), 0);
+    setVariants([...variants, { number: maxNumber + 1, stock: '' }]);
+  };
+
+  const removeVariant = (index) => {
+    if (variants.length > 1) {
+      setVariants(variants.filter((_, i) => i !== index));
+    } else {
+      showNotification('At least one variant is required', 'error');
+    }
   };
 
   const handleImageChange = (e) => {
@@ -96,10 +120,24 @@ const AdminPage = () => {
       showNotification('Valid price is required', 'error');
       return;
     }
-    if (!formData.stock || parseInt(formData.stock) < 0) {
-      showNotification('Valid stock quantity is required', 'error');
+    
+    // Validate variants
+    if (variants.length === 0) {
+      showNotification('At least one variant is required', 'error');
       return;
     }
+
+    for (const variant of variants) {
+      if (!variant.number) {
+        showNotification('Variant number is required for all variants', 'error');
+        return;
+      }
+      if (!variant.stock || parseInt(variant.stock) < 0) {
+        showNotification('Valid stock quantity is required for all variants', 'error');
+        return;
+      }
+    }
+
     if (!imageFile) {
       showNotification('Product image is required', 'error');
       return;
@@ -119,8 +157,10 @@ const AdminPage = () => {
         description: formData.description.trim(),
         trending: formData.trending,
         bestSeller: formData.bestSeller,
-        color: formData.color,
-        stock: formData.stock
+        variants: variants.map(v => ({
+          number: v.number,
+          stock: parseInt(v.stock)
+        }))
       }));
 
       const response = await fetch(`${API_URL}/api/products`, {
@@ -128,13 +168,11 @@ const AdminPage = () => {
         body: formDataToSend,
       });
 
-      // Check if response is ok before parsing
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`Server error: ${response.status} - ${errorText || 'Unknown error'}`);
       }
 
-      // Check if response is JSON
       const contentType = response.headers.get('content-type');
       if (!contentType || !contentType.includes('application/json')) {
         throw new Error('Server returned non-JSON response. Make sure backend is deployed and running.');
@@ -151,7 +189,6 @@ const AdminPage = () => {
       }
 
     } catch (error) {
-      console.error('Upload error:', error);
       if (error.message.includes('Failed to fetch')) {
         showNotification('❌ Cannot connect to backend. Deploy your backend to Render first!', 'error');
       } else {
@@ -170,15 +207,17 @@ const AdminPage = () => {
       description: '',
       trending: false,
       bestSeller: false,
-      color: 'Gold',
-      stock: '',
     });
+    setVariants([
+      { number: 1, stock: '' }
+    ]);
     setImageFile(null);
     setImagePreview(null);
+    setEditingProduct(null);
   };
 
   const handleDeleteProduct = async (productId) => {
-    if (!confirm('Are you sure you want to delete this product?')) {
+    if (!confirm('Are you sure you want to delete this product? This will also delete the image from Cloudinary.')) {
       return;
     }
 
@@ -209,13 +248,64 @@ const AdminPage = () => {
       }
 
     } catch (error) {
-      console.error('Delete error:', error);
       if (error.message.includes('Failed to fetch')) {
         showNotification('❌ Cannot connect to backend.', 'error');
       } else {
         showNotification(`❌ ${error.message}`, 'error');
       }
     }
+  };
+
+  const handleEditQuantity = (product) => {
+    setEditingProduct({
+      ...product,
+      tempVariants: JSON.parse(JSON.stringify(product.variants))
+    });
+  };
+
+  const handleSaveQuantity = async () => {
+    if (!editingProduct) return;
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${API_URL}/api/products/${editingProduct.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          variants: editingProduct.tempVariants
+        })
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Server error: ${response.status} - ${errorText || 'Unknown error'}`);
+      }
+
+      const result = await response.json();
+
+      if (result.success) {
+        showNotification('✅ Quantities updated successfully! Refreshing...', 'success');
+        setEditingProduct(null);
+        setTimeout(() => window.location.reload(), 1500);
+      } else {
+        showNotification(result.message || 'Failed to update quantities', 'error');
+      }
+
+    } catch (error) {
+      showNotification(`❌ ${error.message}`, 'error');
+    }
+  };
+
+  const updateVariantStock = (variantIndex, newStock) => {
+    setEditingProduct(prev => ({
+      ...prev,
+      tempVariants: prev.tempVariants.map((v, idx) => 
+        idx === variantIndex ? { ...v, stock: parseInt(newStock) || 0 } : v
+      )
+    }));
   };
 
   // Login screen
@@ -338,21 +428,6 @@ const AdminPage = () => {
 
             <div>
               <label className="block text-sm font-semibold text-dark-700 mb-2">
-                Stock Quantity <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="number"
-                name="stock"
-                value={formData.stock}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-dark-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
-                placeholder="3"
-                min="0"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-dark-700 mb-2">
                 Category <span className="text-red-500">*</span>
               </label>
               <select
@@ -363,22 +438,6 @@ const AdminPage = () => {
               >
                 {categories.map(cat => (
                   <option key={cat} value={cat}>{cat}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-dark-700 mb-2">
-                Color <span className="text-red-500">*</span>
-              </label>
-              <select
-                name="color"
-                value={formData.color}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-dark-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
-              >
-                {colors.map(color => (
-                  <option key={color} value={color}>{color}</option>
                 ))}
               </select>
             </div>
@@ -395,6 +454,71 @@ const AdminPage = () => {
                 className="w-full px-4 py-3 border border-dark-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-500"
                 placeholder="Anti tarnish, adjustable size, etc."
               />
+            </div>
+
+            {/* Variants Section */}
+            <div className="md:col-span-2">
+              <div className="flex items-center justify-between mb-4">
+                <label className="block text-sm font-semibold text-dark-700">
+                  Product Variants <span className="text-red-500">*</span>
+                </label>
+                <button
+                  type="button"
+                  onClick={addVariant}
+                  className="text-sm bg-pink-500 text-white px-3 py-1 rounded-lg hover:bg-pink-600 transition"
+                >
+                  + Add Variant
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                {variants.map((variant, index) => (
+                  <div key={index} className="border border-dark-200 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-medium text-dark-700">Variant #{variants[index]?.number || index + 1}</span>
+                      {variants.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => removeVariant(index)}
+                          className="text-red-500 hover:text-red-700 text-sm font-medium"
+                        >
+                          Remove
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-3">
+                      <div>
+                        <label className="block text-xs font-semibold text-dark-700 mb-1">
+                          Variant Number <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={variant.number}
+                          onChange={(e) => handleVariantChange(index, 'number', parseInt(e.target.value) || '')}
+                          className="w-full px-3 py-2 border border-dark-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="1"
+                          min="1"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-dark-700 mb-1">
+                          Stock <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="number"
+                          value={variant.stock}
+                          onChange={(e) => handleVariantChange(index, 'stock', e.target.value)}
+                          className="w-full px-3 py-2 border border-dark-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-pink-500"
+                          placeholder="0"
+                          min="0"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="md:col-span-2">
@@ -498,14 +622,19 @@ const AdminPage = () => {
                     <th className="text-left py-3 px-4 font-semibold text-dark-700">Name</th>
                     <th className="text-left py-3 px-4 font-semibold text-dark-700">Price</th>
                     <th className="text-left py-3 px-4 font-semibold text-dark-700">Category</th>
-                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Stock</th>
+                    <th className="text-left py-3 px-4 font-semibold text-dark-700">Variants</th>
                     <th className="text-left py-3 px-4 font-semibold text-dark-700">Status</th>
                     <th className="text-left py-3 px-4 font-semibold text-dark-700">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
                   {products.map((product) => (
-                    <tr key={product.id} className="border-b border-dark-100 hover:bg-dark-50">
+                    <motion.tr 
+                      key={product.id} 
+                      className="border-b border-dark-100 hover:bg-dark-50"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
                       <td className="py-3 px-4">
                         <img 
                           src={product.variants[0].images[0]} 
@@ -522,15 +651,30 @@ const AdminPage = () => {
                       <td className="py-3 px-4 text-dark-700">₹{product.price}</td>
                       <td className="py-3 px-4 text-dark-700">{product.category}</td>
                       <td className="py-3 px-4">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          product.variants[0].stock > 5 
-                            ? 'bg-green-100 text-green-700' 
-                            : product.variants[0].stock > 0 
-                              ? 'bg-yellow-100 text-yellow-700' 
-                              : 'bg-red-100 text-red-700'
-                        }`}>
-                          {product.variants[0].stock} left
-                        </span>
+                        <button
+                          onClick={() => setExpandedVariants(prev => ({
+                            ...prev,
+                            [product.id]: !prev[product.id]
+                          }))}
+                          className="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded-full hover:bg-blue-200 transition font-medium"
+                        >
+                          {product.variants.length} variant{product.variants.length !== 1 ? 's' : ''}
+                        </button>
+                        
+                        {expandedVariants[product.id] && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            className="mt-2 space-y-1"
+                          >
+                            {product.variants.map((variant, idx) => (
+                              <div key={idx} className="text-xs bg-dark-50 p-2 rounded border border-dark-200">
+                                <div className="font-semibold text-dark-700">Variant #{variant.number}</div>
+                                <div className="text-dark-600">Stock: {variant.stock}</div>
+                              </div>
+                            ))}
+                          </motion.div>
+                        )}
                       </td>
                       <td className="py-3 px-4">
                         <div className="flex gap-1">
@@ -547,20 +691,88 @@ const AdminPage = () => {
                         </div>
                       </td>
                       <td className="py-3 px-4">
-                        <button
-                          onClick={() => handleDeleteProduct(product.id)}
-                          className="text-red-500 hover:text-red-700 font-medium text-sm px-3 py-1 rounded-lg hover:bg-red-50 transition"
-                        >
-                          Delete
-                        </button>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleEditQuantity(product)}
+                            className="text-blue-500 hover:text-blue-700 font-medium text-sm px-3 py-1 rounded-lg hover:bg-blue-50 transition"
+                          >
+                            Edit Stock
+                          </button>
+                          <button
+                            onClick={() => handleDeleteProduct(product.id)}
+                            className="text-red-500 hover:text-red-700 font-medium text-sm px-3 py-1 rounded-lg hover:bg-red-50 transition"
+                          >
+                            Delete
+                          </button>
+                        </div>
                       </td>
-                    </tr>
+                    </motion.tr>
                   ))}
                 </tbody>
               </table>
             </div>
           )}
         </div>
+
+        {/* Edit Quantity Modal */}
+        {editingProduct && (
+          <motion.div 
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            onClick={() => setEditingProduct(null)}
+          >
+            <motion.div 
+              className="bg-white rounded-2xl shadow-lg p-8 max-w-2xl w-full"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+            >
+              <h3 className="text-2xl font-heading font-bold text-dark-900 mb-6">
+                Edit Stock: {editingProduct.name}
+              </h3>
+
+              <div className="space-y-4 mb-6">
+                {editingProduct.tempVariants && editingProduct.tempVariants.map((variant, idx) => (
+                  <div key={idx} className="border border-dark-200 rounded-xl p-4">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-semibold text-dark-700">
+                        Variant #{variant.number}
+                      </span>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-dark-700 mb-2">
+                        Stock Quantity
+                      </label>
+                      <input
+                        type="number"
+                        value={variant.stock}
+                        onChange={(e) => updateVariantStock(idx, e.target.value)}
+                        className="w-full px-4 py-2 border border-dark-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
+                        min="0"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex gap-4">
+                <button
+                  onClick={handleSaveQuantity}
+                  className="btn-primary flex-1 py-3"
+                >
+                  Save Changes
+                </button>
+                <button
+                  onClick={() => setEditingProduct(null)}
+                  className="btn-secondary px-6 py-3"
+                >
+                  Cancel
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

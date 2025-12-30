@@ -1,14 +1,8 @@
 import { colors } from '../../theme';
 
 /**
- * ⚛️ PriceTag Component
- * Displays price in INR format
- * Can show sale price vs original price
- * 
- * Usage:
- * <PriceTag price={250} />
- * <PriceTag price={250} originalPrice={400} />
- * <PriceTag price={250} size="lg" showCurrency />
+ * PriceTag Component
+ * Displays price in INR format with optional sale price
  */
 
 const PriceTag = ({

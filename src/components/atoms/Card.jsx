@@ -1,5 +1,5 @@
 /**
- * ⚛️ Card Component
+ * Card Component
  * Generic card container with optional shadow/glass effect
  */
 

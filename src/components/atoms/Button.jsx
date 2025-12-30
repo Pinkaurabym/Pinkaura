@@ -1,17 +1,9 @@
 import { motion } from 'framer-motion';
-import { colors, spacing } from '../../theme';
 
 /**
- * ⚛️ Button Component
- * 
+ * Button Component
  * Variants: primary, secondary, ghost, danger
  * Sizes: sm, md, lg
- * States: disabled, loading
- * 
- * Usage:
- * <Button variant="primary" size="lg" onClick={handleClick}>
- *   Add to Cart
- * </Button>
  */
 
 const buttonStyles = {
