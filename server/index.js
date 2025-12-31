@@ -20,6 +20,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Initialize SendGrid
+if (!process.env.SENDGRID_API_KEY) {
+  console.warn('⚠️  WARNING: SENDGRID_API_KEY is not set. Email sending will fail.');
+  console.warn('   Please add SENDGRID_API_KEY to your .env file.');
+} else if (process.env.SENDGRID_API_KEY.length < 30) {
+  console.warn('⚠️  WARNING: SENDGRID_API_KEY appears to be invalid (too short).');
+  console.warn('   Valid SendGrid API keys are typically 60+ characters.');
+}
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 // Check if running on Render
@@ -1011,8 +1018,8 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send email to admin
         const adminEmailPayload = {
-          from: 'noreply@pinkaura.com',
-          to: 'khalilmashreen@gmail.com',
+          from: process.env.SENDGRID_FROM_EMAIL || 'khalilmashreen@gmail.com',
+          to: process.env.SENDGRID_ADMIN_EMAIL || 'khalilmashreen@gmail.com',
           subject: `New Order #${orderId} - ${customerDetails.name}`,
           html: emailHTML
         };
@@ -1057,7 +1064,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send thank you email to customer
         const customerEmailPayload = {
-          from: 'noreply@pinkaura.com',
+          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
           to: customerDetails.email,
           subject: `Order Confirmation #${orderId} - Thank You!`,
           html: `
@@ -1288,8 +1295,8 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
     // Send email to admin
     const adminEmailPayload = {
-      from: 'noreply@pinkaura.com',
-      to: 'khalilmashreen@gmail.com',
+      from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
+      to: process.env.SENDGRID_ADMIN_EMAIL || 'khalilmashreen@gmail.com',
       subject: `New Order Received - ${customerDetails.name}`,
       html: emailHTML
     };
@@ -1316,7 +1323,7 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
     // Send thank you email to customer
     const customerEmailPayload = {
-      from: 'noreply@pinkaura.com',
+      from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
       to: customerDetails.email,
       subject: 'Order Confirmation - Thank You!',
       html: `
