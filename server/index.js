@@ -251,21 +251,39 @@ app.get('/api/products', async (req, res) => {
         }
 
         // Transform Supabase data to match expected format
-        products = (data || []).map(product => ({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          category: product.category,
-          description: product.description,
-          trending: product.trending,
-          bestSeller: product.best_seller,
-          cloudinaryId: product.cloudinary_id,
-          variants: (product.variants || []).map(v => ({
-            number: v.number,
-            images: v.images || [product.image_url],
-            stock: v.stock
-          }))
-        }));
+        // Handle backward compatibility for old products without variants structure
+        products = (data || []).map(product => {
+          let variants = product.variants;
+          
+          // Migrate old products that don't have variants structure
+          if (!variants || !Array.isArray(variants) || variants.length === 0) {
+            // Create a default variant from old product structure
+            variants = [{
+              number: 1,
+              images: product.image_url ? [product.image_url] : [],
+              stock: product.stock || 10 // Default stock if not present
+            }];
+          } else {
+            // Ensure each variant has images
+            variants = variants.map(v => ({
+              number: v.number,
+              images: v.images || (product.image_url ? [product.image_url] : []),
+              stock: v.stock !== undefined ? v.stock : 10
+            }));
+          }
+          
+          return {
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            category: product.category,
+            description: product.description,
+            trending: product.trending,
+            bestSeller: product.best_seller,
+            cloudinaryId: product.cloudinary_id,
+            variants: variants
+          };
+        });
 
         console.log(`📦 Retrieved ${products.length} products from Supabase`);
       } catch (dbError) {
@@ -280,14 +298,30 @@ app.get('/api/products', async (req, res) => {
         let jsonProducts = productsFile.trim() ? JSON.parse(productsFile) : [];
         
         // Ensure variants have images field
-        products = jsonProducts.map(product => ({
-          ...product,
-          variants: (product.variants || []).map(v => ({
-            number: v.number,
-            images: v.images || [product.image_url || ''],
-            stock: v.stock
-          }))
-        }));
+        // Handle backward compatibility for old products
+        products = jsonProducts.map(product => {
+          let variants = product.variants;
+          
+          // Migrate old products that don't have variants structure
+          if (!variants || !Array.isArray(variants) || variants.length === 0) {
+            variants = [{
+              number: 1,
+              images: product.image_url ? [product.image_url] : [],
+              stock: product.stock || 10
+            }];
+          } else {
+            variants = variants.map(v => ({
+              number: v.number,
+              images: v.images || (product.image_url ? [product.image_url] : []),
+              stock: v.stock !== undefined ? v.stock : 10
+            }));
+          }
+          
+          return {
+            ...product,
+            variants: variants
+          };
+        });
         
         console.log(`📦 Retrieved ${products.length} products from JSON file`);
       } catch (readError) {

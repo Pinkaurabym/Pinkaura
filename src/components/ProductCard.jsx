@@ -2,6 +2,11 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 const ProductCard = ({ product, variant, onClick }) => {
+  // Add defensive checks for undefined product or variant
+  if (!product || !variant) {
+    return null;
+  }
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -68,8 +73,8 @@ const ProductCard = ({ product, variant, onClick }) => {
             variants={imageVariants}
             initial="rest"
             whileHover="hover"
-            src={variant.images[0]}
-            alt={product.name}
+            src={variant?.images?.[0] || '/images/placeholder.png'}
+            alt={product?.name || 'Product'}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover"

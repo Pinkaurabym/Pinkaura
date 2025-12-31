@@ -155,7 +155,9 @@ const ProductsPage = () => {
             animate="visible"
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {filteredProducts.map((product) => (
+            {filteredProducts
+              .filter((p) => p.variants && p.variants.length > 0)
+              .map((product) => (
               <motion.div key={product.id} variants={itemVariants}>
                 <ProductCard
                   product={product}

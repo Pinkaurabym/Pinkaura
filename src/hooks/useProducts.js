@@ -23,28 +23,57 @@ export const useProducts = () => {
           throw new Error('Invalid product payload');
         }
 
-        setProducts(apiData.products);
-        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(apiData.products));
+        // Ensure all products have valid variants with images
+        const validProducts = apiData.products
+          .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
+          .map(p => ({
+            ...p,
+            variants: p.variants.filter(v => v && v.images && Array.isArray(v.images) && v.images.length > 0)
+          }))
+          .filter(p => p.variants.length > 0);
+
+        setProducts(validProducts);
+        localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(validProducts));
       } catch (err) {
+        console.error('Error fetching products:', err);
         setError(err.message);
         
         // Fallback to cached data if fetch fails
         try {
           const cachedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
           if (cachedProducts) {
-            setProducts(JSON.parse(cachedProducts));
+            const parsed = JSON.parse(cachedProducts);
+            // Validate cached products
+            const validCached = parsed
+              .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
+              .map(p => ({
+                ...p,
+                variants: p.variants.filter(v => v && v.images && Array.isArray(v.images) && v.images.length > 0)
+              }))
+              .filter(p => p.variants.length > 0);
+            setProducts(validCached);
             return;
           }
           // As last resort, attempt static JSON (older data bundled with app)
           const staticResponse = await fetch('/data/products.json?t=' + Date.now());
           if (staticResponse.ok) {
             const staticData = await staticResponse.json();
-            setProducts(staticData);
-            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(staticData));
+            // Validate static products
+            const validStatic = staticData
+              .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
+              .map(p => ({
+                ...p,
+                variants: p.variants.filter(v => v && v.images && Array.isArray(v.images) && v.images.length > 0)
+              }))
+              .filter(p => p.variants.length > 0);
+            setProducts(validStatic);
+            localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(validStatic));
           }
         } catch (cacheError) {
           // Silent fail - cached data is corrupted
+          console.error('Fallback error:', cacheError);
           setError('Failed to load products');
+          setProducts([]);
         }
       } finally {
         setLoading(false);

@@ -106,6 +106,7 @@ const HomePage = () => {
             >
               {products
                 .filter((p) => p.category === category)
+                .filter((p) => p.variants && p.variants.length > 0) // Filter out products without variants
                 .map((product) => (
                   <motion.div
                     key={product.id}
@@ -158,7 +159,9 @@ const HomePage = () => {
               viewport={{ once: true }}
               className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
             >
-              {trendingProducts.map((product) => (
+              {trendingProducts
+                .filter((p) => p.variants && p.variants.length > 0)
+                .map((product) => (
                 <motion.div
                   key={product.id}
                   variants={itemVariants}
@@ -210,7 +213,9 @@ const HomePage = () => {
               viewport={{ once: true }}
               className="flex gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide"
             >
-              {bestSellerProducts.map((product) => (
+              {bestSellerProducts
+                .filter((p) => p.variants && p.variants.length > 0)
+                .map((product) => (
                 <motion.div
                   key={product.id}
                   variants={itemVariants}
