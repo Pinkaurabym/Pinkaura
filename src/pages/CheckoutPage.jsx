@@ -360,7 +360,7 @@ const CheckoutPage = () => {
 
                 <div className="border-t border-dark-200 pt-6">
                   <p className="text-xs text-dark-600 mb-2 uppercase tracking-wide font-semibold">Need Help?</p>
-                  <p className="text-2xl font-bold text-pink-500">9876543210</p>
+                  <p className="text-2xl font-bold text-pink-500">Khalilmashreen@gmail.com</p>
                 </div>
               </div>
             </div>

@@ -1064,7 +1064,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send thank you email to customer
         const customerEmailPayload = {
-          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
+          from: process.env.SENDGRID_FROM_EMAIL || 'Khalilmashreen@gmail.com',
           to: customerDetails.email,
           subject: `Order Confirmation #${orderId} - Thank You!`,
           html: `
