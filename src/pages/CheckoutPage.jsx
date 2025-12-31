@@ -98,7 +98,12 @@ const CheckoutPage = () => {
   };
 
   const handleProceedToPayment = () => {
-    if (validateForm()) setStep(2);
+    if (validateForm()) {
+      setStep(2);
+      if (typeof window !== 'undefined') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
   };
 
   const handleConfirmPayment = async () => {

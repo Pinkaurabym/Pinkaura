@@ -11,11 +11,14 @@ export const isValidEmail = (email) => {
   return regex.test(email);
 };
 
-/**
- * Validate phone number (India)
- */
+
 export const isValidPhone = (phone) => {
-  return /^[6-9]\d{9}$/.test(phone?.replace(/\D/g, ''));
+  const digits = (phone || '').replace(/\D/g, '');
+
+  if (digits.length === 12 && digits.startsWith('91')) {
+    return /^[6-9]\d{9}$/.test(digits.slice(-10));
+  }
+  return digits.length === 10 && /^[6-9]/.test(digits[0]);
 };
 
 /**
