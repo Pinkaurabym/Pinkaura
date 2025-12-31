@@ -27,6 +27,7 @@ const CheckoutPage = () => {
   const [paymentScreenshotPreview, setPaymentScreenshotPreview] = useState(null);
   const [isSubmittingPayment, setIsSubmittingPayment] = useState(false);
   const [errors, setErrors] = useState({});
+  const [confirmedOrder, setConfirmedOrder] = useState(null);
 
   const validateForm = () => {
     const newErrors = {};
@@ -141,6 +142,13 @@ const CheckoutPage = () => {
       if (!response.ok || !result.success) {
         throw new Error(result.message || `Server error: ${response.status}`);
       }
+
+      // Save order details before clearing cart
+      setConfirmedOrder({
+        items: [...cart],
+        totals: { subtotal, shipping, total },
+        customer: { ...customerDetails }
+      });
 
       setStep(3);
       clearCart();
@@ -456,46 +464,53 @@ const CheckoutPage = () => {
     );
   };
 
-  const renderConfirmation = () => (
-    <div className="max-w-2xl mx-auto text-center">
-      <div className="bg-white rounded-2xl shadow-sm p-8">
-        <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center">
-          <span className="text-4xl text-white">✓</span>
-        </div>
+  const renderConfirmation = () => {
+    // Use confirmed order data (saved before cart was cleared)
+    const orderItems = confirmedOrder?.items || [];
+    const orderTotals = confirmedOrder?.totals || { subtotal: 0, shipping: 0, total: 0 };
+    const orderCustomer = confirmedOrder?.customer || customerDetails;
 
-        <h2 className="text-3xl font-heading font-bold text-dark-900 mb-4">Order Confirmed!</h2>
-        <p className="text-dark-600 mb-2">Thank you for your purchase, {customerDetails.name}!</p>
-        <p className="text-dark-600 mb-8">
-          A confirmation email has been sent to <strong>{customerDetails.email}</strong>
-        </p>
-
-        <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 mb-8 text-left">
-          <h3 className="font-heading font-bold text-dark-900 mb-4">Order Summary</h3>
-          <div className="space-y-2 mb-4">
-            {cart.map((item) => (
-              <div key={`${item.id}-${item.variantNumber}`} className="flex justify-between text-sm">
-                <span className="text-dark-700">{item.name} (Variant #{item.variantNumber}) x {item.quantity}</span>
-                <span className="font-semibold text-dark-900">₹{item.price * item.quantity}</span>
-              </div>
-            ))}
+    return (
+      <div className="max-w-2xl mx-auto text-center">
+        <div className="bg-white rounded-2xl shadow-sm p-8">
+          <div className="w-20 h-20 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <span className="text-4xl text-white">✓</span>
           </div>
-          <div className="border-t border-dark-200 pt-3 flex justify-between text-lg font-bold">
-            <span>Total Paid</span>
-            <span className="text-pink-500">₹{total}</span>
-          </div>
-        </div>
 
-        <div className="space-y-3">
-          <Link to="/products" className="btn-primary inline-block w-full py-3">
-            Continue Shopping
-          </Link>
-          <Link to="/" className="block text-dark-600 hover:text-dark-900 font-semibold">
-            Back to Home
-          </Link>
+          <h2 className="text-3xl font-heading font-bold text-dark-900 mb-4">Order Confirmed!</h2>
+          <p className="text-dark-600 mb-2">Thank you for your purchase, {orderCustomer.name}!</p>
+          <p className="text-dark-600 mb-8">
+            A confirmation email has been sent to <strong>{orderCustomer.email}</strong>
+          </p>
+
+          <div className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 mb-8 text-left">
+            <h3 className="font-heading font-bold text-dark-900 mb-4">Order Summary</h3>
+            <div className="space-y-2 mb-4">
+              {orderItems.map((item) => (
+                <div key={`${item.id}-${item.variantNumber}`} className="flex justify-between text-sm">
+                  <span className="text-dark-700">{item.name} (Variant #{item.variantNumber}) x {item.quantity}</span>
+                  <span className="font-semibold text-dark-900">₹{item.price * item.quantity}</span>
+                </div>
+              ))}
+            </div>
+            <div className="border-t border-dark-200 pt-3 flex justify-between text-lg font-bold">
+              <span>Total Paid</span>
+              <span className="text-pink-500">₹{orderTotals.total}</span>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <Link to="/products" className="btn-primary inline-block w-full py-3">
+              Continue Shopping
+            </Link>
+            <Link to="/" className="block text-dark-600 hover:text-dark-900 font-semibold">
+              Back to Home
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-dark-50 via-pink-50 to-purple-50 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
