@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState } from 'react';
 
 /**
  * useFilters - Product filtering & sorting
@@ -76,8 +76,8 @@ export const useFilters = (products = []) => {
   /**
    * Get price range from products
    */
-  const minPrice = Math.min(...products.map((p) => p.price));
-  const maxPrice = Math.max(...products.map((p) => p.price));
+  const minPrice = products.length > 0 ? Math.min(...products.map((p) => p.price)) : 0;
+  const maxPrice = products.length > 0 ? Math.max(...products.map((p) => p.price)) : 0;
 
   /**
    * Count active filters

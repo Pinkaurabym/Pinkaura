@@ -8,7 +8,7 @@ import { useProducts } from '../hooks/useProducts';
  * @description Allows admin to add new products with variants and manage inventory
  */
 const AdminPage = () => {
-  const { products } = useProducts();
+  const { products, refetch } = useProducts();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [formData, setFormData] = useState({
@@ -181,9 +181,9 @@ const AdminPage = () => {
       const result = await response.json();
 
       if (result.success) {
-        showNotification('✅ Product added successfully! Refreshing...', 'success');
+        showNotification('✅ Product added successfully!', 'success');
         resetForm();
-        setTimeout(() => window.location.reload(), 2000);
+        refetch();
       } else {
         showNotification(result.message || 'Failed to add product', 'error');
       }
@@ -241,8 +241,8 @@ const AdminPage = () => {
       const result = await response.json();
 
       if (result.success) {
-        showNotification('✅ Product deleted successfully! Refreshing...', 'success');
-        setTimeout(() => window.location.reload(), 1500);
+        showNotification('✅ Product deleted successfully!', 'success');
+        refetch();
       } else {
         showNotification(result.message || 'Failed to delete product', 'error');
       }
@@ -287,9 +287,9 @@ const AdminPage = () => {
       const result = await response.json();
 
       if (result.success) {
-        showNotification('✅ Quantities updated successfully! Refreshing...', 'success');
+        showNotification('✅ Quantities updated successfully!', 'success');
         setEditingProduct(null);
-        setTimeout(() => window.location.reload(), 1500);
+        refetch();
       } else {
         showNotification(result.message || 'Failed to update quantities', 'error');
       }

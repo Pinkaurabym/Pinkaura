@@ -65,7 +65,7 @@ export const isValidCartItem = (item) => {
     item?.name &&
     item?.price > 0 &&
     item?.quantity > 0 &&
-    item?.color
+    item?.variantNumber
   );
 };
 

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ product, variant, onClick }) => {
+const ProductCard = ({ product, variant }) => {
   // Add defensive checks for undefined product or variant
   if (!product || !variant) {
     return null;
@@ -81,14 +81,14 @@ const ProductCard = ({ product, variant, onClick }) => {
           />
 
           {/* Stock Badge */}
-          {product.stock !== undefined && (
+          {variant.stock > 0 && variant.stock <= 5 && (
             <motion.div
               variants={badgeVariants}
               initial="hidden"
               animate="visible"
               className="absolute top-3 right-3 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold"
             >
-              Only {product.stock} left
+              Only {variant.stock} left
             </motion.div>
           )}
 

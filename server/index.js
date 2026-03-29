@@ -1006,7 +1006,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
 
             <div class="footer">
               <p>Thank you for your order! We'll process it shortly.</p>
-              <p>For any queries, please contact: 9876543210</p>
+              <p>For any queries, please contact: ${process.env.SUPPORT_PHONE || '9876543210'}</p>
             </div>
           </div>
         </body>
@@ -1018,8 +1018,8 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send email to admin
         const adminEmailPayload = {
-          from: process.env.SENDGRID_FROM_EMAIL || 'khalilmashreen@gmail.com',
-          to: process.env.SENDGRID_ADMIN_EMAIL || 'khalilmashreen@gmail.com',
+          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
+          to: process.env.SENDGRID_ADMIN_EMAIL || 'noreply@pinkaura.com',
           subject: `New Order #${orderId} - ${customerDetails.name}`,
           html: emailHTML
         };
@@ -1064,7 +1064,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send thank you email to customer
         const customerEmailPayload = {
-          from: process.env.SENDGRID_FROM_EMAIL || 'Khalilmashreen@gmail.com',
+          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
           to: customerDetails.email,
           subject: `Order Confirmation #${orderId} - Thank You!`,
           html: `
@@ -1092,7 +1092,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
                     <p><strong>Expected Delivery:</strong> 3-5 business days</p>
                   </div>
 
-                  <p>If you have any questions, please contact us at <strong>9876543210</strong></p>
+                  <p>If you have any questions, please contact us at <strong>${process.env.SUPPORT_PHONE || '9876543210'}</strong></p>
 
                   <div class="footer">
                     <p>Thank you for choosing Pinkaura! ✨</p>
@@ -1263,7 +1263,7 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
             <div class="footer">
               <p>Thank you for your order! We'll process it shortly.</p>
-              <p>For any queries, please contact: 9876543210</p>
+              <p>For any queries, please contact: ${process.env.SUPPORT_PHONE || '9876543210'}</p>
             </div>
           </div>
         </body>

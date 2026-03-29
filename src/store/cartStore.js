@@ -13,12 +13,6 @@ const useCartStore = create(
       cart: [],
       showCart: false,
 
-      // Hydration state for SSR/persistence
-      _hasHydrated: false,
-      setHasHydrated: (state) => {
-        set({ _hasHydrated: state });
-      },
-
       /**
        * Add item to cart or increment quantity
        * @param {Object} product - Product object
