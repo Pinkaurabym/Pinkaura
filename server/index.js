@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import { v2 as cloudinary } from 'cloudinary';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import { createClient } from '@supabase/supabase-js';
-import sgMail from '@sendgrid/mail';
+import { BrevoClient } from '@getbrevo/brevo';
 
 // Load environment variables
 dotenv.config({ path: path.join(path.dirname(fileURLToPath(import.meta.url)), '.env') });
@@ -20,15 +20,12 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Initialize SendGrid
-if (!process.env.SENDGRID_API_KEY) {
-  console.warn('⚠️  WARNING: SENDGRID_API_KEY is not set. Email sending will fail.');
-  console.warn('   Please add SENDGRID_API_KEY to your .env file.');
-} else if (process.env.SENDGRID_API_KEY.length < 30) {
-  console.warn('⚠️  WARNING: SENDGRID_API_KEY appears to be invalid (too short).');
-  console.warn('   Valid SendGrid API keys are typically 60+ characters.');
+// Initialize Brevo
+if (!process.env.BREVO_API_KEY) {
+  console.warn('⚠️  WARNING: BREVO_API_KEY is not set. Email sending will fail.');
+  console.warn('   Please add BREVO_API_KEY to your server/.env file.');
 }
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+const brevo = new BrevoClient({ apiKey: process.env.BREVO_API_KEY });
 
 // Check if running on Render
 const isRender = process.env.RENDER === 'true';
@@ -97,6 +94,21 @@ const upload = multer({
     }
   }
 });
+
+/**
+ * Send a transactional email via Brevo
+ */
+async function sendEmail({ from, to, subject, html, attachments }) {
+  return brevo.transactionalEmails.sendTransacEmail({
+    sender: { email: from, name: 'Pinkaura' },
+    to: [{ email: to }],
+    subject,
+    htmlContent: html,
+    ...(attachments?.length ? {
+      attachment: attachments.map(a => ({ content: a.content, name: a.filename }))
+    } : {})
+  });
+}
 
 /**
  * POST /api/products
@@ -1077,8 +1089,8 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send email to admin
         const adminEmailPayload = {
-          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
-          to: process.env.SENDGRID_ADMIN_EMAIL || 'noreply@pinkaura.com',
+          from: process.env.BREVO_FROM_EMAIL || 'noreply@pinkaura.com',
+          to: process.env.BREVO_ADMIN_EMAIL || 'noreply@pinkaura.com',
           subject: `New Order #${orderId} - ${customerDetails.name}`,
           html: emailHTML
         };
@@ -1114,7 +1126,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
           }
         }
 
-        await sgMail.send(adminEmailPayload);
+        await sendEmail(adminEmailPayload);
         console.log(`✅ Admin email sent`);
       } catch (adminEmailError) {
         console.error(`⚠️  Failed to send admin email (order not affected):`, adminEmailError.message);
@@ -1123,7 +1135,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
       try {
         // Send thank you email to customer
         const customerEmailPayload = {
-          from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
+          from: process.env.BREVO_FROM_EMAIL || 'noreply@pinkaura.com',
           to: customerDetails.email,
           subject: `Order Confirmation #${orderId} - Thank You!`,
           html: `
@@ -1165,7 +1177,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
           `
         };
 
-        await sgMail.send(customerEmailPayload);
+        await sendEmail(customerEmailPayload);
         console.log(`✅ Customer email sent to ${customerDetails.email}`);
       } catch (customerEmailError) {
         console.error(`⚠️  Failed to send customer email (order not affected):`, customerEmailError.message);
@@ -1354,8 +1366,8 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
     // Send email to admin
     const adminEmailPayload = {
-      from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
-      to: process.env.SENDGRID_ADMIN_EMAIL || 'khalilmashreen@gmail.com',
+      from: process.env.BREVO_FROM_EMAIL || 'noreply@pinkaura.com',
+      to: process.env.BREVO_ADMIN_EMAIL || 'noreply@pinkaura.com',
       subject: `New Order Received - ${customerDetails.name}`,
       html: emailHTML
     };
@@ -1373,8 +1385,8 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
     }
 
     try {
-      await sgMail.send(adminEmailPayload);
-      console.log(`✅ Admin email sent to khalilmashreen@gmail.com`);
+      await sendEmail(adminEmailPayload);
+      console.log(`✅ Admin email sent`);
     } catch (emailError) {
       console.error('Failed to send admin email:', emailError.message);
       throw new Error(`Failed to send admin email: ${emailError.message}`);
@@ -1382,7 +1394,7 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
     // Send thank you email to customer
     const customerEmailPayload = {
-      from: process.env.SENDGRID_FROM_EMAIL || 'noreply@pinkaura.com',
+      from: process.env.BREVO_FROM_EMAIL || 'noreply@pinkaura.com',
       to: customerDetails.email,
       subject: 'Order Confirmation - Thank You!',
       html: `
@@ -1424,7 +1436,7 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
     };
 
     try {
-      await sgMail.send(customerEmailPayload);
+      await sendEmail(customerEmailPayload);
       console.log(`✅ Customer email sent to ${customerDetails.email}`);
     } catch (emailError) {
       console.error('Failed to send customer email:', emailError.message);
