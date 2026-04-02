@@ -1,20 +1,36 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { STORAGE_KEYS } from '../utils/constants';
+
+const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
+
+function loadCache() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
+    const cachedAt = Number(localStorage.getItem(STORAGE_KEYS.PRODUCTS_CACHED_AT) || 0);
+    if (raw && Date.now() - cachedAt < CACHE_TTL_MS) {
+      return JSON.parse(raw);
+    }
+  } catch {
+    // ignore corrupted cache
+  }
+  return null;
+}
 
 /**
  * Custom hook to fetch and manage products
  * @returns {{ products: Array, loading: boolean, error: string|null, refetch: Function }}
  */
 export const useProducts = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const cached = useRef(loadCache());
+  const [products, setProducts] = useState(cached.current ?? []);
+  const [loading, setLoading] = useState(!cached.current); // skip spinner if cache hit
   const [error, setError] = useState(null);
 
   const fetchProducts = useCallback(async () => {
     const API_URL = import.meta.env.VITE_API_URL || '';
-    setLoading(true);
+    // Only show loading spinner if we have nothing to display yet
+    setLoading(prev => (products.length === 0 ? true : prev));
     try {
-      // Prefer live API (Supabase-backed). Falls back to static JSON only if API fails.
       const apiResponse = await fetch(`${API_URL}/api/products`);
       if (!apiResponse.ok) throw new Error('Failed to fetch products');
 
@@ -23,7 +39,6 @@ export const useProducts = () => {
         throw new Error('Invalid product payload');
       }
 
-      // Ensure all products have valid variants with images
       const validProducts = apiData.products
         .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
         .map(p => ({
@@ -35,50 +50,17 @@ export const useProducts = () => {
       setProducts(validProducts);
       setError(null);
       localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(validProducts));
+      localStorage.setItem(STORAGE_KEYS.PRODUCTS_CACHED_AT, String(Date.now()));
     } catch (err) {
       console.error('Error fetching products:', err);
       setError(err.message);
-
-      // Fallback to cached data if fetch fails
-      try {
-        const cachedProducts = localStorage.getItem(STORAGE_KEYS.PRODUCTS);
-        if (cachedProducts) {
-          const parsed = JSON.parse(cachedProducts);
-          const validCached = parsed
-            .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
-            .map(p => ({
-              ...p,
-              variants: p.variants.filter(v => v && v.images && Array.isArray(v.images) && v.images.length > 0)
-            }))
-            .filter(p => p.variants.length > 0);
-          setProducts(validCached);
-          return;
-        }
-        // As last resort, attempt static JSON (older data bundled with app)
-        const staticResponse = await fetch('/data/products.json?t=' + Date.now());
-        if (staticResponse.ok) {
-          const staticData = await staticResponse.json();
-          const validStatic = staticData
-            .filter(p => p && p.variants && Array.isArray(p.variants) && p.variants.length > 0)
-            .map(p => ({
-              ...p,
-              variants: p.variants.filter(v => v && v.images && Array.isArray(v.images) && v.images.length > 0)
-            }))
-            .filter(p => p.variants.length > 0);
-          setProducts(validStatic);
-          localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(validStatic));
-        }
-      } catch (cacheError) {
-        console.error('Fallback error:', cacheError);
-        setError('Failed to load products');
-        setProducts([]);
-      }
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    // Always fetch fresh data on mount; cached data shows immediately while this loads
     fetchProducts();
   }, [fetchProducts]);
 
@@ -91,15 +73,35 @@ export const useProducts = () => {
  * @returns {Object|null} Product object or null
  */
 export const useProduct = (id) => {
-  const { products } = useProducts();
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (products.length > 0) {
-      const foundProduct = products.find((p) => String(p.id) === String(id));
-      setProduct(foundProduct || null);
-    }
-  }, [products, id]);
+    const fetchProduct = async () => {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      setLoading(true);
+      try {
+        const response = await fetch(`${API_URL}/api/products/${id}`);
+        if (!response.ok) throw new Error('Failed to fetch product');
 
-  return product;
+        const data = await response.json();
+        if (!data.success || !data.product) {
+          throw new Error('Product not found');
+        }
+
+        setProduct(data.product);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching product:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (id) fetchProduct();
+  }, [id]);
+
+  return { product, loading, error };
 };

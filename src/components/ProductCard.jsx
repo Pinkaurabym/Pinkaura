@@ -1,6 +1,13 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+// Insert Cloudinary transformations (f_auto,q_auto,w_600) for faster image delivery.
+// Works on any res.cloudinary.com URL; passes non-Cloudinary URLs through unchanged.
+function optimizeCloudinaryUrl(url, width = 600) {
+  if (!url || !url.includes('res.cloudinary.com')) return url;
+  return url.replace('/upload/', `/upload/f_auto,q_auto,w_${width}/`);
+}
+
 const ProductCard = ({ product, variant }) => {
   // Add defensive checks for undefined product or variant
   if (!product || !variant) {
@@ -73,7 +80,7 @@ const ProductCard = ({ product, variant }) => {
             variants={imageVariants}
             initial="rest"
             whileHover="hover"
-            src={variant?.images?.[0] || '/images/placeholder.png'}
+            src={optimizeCloudinaryUrl(variant?.images?.[0]) || '/images/placeholder.png'}
             alt={product?.name || 'Product'}
             loading="lazy"
             decoding="async"

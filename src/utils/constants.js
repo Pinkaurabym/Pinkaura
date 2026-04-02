@@ -70,6 +70,7 @@ export const TAX_RATE = 0; // 0% tax for now
 export const STORAGE_KEYS = {
   CART: 'cart',
   PRODUCTS: 'products',
+  PRODUCTS_CACHED_AT: 'products_cached_at',
   USER_PREFERENCES: 'userPreferences',
   RECENT_SEARCHES: 'recentSearches',
 };

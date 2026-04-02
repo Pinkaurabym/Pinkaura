@@ -13,7 +13,7 @@ import { NOTIFICATION_DURATION, FREE_SHIPPING_THRESHOLD } from '../utils/constan
 
 const ProductPage = () => {
   const { id } = useParams();
-  const product = useProduct(id);
+  const { product, loading, error } = useProduct(id);
   const { addToCart, cart } = useCartStore();
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [notification, setNotification] = useState(null);
@@ -43,7 +43,7 @@ const ProductPage = () => {
 
   const remainingStock = getRemainingStock();
 
-  if (!product) {
+  if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <motion.div
@@ -51,6 +51,14 @@ const ProductPage = () => {
           transition={{ duration: 1, repeat: Infinity }}
           className="w-12 h-12 border-4 border-pink-200 border-t-pink-500 rounded-full"
         />
+      </div>
+    );
+  }
+
+  if (error || !product) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-dark-600 font-semibold">
+        {error || 'Product not found.'}
       </div>
     );
   }

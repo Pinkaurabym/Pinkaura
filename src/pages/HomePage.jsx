@@ -37,7 +37,7 @@ const HomePage = () => {
       {/* Hero Section */}
       <section 
         className="relative overflow-hidden h-screen sm:h-[90vh] lg:h-[120vh] px-4 sm:px-6 lg:px-8 bg-center bg-no-repeat bg-fixed flex items-center justify-center"
-        style={{backgroundImage: `url('/images/hero.png')`, backgroundSize: '100%'}}
+        style={{backgroundImage: `url('/images/hero-optimized.jpg')`, backgroundSize: 'cover'}}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/25" aria-hidden="true" />
         <motion.div
@@ -65,7 +65,7 @@ const HomePage = () => {
       </section>
 
       {/* Category Teasers */}
-      {categories.map((category, idx) => (
+      {categories.slice(0, 3).map((category, idx) => (
         <motion.section
           key={category}
           initial={{ opacity: 0 }}
@@ -107,6 +107,7 @@ const HomePage = () => {
               {products
                 .filter((p) => p.category === category)
                 .filter((p) => p.variants && p.variants.length > 0) // Filter out products without variants
+                .slice(0, 5) // Limit to 5 products per category
                 .map((product) => (
                   <motion.div
                     key={product.id}

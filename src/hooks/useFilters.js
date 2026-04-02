@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 /**
  * useFilters - Product filtering & sorting
@@ -14,7 +14,7 @@ export const useFilters = (products = []) => {
   /**
    * Apply all filters and sorting
    */
-  const filtered = useCallback(() => {
+  const filtered = useMemo(() => {
     let result = [...products];
 
     // Search filter
@@ -61,12 +61,12 @@ export const useFilters = (products = []) => {
   /**
    * Reset all filters
    */
-  const resetFilters = useCallback(() => {
+  const resetFilters = () => {
     setCategory(null);
     setSortBy('recent');
     setPriceRange([0, Infinity]);
     setSearchTerm('');
-  }, []);
+  };
 
   /**
    * Get all categories from products
@@ -90,7 +90,7 @@ export const useFilters = (products = []) => {
   ].reduce((a, b) => a + b, 0);
 
   return {
-    filtered: filtered(),
+    filtered,
     category,
     setCategory,
     sortBy,

@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import multer from 'multer';
 import cors from 'cors';
 import fs from 'fs/promises';
@@ -67,6 +68,7 @@ if (supabaseUrl && supabaseKey) {
 }
 
 // Middleware
+app.use(compression());
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -337,6 +339,7 @@ app.get('/api/products', async (req, res) => {
       }
     }
 
+    res.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=300');
     res.json({
       success: true,
       products
@@ -346,6 +349,58 @@ app.get('/api/products', async (req, res) => {
     res.status(500).json({
       success: false,
       message: error.message || 'Failed to read products'
+    });
+  }
+});
+
+/**
+ * GET /api/products/:id
+ * Get a single product by ID
+ */
+app.get('/api/products/:id', async (req, res) => {
+  const productId = req.params.id;
+  try {
+    let product;
+
+    if (supabaseAvailable) {
+      const { data, error } = await supabase
+        .from('products')
+        .select('*')
+        .eq('id', productId)
+        .single();
+
+      if (error || !data) {
+        return res.status(404).json({
+          success: false,
+          message: 'Product not found',
+        });
+      }
+
+      product = data;
+    } else {
+      // Fallback to JSON file
+      const productsFilePath = path.join(__dirname, '../public/data/products.json');
+      const productsFile = await fs.readFile(productsFilePath, 'utf-8');
+      const products = productsFile.trim() ? JSON.parse(productsFile) : [];
+
+      product = products.find((p) => p.id === parseInt(productId));
+      if (!product) {
+        return res.status(404).json({
+          success: false,
+          message: 'Product not found',
+        });
+      }
+    }
+
+    res.json({
+      success: true,
+      product,
+    });
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    res.status(500).json({
+      success: false,
+      message: error.message || 'Failed to fetch product',
     });
   }
 });
@@ -659,8 +714,11 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
     let serverCalculatedSubtotal = 0;
     const itemsToOrder = []; // Will store validated item info for transaction
 
+    // Build Map for O(1) lookups instead of O(n) .find() per cart item
+    const productMap = new Map(products.map(p => [p.id, p]));
+
     for (const cartItem of cartItems) {
-      const product = products.find(p => p.id === cartItem.id);
+      const product = productMap.get(cartItem.id);
 
       if (!product) {
         return res.status(404).json({
@@ -807,44 +865,45 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
         console.log(`✅ Order items inserted (${orderItems.length} items)`);
 
         // ════════════════════════════════════════════════════════════
-        // STEP 5: DECREMENT STOCK (Within Transaction Logic)
+        // STEP 5: DECREMENT STOCK (Parallel updates via Promise.all)
         // ════════════════════════════════════════════════════════════
+
+        // Pre-compute updated variants for all items before hitting the DB
+        const stockUpdates = [];
         for (const item of itemsToOrder) {
-          const product = products.find(p => p.id === item.id);
+          const product = productMap.get(item.id);
           const variantIndex = product.variants.findIndex(v => v.number === item.variantNumber);
 
           if (variantIndex === -1) {
-            // Should not happen if validation worked, but safety check
             throw new Error(`Variant #${item.variantNumber} for product "${item.name}" not found during stock update`);
           }
 
-          // Decrement stock
           const newStock = product.variants[variantIndex].stock - item.quantity;
           product.variants[variantIndex].stock = newStock;
 
-          // Check if stock reached 0 - mark image for deletion
           if (newStock === 0) {
-            imagesToDelete.push({
-              publicId: item.cloudinaryId,
-              productName: item.name
-            });
+            imagesToDelete.push({ publicId: item.cloudinaryId, productName: item.name });
             console.log(`🗑️  Will delete images for "${item.name}" after transaction commits`);
           }
 
-          // Update variants in Supabase
-          const { error: updateError } = await supabase
-            .from('products')
-            .update({ variants: product.variants })
-            .eq('id', item.id);
+          stockUpdates.push({ item, updatedVariants: product.variants });
+        }
 
+        // Run all Supabase stock updates in parallel
+        const updateResults = await Promise.all(
+          stockUpdates.map(({ item, updatedVariants }) =>
+            supabase.from('products').update({ variants: updatedVariants }).eq('id', item.id)
+          )
+        );
+
+        for (let i = 0; i < updateResults.length; i++) {
+          const { error: updateError } = updateResults[i];
           if (updateError) {
-            // Rollback: Delete order and order items
             await supabase.from('order_items').delete().eq('order_id', orderId);
             await supabase.from('orders').delete().eq('id', orderId);
-            throw new Error(`Failed to update stock for product "${item.name}": ${updateError.message}`);
+            throw new Error(`Failed to update stock for product "${stockUpdates[i].item.name}": ${updateError.message}`);
           }
-
-          console.log(`✅ Stock decremented for "${item.name}" (Variant #${item.variantNumber}): ${product.variants[variantIndex].stock} remaining`);
+          console.log(`✅ Stock decremented for "${stockUpdates[i].item.name}" (Variant #${stockUpdates[i].item.variantNumber})`);
         }
 
       } else {
