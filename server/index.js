@@ -96,6 +96,14 @@ const upload = multer({
 });
 
 /**
+ * Escape user-supplied strings before embedding in email HTML
+ */
+function escapeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[c]));
+}
+
+/**
  * Send a transactional email via Brevo
  */
 async function sendEmail({ from, to, subject, html, attachments }) {
@@ -1031,13 +1039,13 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
 
             <div class="section">
               <h3>Customer Information</h3>
-              <p><strong>Name:</strong> ${customerDetails.name}</p>
-              <p><strong>Email:</strong> ${customerDetails.email}</p>
-              <p><strong>Phone:</strong> ${customerDetails.phone}</p>
-              <p><strong>Alternate Phone:</strong> ${customerDetails.alternatePhone || 'N/A'}</p>
-              <p><strong>Address:</strong> ${customerDetails.address}</p>
-              <p><strong>Landmark:</strong> ${customerDetails.landmark}</p>
-              <p><strong>Pincode:</strong> ${customerDetails.pincode}</p>
+              <p><strong>Name:</strong> ${escapeHtml(customerDetails.name)}</p>
+              <p><strong>Email:</strong> ${escapeHtml(customerDetails.email)}</p>
+              <p><strong>Phone:</strong> ${escapeHtml(customerDetails.phone)}</p>
+              <p><strong>Alternate Phone:</strong> ${escapeHtml(customerDetails.alternatePhone) || 'N/A'}</p>
+              <p><strong>Address:</strong> ${escapeHtml(customerDetails.address)}</p>
+              <p><strong>Landmark:</strong> ${escapeHtml(customerDetails.landmark)}</p>
+              <p><strong>Pincode:</strong> ${escapeHtml(customerDetails.pincode)}</p>
             </div>
 
             <div class="section">
@@ -1102,7 +1110,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
             if (req.file.path.startsWith('http')) {
               // Cloudinary URL
               const response = await fetch(req.file.path);
-              const buffer = await response.buffer?.() || Buffer.from(await response.arrayBuffer());
+              const buffer = Buffer.from(await response.arrayBuffer());
               screenshotBase64 = buffer.toString('base64');
             } else {
               // Local file
@@ -1156,7 +1164,7 @@ app.post('/api/orders', upload.single('screenshot'), async (req, res) => {
                   </div>
 
                   <div class="message">
-                    <h2>Thank You, ${customerDetails.name}! 💝</h2>
+                    <h2>Thank You, ${escapeHtml(customerDetails.name)}! 💝</h2>
                     <p>We've received your order and payment screenshot. Our team will verify your payment and process your order shortly.</p>
                     <p><strong>Order ID:</strong> #${orderId}</p>
                     <p><strong>Order Total:</strong> ₹${serverCalculatedTotal}</p>
@@ -1288,13 +1296,13 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
 
             <div class="section">
               <h3>Customer Information</h3>
-              <p><strong>Name:</strong> ${customerDetails.name}</p>
-              <p><strong>Email:</strong> ${customerDetails.email}</p>
-              <p><strong>Phone:</strong> ${customerDetails.phone}</p>
-              <p><strong>Alternate Phone:</strong> ${customerDetails.alternatePhone}</p>
-              <p><strong>Address:</strong> ${customerDetails.address}</p>
-              <p><strong>Landmark:</strong> ${customerDetails.landmark}</p>
-              <p><strong>Pincode:</strong> ${customerDetails.pincode}</p>
+              <p><strong>Name:</strong> ${escapeHtml(customerDetails.name)}</p>
+              <p><strong>Email:</strong> ${escapeHtml(customerDetails.email)}</p>
+              <p><strong>Phone:</strong> ${escapeHtml(customerDetails.phone)}</p>
+              <p><strong>Alternate Phone:</strong> ${escapeHtml(customerDetails.alternatePhone) || 'N/A'}</p>
+              <p><strong>Address:</strong> ${escapeHtml(customerDetails.address)}</p>
+              <p><strong>Landmark:</strong> ${escapeHtml(customerDetails.landmark)}</p>
+              <p><strong>Pincode:</strong> ${escapeHtml(customerDetails.pincode)}</p>
             </div>
 
             <div class="section">
@@ -1415,7 +1423,7 @@ app.post('/api/send-order-email', upload.single('screenshot'), async (req, res) 
               </div>
 
               <div class="message">
-                <h2>Thank You, ${customerDetails.name}! 💝</h2>
+                <h2>Thank You, ${escapeHtml(customerDetails.name)}! 💝</h2>
                 <p>We've received your order and payment screenshot. Our team will verify your payment and process your order shortly.</p>
                 <p><strong>Order Total:</strong> ₹${totals.total}</p>
                 <p><strong>Expected Delivery:</strong> 3-5 business days</p>

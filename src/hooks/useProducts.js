@@ -25,11 +25,12 @@ export const useProducts = () => {
   const [products, setProducts] = useState(cached.current ?? []);
   const [loading, setLoading] = useState(!cached.current); // skip spinner if cache hit
   const [error, setError] = useState(null);
+  // Track whether we already have something to show — avoids stale closure inside fetchProducts
+  const hasData = useRef(!!cached.current);
 
   const fetchProducts = useCallback(async () => {
     const API_URL = import.meta.env.VITE_API_URL || '';
-    // Only show loading spinner if we have nothing to display yet
-    setLoading(prev => (products.length === 0 ? true : prev));
+    if (!hasData.current) setLoading(true);
     try {
       const apiResponse = await fetch(`${API_URL}/api/products`);
       if (!apiResponse.ok) throw new Error('Failed to fetch products');
@@ -49,6 +50,7 @@ export const useProducts = () => {
 
       setProducts(validProducts);
       setError(null);
+      hasData.current = true;
       localStorage.setItem(STORAGE_KEYS.PRODUCTS, JSON.stringify(validProducts));
       localStorage.setItem(STORAGE_KEYS.PRODUCTS_CACHED_AT, String(Date.now()));
     } catch (err) {

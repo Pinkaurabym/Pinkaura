@@ -41,16 +41,16 @@ const useCartStore = create(
           );
 
           if (existingItem) {
-            // Increment quantity if stock allows
-            if (existingItem.quantity < newItem.stock) {
-              existingItem.quantity += 1;
-              return { cart: [...state.cart] };
-            }
-            // Already at max stock
-            return state;
+            if (existingItem.quantity >= newItem.stock) return state; // Already at max stock
+            return {
+              cart: state.cart.map(item =>
+                item.id === product.id && item.variantNumber === variant.number
+                  ? { ...item, quantity: item.quantity + 1 }
+                  : item
+              )
+            };
           }
 
-          // Add new item to cart
           return { cart: [...state.cart, newItem] };
         });
       },
@@ -95,8 +95,13 @@ const useCartStore = create(
 
           // Update quantity if within stock limit
           if (quantity <= cartItem.stock) {
-            cartItem.quantity = quantity;
-            return { cart: [...state.cart] };
+            return {
+              cart: state.cart.map(item =>
+                item.id === id && item.variantNumber === variantNumber
+                  ? { ...item, quantity }
+                  : item
+              )
+            };
           }
 
           // Quantity exceeds stock - don't update

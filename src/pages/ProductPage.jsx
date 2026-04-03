@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useProduct } from '../hooks/useProducts';
 import useCartStore from '../store/cartStore';
 import { NOTIFICATION_DURATION, FREE_SHIPPING_THRESHOLD } from '../utils/constants';
@@ -17,14 +17,15 @@ const ProductPage = () => {
   const { addToCart, cart } = useCartStore();
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [notification, setNotification] = useState(null);
+  const notificationTimer = useRef(null);
 
-  // Set initial variant when product loads
-  if (product && !selectedVariant && product.variants && product.variants.length > 0) {
-    const validVariant = product.variants.find(v => v && v.images && v.images.length > 0);
-    if (validVariant) {
-      setSelectedVariant(validVariant);
+  // Set initial variant when product loads (useEffect avoids setState-during-render)
+  useEffect(() => {
+    if (product && !selectedVariant) {
+      const validVariant = product.variants?.find(v => v?.images?.length > 0);
+      if (validVariant) setSelectedVariant(validVariant);
     }
-  }
+  }, [product]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /**
    * Calculate remaining stock for selected variant
@@ -67,17 +68,21 @@ const ProductPage = () => {
    * Handle adding product to cart
    * Shows notification with special message when last item is added
    */
+  // Clear notification timer on unmount to prevent setState on unmounted component
+  useEffect(() => () => clearTimeout(notificationTimer.current), []);
+
   const handleAddToBag = () => {
     if (selectedVariant && remainingStock > 0) {
       addToCart(product, selectedVariant);
-      
+
       const newRemainingStock = remainingStock - 1;
-      const message = newRemainingStock === 0 
+      const message = newRemainingStock === 0
         ? `${product.name} added! That's all we have in stock! 🎉`
         : `${product.name} added to bag! 🎉`;
-      
+
       setNotification(message);
-      setTimeout(() => setNotification(null), NOTIFICATION_DURATION.MEDIUM);
+      clearTimeout(notificationTimer.current);
+      notificationTimer.current = setTimeout(() => setNotification(null), NOTIFICATION_DURATION.MEDIUM);
     }
   };
 

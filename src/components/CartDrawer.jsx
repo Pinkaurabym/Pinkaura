@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useCartStore from '../store/cartStore';
 import { NOTIFICATION_DURATION } from '../utils/constants';
 
@@ -15,19 +15,15 @@ const CartDrawer = () => {
   const { total, shipping } = getCartTotal();
   const subtotal = total - shipping;
   const [stockMessage, setStockMessage] = useState(null);
+  const stockMessageTimer = useRef(null);
 
-  /**
-   * Handle quantity update with stock validation
-   * @param {string|number} id - Product ID
-   * @param {number} variantNumber - Variant number
-   * @param {number} newQuantity - Requested quantity
-   * @param {number} stock - Available stock
-   */
+  useEffect(() => () => clearTimeout(stockMessageTimer.current), []);
+
   const handleQuantityUpdate = (id, variantNumber, newQuantity, stock) => {
-    const cartItem = cart.find(item => item.id === id && item.variantNumber === variantNumber);
     if (newQuantity > stock) {
       setStockMessage(`Only ${stock} item${stock > 1 ? 's' : ''} available in stock`);
-      setTimeout(() => setStockMessage(null), NOTIFICATION_DURATION.MEDIUM);
+      clearTimeout(stockMessageTimer.current);
+      stockMessageTimer.current = setTimeout(() => setStockMessage(null), NOTIFICATION_DURATION.MEDIUM);
       return;
     }
     updateQuantity(id, variantNumber, newQuantity);

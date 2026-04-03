@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useProducts } from '../hooks/useProducts';
 
@@ -9,7 +9,9 @@ import { useProducts } from '../hooks/useProducts';
  */
 const AdminPage = () => {
   const { products, refetch } = useProducts();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => localStorage.getItem('adminAuth') === 'true'
+  );
   const [password, setPassword] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -43,13 +45,6 @@ const AdminPage = () => {
       setPassword('');
     }
   };
-
-  // Check if already logged in
-  useEffect(() => {
-    if (localStorage.getItem('adminAuth') === 'true') {
-      setIsAuthenticated(true);
-    }
-  }, []);
 
   const categories = ['Rings', 'Necklaces', 'Earrings', 'Bracelets'];
 

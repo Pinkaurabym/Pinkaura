@@ -1,9 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 /**
  * useModal - Modal state management
  */
-
 export const useModal = (initialState = false) => {
   const [isOpen, setIsOpen] = useState(initialState);
 
@@ -17,50 +16,50 @@ export const useModal = (initialState = false) => {
 /**
  * useNotification - Toast notification management
  */
-
 export const useNotification = () => {
   const [notifications, setNotifications] = useState([]);
+  const timersRef = useRef(new Map());
 
-  const show = useCallback(
-    ({ type = 'info', message, duration = 3000 }) => {
-      const id = Date.now();
-      
-      setNotifications((prev) => [
-        ...prev,
-        { id, type, message, duration },
-      ]);
+  // Clear all pending timers on unmount
+  useEffect(() => {
+    const timers = timersRef.current;
+    return () => timers.forEach(id => clearTimeout(id));
+  }, []);
 
-      if (duration > 0) {
-        setTimeout(() => {
-          setNotifications((prev) => prev.filter((n) => n.id !== id));
-        }, duration);
-      }
+  const show = useCallback(({ type = 'info', message, duration = 3000 }) => {
+    const id = Date.now();
 
-      return id;
-    },
-    []
-  );
+    setNotifications((prev) => [...prev, { id, type, message, duration }]);
+
+    if (duration > 0) {
+      const timerId = setTimeout(() => {
+        setNotifications((prev) => prev.filter((n) => n.id !== id));
+        timersRef.current.delete(id);
+      }, duration);
+      timersRef.current.set(id, timerId);
+    }
+
+    return id;
+  }, []);
 
   const remove = useCallback((id) => {
+    clearTimeout(timersRef.current.get(id));
+    timersRef.current.delete(id);
     setNotifications((prev) => prev.filter((n) => n.id !== id));
   }, []);
 
   const clear = useCallback(() => {
+    timersRef.current.forEach(id => clearTimeout(id));
+    timersRef.current.clear();
     setNotifications([]);
   }, []);
 
-  return {
-    notifications,
-    show,
-    remove,
-    clear,
-  };
+  return { notifications, show, remove, clear };
 };
 
 /**
  * useDebounce - Debounce a value
  */
-
 export const useDebounce = (value, delay = 500) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
@@ -74,5 +73,3 @@ export const useDebounce = (value, delay = 500) => {
 
   return debouncedValue;
 };
-
-import { useEffect } from 'react';

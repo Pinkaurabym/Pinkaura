@@ -8,6 +8,7 @@ import FormField from '../components/atoms/FormField';
 
 const MAX_SCREENSHOT_SIZE = 5 * 1024 * 1024;
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+const SUPPORT_EMAIL = import.meta.env.VITE_SUPPORT_EMAIL || 'support@pinkaura.com';
 
 const CheckoutPage = () => {
   const { cart, getCartTotal, clearCart } = useCartStore();
@@ -360,7 +361,7 @@ const CheckoutPage = () => {
 
                 <div className="border-t border-dark-200 pt-6">
                   <p className="text-xs text-dark-600 mb-2 uppercase tracking-wide font-semibold">Need Help?</p>
-                  <p className="text-2xl font-bold text-pink-500">Khalilmashreen@gmail.com</p>
+                  <p className="text-2xl font-bold text-pink-500">{SUPPORT_EMAIL}</p>
                 </div>
               </div>
             </div>
