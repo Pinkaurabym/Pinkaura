@@ -27,6 +27,9 @@ const ProductPage = () => {
     }
   }, [product]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Clear notification timer on unmount to prevent setState on unmounted component
+  useEffect(() => () => clearTimeout(notificationTimer.current), []);
+
   /**
    * Calculate remaining stock for selected variant
    * @returns {number} Available stock minus items already in cart
@@ -68,9 +71,6 @@ const ProductPage = () => {
    * Handle adding product to cart
    * Shows notification with special message when last item is added
    */
-  // Clear notification timer on unmount to prevent setState on unmounted component
-  useEffect(() => () => clearTimeout(notificationTimer.current), []);
-
   const handleAddToBag = () => {
     if (selectedVariant && remainingStock > 0) {
       addToCart(product, selectedVariant);
