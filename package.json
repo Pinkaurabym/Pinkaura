@@ -12,7 +12,6 @@
   },
   "dependencies": {
     "@getbrevo/brevo": "^5.0.3",
-    "@sendgrid/mail": "^8.1.6",
     "@supabase/supabase-js": "^2.89.0",
     "cloudinary": "^1.41.3",
     "compression": "^1.8.1",
