@@ -46,7 +46,7 @@ const AdminPage = () => {
     }
   };
 
-  const categories = ['Rings', 'Necklaces', 'Earrings', 'Bracelets'];
+  const categories = ['Rings', 'Necklaces', 'Earrings', 'Bracelets', 'Cute Stuff', 'Anklet', 'Nails', 'Hand Chain'];
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
