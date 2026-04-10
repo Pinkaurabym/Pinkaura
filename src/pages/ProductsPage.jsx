@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/atoms/ProductCardSkeleton';
 import { useProducts } from '../hooks/useProducts';
 
 const ProductsPage = () => {
@@ -123,8 +124,10 @@ const ProductsPage = () => {
         </div>
 
         {loading && (
-          <div className="flex justify-center py-20 text-dark-600 font-semibold">
-            Loading products...
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ProductCardSkeleton key={i} />
+            ))}
           </div>
         )}
 

@@ -2,10 +2,43 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
+import ProductCardSkeleton from '../components/atoms/ProductCardSkeleton';
 import { useProducts } from '../hooks/useProducts';
 
+const SkeletonRow = ({ bg = 'bg-white/50' }) => (
+  <section className={`py-14 px-4 sm:px-6 lg:px-8 ${bg}`}>
+    <div className="max-w-7xl mx-auto">
+      {/* Section heading placeholder */}
+      <div className="flex items-center justify-between mb-8">
+        <div
+          className="h-8 w-48 rounded-full animate-shimmer"
+          style={{
+            backgroundImage: 'linear-gradient(90deg, #FCF0F8 0%, #F9D9E8 40%, #FCF0F8 80%)',
+            backgroundSize: '2000px 100%',
+          }}
+        />
+        <div
+          className="h-9 w-24 rounded-full animate-shimmer"
+          style={{
+            backgroundImage: 'linear-gradient(90deg, #F9D9E8 0%, #F5B8D1 40%, #F9D9E8 80%)',
+            backgroundSize: '2000px 100%',
+          }}
+        />
+      </div>
+      {/* Horizontal skeleton cards */}
+      <div className="flex gap-6 overflow-hidden">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className="flex-none w-72 sm:w-80">
+            <ProductCardSkeleton />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
 const HomePage = () => {
-  const { products } = useProducts();
+  const { products, loading } = useProducts();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const categories = [...new Set(products.map((p) => p.category))];
@@ -64,8 +97,19 @@ const HomePage = () => {
         </motion.div>
       </section>
 
+      {/* Skeleton sections while loading */}
+      {loading && (
+        <>
+          <SkeletonRow bg="bg-white/50" />
+          <SkeletonRow bg="bg-gradient-to-r from-pink-50 to-purple-50" />
+          <SkeletonRow bg="bg-white/50" />
+          <SkeletonRow bg="bg-gradient-to-r from-pink-50 to-purple-50" />
+          <SkeletonRow bg="bg-gradient-to-r from-purple-50 to-pink-50" />
+        </>
+      )}
+
       {/* Category Teasers */}
-      {categories.slice(0, 3).map((category, idx) => (
+      {!loading && categories.slice(0, 3).map((category, idx) => (
         <motion.section
           key={category}
           initial={{ opacity: 0 }}
@@ -126,7 +170,7 @@ const HomePage = () => {
       ))}
 
       {/* Trending Section */}
-      {trendingProducts.length > 0 && (
+      {!loading && trendingProducts.length > 0 && (
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -180,7 +224,7 @@ const HomePage = () => {
       )}
 
       {/* Best Sellers Section */}
-      {bestSellerProducts.length > 0 && (
+      {!loading && bestSellerProducts.length > 0 && (
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
